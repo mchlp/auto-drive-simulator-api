@@ -2,6 +2,9 @@ import express from 'express';
 import socketIO from 'socket.io';
 import constants from './constants';
 import * as models from './models';
+import Navigator from './engine/Navigator';
+import { mapData } from './defaults';
+
 const app = express();
 
 const port = 3001;
@@ -166,7 +169,7 @@ vehicles.map((vehicle) => {
     map.addVehicle(vehicle);
 });
 
-console.log(map.serialize());
+Navigator.getRoute(intersections[0], intersections[8], map);
 
 const simulateLoop = () => {
     vehicles.forEach((vehicle) => {
@@ -175,4 +178,4 @@ const simulateLoop = () => {
     io.emit('update-map-data', map.serialize());
 };
 
-setInterval(simulateLoop, 1000/30);
+setInterval(simulateLoop, 1000 / 30);
