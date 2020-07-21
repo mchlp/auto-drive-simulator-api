@@ -1,9 +1,21 @@
-const constants = {}
+const constants = {};
 
 constants.ROAD_TYPES = {
-    LOCAL: 'local',
-    MINOR: 'minor',
-    MAJOR: 'major'
-}
+    TYPES: {
+        LOCAL: 'local',
+        MINOR: 'minor',
+        MAJOR: 'major',
+    },
+    WIDTH: {
+        LOCAL: 50,
+        MINOR: 60,
+        MAJOR: 100,
+    },
+};
 
-module.exports = constants
+constants.VEHICLE_HEADING = {
+    TOWARDS_START: 'towards_start',
+    TOWARDS_END: 'towards_end',
+};
+
+export default constants;
