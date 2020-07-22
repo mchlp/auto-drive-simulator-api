@@ -10,14 +10,16 @@ export default class Map {
     vehicles: Record<string, Vehicle>;
     roads: Record<string, Road>;
     roadDrivingSide: string;
+    safeFollowingDistance: number;
 
-    constructor(roadDrivingSide: string) {
+    constructor(roadDrivingSide: string, safeFollowingDistance: number) {
         this.id = Map.getNextId();
         this.locations = {};
         this.intersections = {};
         this.vehicles = {};
         this.roads = {};
         this.roadDrivingSide = roadDrivingSide;
+        this.safeFollowingDistance = safeFollowingDistance;
     }
 
     static idCount = 0;

@@ -8,6 +8,7 @@ import {
     RouteSegment,
     Route,
     RoadType,
+    VehicleDirection,
 } from '../types';
 import Map from './Map';
 import Navigator from '../engine/Navigator';
@@ -57,6 +58,7 @@ export default class Vehicle {
     startDriving() {
         if (this.origin.id !== this.destination.id) {
             this.state = constants.VEHICLE_STATE.EN_ROUTE;
+            this.getCurRoad()?.addVehicle(this);
         } else {
             this.state = constants.VEHICLE_STATE.ARRIVED;
         }
@@ -77,7 +79,7 @@ export default class Vehicle {
         return null;
     }
 
-    getCurDirection() {
+    getCurDirection(): VehicleDirection | null {
         const curRoad = this.getCurRoad();
         const curSegment = this.getCurRouteSegment();
         if (
@@ -86,9 +88,11 @@ export default class Vehicle {
             this.state === constants.VEHICLE_STATE.EN_ROUTE
         ) {
             if (curRoad.end.id === curSegment.exitPointId) {
-                return constants.VEHICLE_DIRECTION.TOWARDS_END;
+                return constants.VEHICLE_DIRECTION
+                    .TOWARDS_END as VehicleDirection;
             } else {
-                return constants.VEHICLE_DIRECTION.TOWARDS_START;
+                return constants.VEHICLE_DIRECTION
+                    .TOWARDS_START as VehicleDirection;
             }
         }
         return null;
@@ -106,28 +110,58 @@ export default class Vehicle {
             const deltaTimeSec = (nowTime - this.lastUpdated) / 1000;
             this.lastUpdated = nowTime;
 
-            let maxSpeed = 10;
+            let curSpeed = 10;
             switch (curRoad.type) {
                 case constants.ROAD_TYPES.TYPES.MAJOR:
-                    maxSpeed = 100;
+                    curSpeed = 100;
                     break;
                 case constants.ROAD_TYPES.TYPES.MINOR:
-                    maxSpeed = 60;
+                    curSpeed = 60;
                     break;
                 case constants.ROAD_TYPES.TYPES.LOCAL:
-                    maxSpeed = 30;
+                    curSpeed = 30;
                     break;
             }
 
+            let closestCarAheadDistance = Number.POSITIVE_INFINITY;
+
+            this.getCurRoad()
+                ?.getVehiclesInCurrentDirection(this)
+                ?.forEach((vehicle) => {
+                    const distance =
+                        vehicle.distanceTravelledOnRoad -
+                        this.distanceTravelledOnRoad;
+                    if (distance > 0 && distance < closestCarAheadDistance) {
+                        closestCarAheadDistance = distance;
+                    }
+                });
+
+            if (closestCarAheadDistance < this.map.safeFollowingDistance) {
+                if (
+                    closestCarAheadDistance <
+                    this.map.safeFollowingDistance * 0.3
+                ) {
+                    curSpeed = 0;
+                } else {
+                    curSpeed *=
+                        1 -
+                        closestCarAheadDistance /
+                            this.map.safeFollowingDistance;
+                }
+            }
+
             let newDistanceTravelledOnRoad =
-                this.distanceTravelledOnRoad + maxSpeed * deltaTimeSec;
+                this.distanceTravelledOnRoad + curSpeed * deltaTimeSec;
 
             if (newDistanceTravelledOnRoad > curRoad.getLength()) {
                 if (this.curRouteSegmentIndex < this.route.length - 1) {
+                    this.getCurRoad()?.removeVehicle(this);
                     newDistanceTravelledOnRoad = 0;
                     this.curRouteSegmentIndex++;
+                    this.getCurRoad()?.addVehicle(this);
                 } else {
                     newDistanceTravelledOnRoad = curRoad.getLength();
+                    this.getCurRoad()?.removeVehicle(this);
                     this.state = constants.VEHICLE_STATE.ARRIVED;
                 }
             }

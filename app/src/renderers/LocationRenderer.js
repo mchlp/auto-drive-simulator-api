@@ -18,7 +18,7 @@ export default class LocationRenderer {
             ctx.arc(
                 coord[0],
                 coord[1],
-                Utils.scaleSingleCoord(2),
+                Utils.scaleSingleCoord(constants.DISPLAY.LOCATION_RADIUS),
                 0,
                 2 * Math.PI
             );

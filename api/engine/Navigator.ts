@@ -1,6 +1,7 @@
 import { Map, Road } from '../models';
 import { Waypoint, WaypointId, RouteSegment, Route } from '../types';
 import constants from '../constants';
+import PriorityQueue from '../util/PriorityQueue';
 
 interface AdjacencyListEntry {
     roadId: Road['id'];
@@ -10,6 +11,7 @@ interface AdjacencyListEntry {
 interface ParentListEntry {
     parentId: WaypointId | null;
     roadId: Road['id'] | null;
+    totalWeight: number;
 }
 
 export default class Navigator {
@@ -65,32 +67,36 @@ export default class Navigator {
 
         const parentList: Record<string, ParentListEntry> = {};
 
-        const queue = [origin.id];
+        const priorityQueue = new PriorityQueue<WaypointId>();
+        priorityQueue.enqueue(origin.id, 0);
         parentList[origin.id] = {
             parentId: null,
             roadId: null,
+            totalWeight: 0,
         };
 
-        while (queue.length > 0) {
-            const curWaypointId = queue.shift();
+        while (!priorityQueue.isEmpty()) {
+            const curWaypointId = priorityQueue.dequeue();
             if (curWaypointId && adjacencyList[curWaypointId]) {
+                const curWeight = parentList[curWaypointId].totalWeight;
                 for (const adjacentWaypointEntry of Object.entries(
                     adjacencyList[curWaypointId]
                 )) {
                     const adjacentWaypointId = adjacentWaypointEntry[0];
                     const adjacentWaypointData = adjacentWaypointEntry[1];
+                    const newWeight = curWeight + adjacentWaypointData.weight;
 
-                    if (!parentList[adjacentWaypointId]) {
+                    if (
+                        !parentList[adjacentWaypointId] ||
+                        parentList[adjacentWaypointId].totalWeight > newWeight
+                    ) {
                         parentList[adjacentWaypointId] = {
                             parentId: curWaypointId,
                             roadId: adjacentWaypointData.roadId,
+                            totalWeight: newWeight,
                         };
 
-                        if (adjacentWaypointId === destination.id) {
-                            break;
-                        }
-
-                        queue.push(adjacentWaypointId);
+                        priorityQueue.enqueue(adjacentWaypointId, newWeight);
                     }
                 }
             }

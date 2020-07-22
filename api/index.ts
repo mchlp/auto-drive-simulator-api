@@ -19,7 +19,7 @@ io.on('connect', (socket: any) => {});
 
 let test;
 
-const map = new models.Map(constants.ROAD_DRIVING_SIDE.RIGHT);
+const map = new models.Map(constants.ROAD_DRIVING_SIDE.RIGHT, 100);
 
 const locations: models.Location[] = [];
 locations.push(new models.Location([-500, 500]));
@@ -81,7 +81,7 @@ roads.push(
 roads.push(
     new models.Road(
         constants.ROAD_TYPES.TYPES.LOCAL,
-        intersections[1],
+        intersections[0],
         intersections[4]
     )
 );
@@ -168,7 +168,7 @@ const ADD_VEHICLE_TIMEOUT = 1000;
 let lastAddVehicleTime = 0;
 const simulateLoop = () => {
     const nowTime = Date.now();
-    if (nowTime - lastAddVehicleTime > ADD_VEHICLE_TIMEOUT) {
+    if (nowTime - lastAddVehicleTime > ADD_VEHICLE_TIMEOUT && Object.keys(map.vehicles).length < 100) {
         const newOrigin = map.getRandomWaypoint();
         const newDest = map.getRandomWaypoint();
         const newVehicle = new models.Vehicle(newOrigin, newDest, map);

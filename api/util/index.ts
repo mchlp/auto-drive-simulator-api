@@ -1,4 +1,4 @@
-import { CoordinateXY } from './types';
+import { CoordinateXY } from '../types';
 
 export default class util {
     static normalizedCoordinateXY(coord: CoordinateXY): CoordinateXY {

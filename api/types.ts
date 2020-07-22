@@ -18,3 +18,5 @@ export interface RouteSegment {
 export type Route = RouteSegment[];
 
 export type RoadType = 'LOCAL' | 'MINOR' | 'MAJOR';
+
+export type VehicleDirection = 'towards_start' | 'towards_end'

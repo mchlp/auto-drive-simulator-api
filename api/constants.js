@@ -30,4 +30,9 @@ constants.VEHICLE_DIRECTION = {
     TOWARDS_END: 'towards_end',
 };
 
+constants.DISPLAY = {
+    INTERSECTION_RADIUS: 45,
+    LOCATION_RADIUS: 10
+}
+
 export default constants;
