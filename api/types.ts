@@ -15,4 +15,6 @@ export interface RouteSegment {
     exitPointId: WaypointId;
 }
 
-export type Route = RouteSegment[]
+export type Route = RouteSegment[];
+
+export type RoadType = 'LOCAL' | 'MINOR' | 'MAJOR';

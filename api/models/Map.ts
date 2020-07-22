@@ -9,13 +9,15 @@ export default class Map {
     intersections: Record<string, Intersection>;
     vehicles: Record<string, Vehicle>;
     roads: Record<string, Road>;
+    roadDrivingSide: string;
 
-    constructor() {
+    constructor(roadDrivingSide: string) {
         this.id = Map.getNextId();
         this.locations = {};
         this.intersections = {};
         this.vehicles = {};
         this.roads = {};
+        this.roadDrivingSide = roadDrivingSide;
     }
 
     static idCount = 0;
@@ -29,6 +31,11 @@ export default class Map {
         this.vehicles[newVehicle.id] = newVehicle;
     }
 
+    removeVehicle(vehicle: Vehicle) {
+        console.log(`remove vehicle ${vehicle.id}`);
+        delete this.vehicles[vehicle.id];
+    }
+
     addRoad(newRoad: Road) {
         this.roads[newRoad.id] = newRoad;
     }
@@ -39,6 +46,20 @@ export default class Map {
 
     addIntersection(newIntersection: Intersection) {
         this.intersections[newIntersection.id] = newIntersection;
+    }
+
+    getRandomWaypoint() {
+        const waypointList = [
+            ...Object.values(this.intersections),
+            ...Object.values(this.locations),
+        ];
+        return waypointList[Math.floor(Math.random() * waypointList.length)];
+    }
+
+    update() {
+        Object.values(this.vehicles).forEach((vehicle) => {
+            vehicle.update();
+        });
     }
 
     serialize() {

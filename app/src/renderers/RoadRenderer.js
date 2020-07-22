@@ -47,7 +47,9 @@ export default class RoadRenderer {
                     } else if (mode === 'center-line') {
                         ctx.lineWidth = Utils.scaleSingleCoord(1);
                         ctx.strokeStyle = 'yellow';
-                        if (roadData.type === 'local') {
+                        if (
+                            roadData.type === constants.ROAD_TYPES.TYPES.LOCAL
+                        ) {
                             ctx.setLineDash([
                                 Utils.scaleSingleCoord(5),
                                 Utils.scaleSingleCoord(5),
@@ -56,13 +58,17 @@ export default class RoadRenderer {
                             ctx.moveTo(...startCoord);
                             ctx.lineTo(...endCoord);
                             ctx.stroke();
-                        } else if (roadData.type === 'minor') {
+                        } else if (
+                            roadData.type === constants.ROAD_TYPES.TYPES.MINOR
+                        ) {
                             ctx.setLineDash([]);
                             ctx.beginPath();
                             ctx.moveTo(...startCoord);
                             ctx.lineTo(...endCoord);
                             ctx.stroke();
-                        } else if (roadData.type === 'major') {
+                        } else if (
+                            roadData.type === constants.ROAD_TYPES.TYPES.MAJOR
+                        ) {
                             ctx.setLineDash([]);
                             ctx.beginPath();
                             ctx.moveTo(...startCoord);

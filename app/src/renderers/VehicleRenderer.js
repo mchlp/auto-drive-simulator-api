@@ -2,7 +2,7 @@ import Utils from '../Utils';
 import constants from '../constants';
 
 export default class VehicleRenderer {
-    static render (ctx, mapData) {
+    static render(ctx, mapData) {
         Object.entries(mapData.vehicles).forEach((vehicleEntry) => {
             const vehicleId = vehicleEntry[0];
             const vehicleData = vehicleEntry[1];
@@ -15,11 +15,17 @@ export default class VehicleRenderer {
             ctx.setLineDash([]);
 
             ctx.beginPath();
-            ctx.arc(coord[0], coord[1], Utils.scaleSingleCoord(10), 0, 2 * Math.PI);
+            ctx.arc(
+                coord[0],
+                coord[1],
+                Utils.scaleSingleCoord(10),
+                0,
+                2 * Math.PI
+            );
             ctx.stroke();
             ctx.fill();
 
-            const text = `${vehicleId} | Src: ${vehicleData.originId} | Dest: ${vehicleData.destinationId}`
+            const text = `${vehicleId} | Src: ${vehicleData.originId} | Dest: ${vehicleData.destinationId}`;
             ctx.font = Utils.scaleSingleCoord(15) + 'px Arial';
             ctx.strokeStyle = 'black';
             ctx.strokeWidth = Utils.scaleSingleCoord(1);
@@ -27,5 +33,5 @@ export default class VehicleRenderer {
             ctx.fillStyle = 'yellow';
             ctx.fillText(text, coord[0], coord[1]);
         });
-    };
+    }
 }

@@ -1,5 +1,6 @@
 import { Map, Road } from '../models';
 import { Waypoint, WaypointId, RouteSegment, Route } from '../types';
+import constants from '../constants';
 
 interface AdjacencyListEntry {
     roadId: Road['id'];
@@ -20,7 +21,18 @@ export default class Navigator {
         Object.entries(map.roads).forEach((roadEntry) => {
             const roadId = roadEntry[0];
             const roadData = roadEntry[1];
-            const roadWeight = 1;
+            let roadWeight = 10;
+            switch (roadData.type) {
+                case constants.ROAD_TYPES.TYPES.MAJOR:
+                    roadWeight = 1;
+                    break;
+                case constants.ROAD_TYPES.TYPES.MINOR:
+                    roadWeight = 3;
+                    break;
+                case constants.ROAD_TYPES.TYPES.LOCAL:
+                    roadWeight = 5;
+                    break;
+            }
 
             const addEntry = (startId: WaypointId, endId: WaypointId) => {
                 if (!adjacencyList[startId]) {
@@ -75,7 +87,6 @@ export default class Navigator {
                         };
 
                         if (adjacentWaypointId === destination.id) {
-                            console.log('found dest!');
                             break;
                         }
 
@@ -104,7 +115,6 @@ export default class Navigator {
             }
         }
 
-        console.log(route);
         return route;
     }
 }

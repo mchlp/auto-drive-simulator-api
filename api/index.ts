@@ -19,7 +19,7 @@ io.on('connect', (socket: any) => {});
 
 let test;
 
-const map = new models.Map();
+const map = new models.Map(constants.ROAD_DRIVING_SIDE.RIGHT);
 
 const locations: models.Location[] = [];
 locations.push(new models.Location([-500, 500]));
@@ -101,7 +101,7 @@ roads.push(
 );
 roads.push(
     new models.Road(
-        constants.ROAD_TYPES.TYPES.LOCAL,
+        constants.ROAD_TYPES.TYPES.MAJOR,
         intersections[5],
         intersections[7]
     )
@@ -115,21 +115,21 @@ roads.push(
 );
 roads.push(
     new models.Road(
-        constants.ROAD_TYPES.TYPES.LOCAL,
+        constants.ROAD_TYPES.TYPES.MINOR,
         intersections[8],
         intersections[5]
     )
 );
 roads.push(
     new models.Road(
-        constants.ROAD_TYPES.TYPES.LOCAL,
+        constants.ROAD_TYPES.TYPES.MAJOR,
         intersections[8],
         intersections[9]
     )
 );
 roads.push(
     new models.Road(
-        constants.ROAD_TYPES.TYPES.LOCAL,
+        constants.ROAD_TYPES.TYPES.MAJOR,
         intersections[0],
         intersections[6]
     )
@@ -153,25 +153,33 @@ roads.map((road) => {
     map.addRoad(road);
 });
 
-const routes: Route[] = [];
-routes.push(Navigator.getRoute(intersections[6], intersections[8], map));
-routes.push(Navigator.getRoute(intersections[3], intersections[5], map));
-routes.push(Navigator.getRoute(intersections[0], intersections[1], map));
-routes.push(Navigator.getRoute(intersections[0], intersections[8], map));
-
 const vehicles: models.Vehicle[] = [];
-vehicles.push(new models.Vehicle(routes[0], map));
-vehicles.push(new models.Vehicle(routes[1], map));
-vehicles.push(new models.Vehicle(routes[2], map));
-vehicles.push(new models.Vehicle(routes[3], map));
+vehicles.push(new models.Vehicle(intersections[6], intersections[8], map));
+vehicles.push(new models.Vehicle(intersections[3], intersections[5], map));
+vehicles.push(new models.Vehicle(intersections[0], intersections[1], map));
+vehicles.push(new models.Vehicle(intersections[0], intersections[8], map));
 vehicles.map((vehicle) => {
+    vehicle.calculateRoute();
+    vehicle.startDriving();
     map.addVehicle(vehicle);
 });
 
+const ADD_VEHICLE_TIMEOUT = 1000;
+let lastAddVehicleTime = 0;
 const simulateLoop = () => {
-    vehicles.forEach((vehicle) => {
-        vehicle.update();
-    });
+    const nowTime = Date.now();
+    if (nowTime - lastAddVehicleTime > ADD_VEHICLE_TIMEOUT) {
+        const newOrigin = map.getRandomWaypoint();
+        const newDest = map.getRandomWaypoint();
+        const newVehicle = new models.Vehicle(newOrigin, newDest, map);
+        map.addVehicle(newVehicle);
+        newVehicle.calculateRoute();
+        newVehicle.startDriving();
+        lastAddVehicleTime = nowTime;
+
+        console.log(`origin: ${newOrigin.id} | dest: ${newDest.id}`);
+    }
+    map.update();
     io.emit('update-map-data', map.serialize());
 };
 

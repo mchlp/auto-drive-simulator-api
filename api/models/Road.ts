@@ -1,14 +1,14 @@
-import { Waypoint } from '../types';
+import { Waypoint, RoadType } from '../types';
 
 export default class Road {
     id: string;
-    type: string;
+    type: RoadType;
     start: Waypoint;
     end: Waypoint;
 
     constructor(type: string, start: Waypoint, end: Waypoint) {
         this.id = Road.getNextId();
-        this.type = type;
+        this.type = type as RoadType;
         this.start = start;
         this.end = end;
     }
@@ -21,7 +21,10 @@ export default class Road {
     }
 
     getLength() {
-        return Math.sqrt(Math.pow(this.end.coord[0] - this.start.coord[0], 2) + Math.pow(this.end.coord[1] - this.start.coord[1], 2))
+        return Math.sqrt(
+            Math.pow(this.end.coord[0] - this.start.coord[0], 2) +
+                Math.pow(this.end.coord[1] - this.start.coord[1], 2)
+        );
     }
 
     serialize() {
