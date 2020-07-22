@@ -15,9 +15,22 @@ export default class LocationRenderer {
             ctx.setLineDash([]);
 
             ctx.beginPath();
-            ctx.arc(coord[0], coord[1], Utils.scaleSingleCoord(2), 0, 2 * Math.PI);
+            ctx.arc(
+                coord[0],
+                coord[1],
+                Utils.scaleSingleCoord(2),
+                0,
+                2 * Math.PI
+            );
             ctx.stroke();
             ctx.fill();
+
+            ctx.font = Utils.scaleSingleCoord(50) + 'px Arial';
+            ctx.strokeStyle = 'white';
+            ctx.strokeWidth = Utils.scaleSingleCoord(2);
+            ctx.strokeText(locationId, coord[0], coord[1]);
+            ctx.fillStyle = 'black';
+            ctx.fillText(locationId, coord[0], coord[1]);
         });
     }
 }

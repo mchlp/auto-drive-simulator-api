@@ -4,6 +4,7 @@ import constants from './constants';
 import * as models from './models';
 import Navigator from './engine/Navigator';
 import { mapData } from './defaults';
+import { Route } from './types';
 
 const app = express();
 
@@ -152,28 +153,24 @@ roads.map((road) => {
     map.addRoad(road);
 });
 
+const routes: Route[] = [];
+routes.push(Navigator.getRoute(intersections[6], intersections[8], map));
+routes.push(Navigator.getRoute(intersections[3], intersections[5], map));
+routes.push(Navigator.getRoute(intersections[0], intersections[1], map));
+routes.push(Navigator.getRoute(intersections[0], intersections[8], map));
+
 const vehicles: models.Vehicle[] = [];
-vehicles.push(
-    new models.Vehicle(roads[0], constants.VEHICLE_HEADING.TOWARDS_END, 0)
-);
-vehicles.push(
-    new models.Vehicle(roads[1], constants.VEHICLE_HEADING.TOWARDS_END, 0)
-);
-vehicles.push(
-    new models.Vehicle(roads[2], constants.VEHICLE_HEADING.TOWARDS_START, 0)
-);
-vehicles.push(
-    new models.Vehicle(roads[3], constants.VEHICLE_HEADING.TOWARDS_END, 0)
-);
+vehicles.push(new models.Vehicle(routes[0], map));
+vehicles.push(new models.Vehicle(routes[1], map));
+vehicles.push(new models.Vehicle(routes[2], map));
+vehicles.push(new models.Vehicle(routes[3], map));
 vehicles.map((vehicle) => {
     map.addVehicle(vehicle);
 });
 
-Navigator.getRoute(intersections[0], intersections[8], map);
-
 const simulateLoop = () => {
     vehicles.forEach((vehicle) => {
-        vehicle.distanceTravelledOnRoad++;
+        vehicle.update();
     });
     io.emit('update-map-data', map.serialize());
 };

@@ -20,6 +20,10 @@ export default class Road {
         return nextId;
     }
 
+    getLength() {
+        return Math.sqrt(Math.pow(this.end.coord[0] - this.start.coord[0], 2) + Math.pow(this.end.coord[1] - this.start.coord[1], 2))
+    }
+
     serialize() {
         return {
             id: this.id,

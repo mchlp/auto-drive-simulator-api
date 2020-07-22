@@ -1,5 +1,5 @@
 import { Map, Road } from '../models';
-import { Waypoint, WaypointId, RouteSegment } from '../types';
+import { Waypoint, WaypointId, RouteSegment, Route } from '../types';
 
 interface AdjacencyListEntry {
     roadId: Road['id'];
@@ -48,7 +48,7 @@ export default class Navigator {
         return adjacencyList;
     }
 
-    static getRoute(origin: Waypoint, destination: Waypoint, map: Map) {
+    static getRoute(origin: Waypoint, destination: Waypoint, map: Map): Route {
         const adjacencyList = this.generateAdjacencyList(map);
 
         const parentList: Record<string, ParentListEntry> = {};
@@ -85,19 +85,26 @@ export default class Navigator {
             }
         }
 
-        const route: RouteSegment[] = [];
+        const route: Route = [];
         let curReverseTraverseWaypointId: string = destination.id;
         while (curReverseTraverseWaypointId !== origin.id) {
-            route.unshift({
-                roadId: parentList[curReverseTraverseWaypointId].roadId,
-                entryPointId: parentList[curReverseTraverseWaypointId].parentId,
-                exitPointId: curReverseTraverseWaypointId,
-            });
-            curReverseTraverseWaypointId = parentList[
-                curReverseTraverseWaypointId
-            ].parentId as string;
+            if (parentList[curReverseTraverseWaypointId].parentId) {
+                route.unshift({
+                    roadId: parentList[curReverseTraverseWaypointId]
+                        .roadId as Road['id'],
+                    entryPointId: parentList[curReverseTraverseWaypointId]
+                        .parentId as WaypointId,
+                    exitPointId: curReverseTraverseWaypointId,
+                });
+                curReverseTraverseWaypointId = parentList[
+                    curReverseTraverseWaypointId
+                ].parentId as string;
+            } else {
+                return [];
+            }
         }
 
         console.log(route);
+        return route;
     }
 }

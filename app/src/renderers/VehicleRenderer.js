@@ -18,6 +18,14 @@ export default class VehicleRenderer {
             ctx.arc(coord[0], coord[1], Utils.scaleSingleCoord(10), 0, 2 * Math.PI);
             ctx.stroke();
             ctx.fill();
+
+            const text = `${vehicleId} | Src: ${vehicleData.originId} | Dest: ${vehicleData.destinationId}`
+            ctx.font = Utils.scaleSingleCoord(15) + 'px Arial';
+            ctx.strokeStyle = 'black';
+            ctx.strokeWidth = Utils.scaleSingleCoord(1);
+            ctx.strokeText(text, coord[0], coord[1]);
+            ctx.fillStyle = 'yellow';
+            ctx.fillText(text, coord[0], coord[1]);
         });
     };
 }

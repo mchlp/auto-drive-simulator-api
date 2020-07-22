@@ -24,6 +24,13 @@ export default class IntersectionRenderer {
             );
             ctx.stroke();
             ctx.fill();
+
+            ctx.font = Utils.scaleSingleCoord(50) + 'px Arial';
+            ctx.strokeStyle = 'white';
+            ctx.strokeWidth = Utils.scaleSingleCoord(2)
+            ctx.strokeText(intersectionId, coord[0], coord[1]);
+            ctx.fillStyle = 'black';
+            ctx.fillText(intersectionId, coord[0], coord[1]);
         });
     }
 }

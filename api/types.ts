@@ -10,7 +10,9 @@ export type Waypoint = Intersection | Location;
 export type WaypointId = Waypoint['id'];
 
 export interface RouteSegment {
-    roadId: Road['id'] | null;
-    entryPointId: WaypointId | null;
-    exitPointId: WaypointId | null;
+    roadId: Road['id'];
+    entryPointId: WaypointId;
+    exitPointId: WaypointId;
 }
+
+export type Route = RouteSegment[]
