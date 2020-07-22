@@ -5,11 +5,11 @@ import { useState } from 'react';
 import MapRenderer from '../renderers/MapRenderer';
 import Utils from '../Utils';
 
-export default function Map({ mapData }) {
+export default function Map({ mapData, canvasHeightPercentage=0.9 }) {
     const canvasRef = useRef(null);
 
     const [canvasWidth, setCanvasWidth] = useState(window.innerWidth * 0.9);
-    const [canvasHeight, setCanvasHeight] = useState(window.innerHeight * 0.9);
+    const [canvasHeight, setCanvasHeight] = useState(window.innerHeight * canvasHeightPercentage);
     const [canvasProps, setCanvasProps] = useState({
         centerX: 0,
         centerY: 0,
@@ -20,8 +20,16 @@ export default function Map({ mapData }) {
     const lastDragCoord = useRef(null);
 
     useEffect(() => {
-        Utils.initUtils(canvasProps, canvasWidth, canvasHeight);
-    }, [canvasWidth, canvasHeight, canvasProps]);
+        if (canvasRef && canvasRef.current) {
+            Utils.initUtils(
+                canvasProps,
+                canvasWidth,
+                canvasHeight,
+                canvasRef.current.offsetLeft,
+                canvasRef.current.offsetTop
+            );
+        }
+    }, [canvasWidth, canvasHeight, canvasProps, canvasRef]);
 
     useEffect(() => {
         if (mapData && canvasRef && canvasRef.current) {
