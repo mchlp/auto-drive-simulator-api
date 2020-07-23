@@ -4,8 +4,8 @@ export default class Location {
     id: string;
     coord: Coordinate;
     
-    constructor(coord: Coordinate) {
-        this.id = Location.getNextId();
+    constructor(id: string, coord: Coordinate) {
+        this.id = id;
         this.coord = coord;
     }
 

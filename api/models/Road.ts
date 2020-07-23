@@ -12,8 +12,8 @@ export default class Road {
         towards_end: Record<Vehicle['id'], Vehicle>;
     };
 
-    constructor(type: string, start: Waypoint, end: Waypoint) {
-        this.id = Road.getNextId();
+    constructor(id: string, type: string, start: Waypoint, end: Waypoint) {
+        this.id = id;
         this.type = type as RoadType;
         this.start = start;
         this.end = end;

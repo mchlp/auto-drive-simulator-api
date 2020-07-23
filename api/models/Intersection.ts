@@ -4,8 +4,8 @@ export default class Intersection {
     id: string;
     coord: Coordinate;
 
-    constructor(coord: Coordinate) {
-        this.id = Intersection.getNextId();
+    constructor(id: string, coord: Coordinate) {
+        this.id = id;
         this.coord = coord;
     }
 

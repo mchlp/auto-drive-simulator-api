@@ -98,7 +98,7 @@ export default class Navigator {
         const adjacencyList = this.generateAdjacencyList(map);
         const parentList: Record<string, ParentListEntry> = {};
 
-        const priorityQueue = new PriorityQueue<WaypointId>();
+        const priorityQueue = new PriorityQueue<WaypointId>();        
         priorityQueue.enqueue(origin.id, 0);
         parentList[origin.id] = {
             parentId: null,
