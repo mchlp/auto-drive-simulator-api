@@ -98,6 +98,16 @@ export default class Vehicle {
         return null;
     }
 
+    _getSpeedMultiplierFromDistance(closestCarAheadDistance: number) {
+        if (closestCarAheadDistance > this.map.safeFollowingDistance) {
+            return 1;
+        } else if (closestCarAheadDistance <= this.map.safeFollowingDistance) {
+            return 0;
+        } else {
+            return 1 - closestCarAheadDistance / this.map.safeFollowingDistance;
+        }
+    }
+
     update() {
         const curRoad = this.getCurRoad();
         if (
@@ -123,42 +133,42 @@ export default class Vehicle {
                     break;
             }
 
-            let closestCarAheadDistance = Number.POSITIVE_INFINITY;
-
-            this.getCurRoad()
-                ?.getVehiclesInCurrentDirection(this)
-                ?.forEach((vehicle) => {
-                    const distance =
-                        vehicle.distanceTravelledOnRoad -
-                        this.distanceTravelledOnRoad;
-                    if (distance > 0 && distance < closestCarAheadDistance) {
-                        closestCarAheadDistance = distance;
-                    }
-                });
-
-            if (closestCarAheadDistance < this.map.safeFollowingDistance) {
-                if (
-                    closestCarAheadDistance <
-                    this.map.safeFollowingDistance * 0.3
-                ) {
-                    curSpeed = 0;
-                } else {
-                    curSpeed *=
-                        1 -
-                        closestCarAheadDistance /
-                            this.map.safeFollowingDistance;
-                }
-            }
+            let closestCarAheadDistance = curRoad.getClosestDistanceAhead(this);
+            curSpeed *= this._getSpeedMultiplierFromDistance(
+                closestCarAheadDistance
+            );
 
             let newDistanceTravelledOnRoad =
                 this.distanceTravelledOnRoad + curSpeed * deltaTimeSec;
 
-            if (newDistanceTravelledOnRoad > curRoad.getLength()) {
+            if (curRoad.getLength() - newDistanceTravelledOnRoad < 200) {
                 if (this.curRouteSegmentIndex < this.route.length - 1) {
-                    this.getCurRoad()?.removeVehicle(this);
-                    newDistanceTravelledOnRoad = 0;
-                    this.curRouteSegmentIndex++;
-                    this.getCurRoad()?.addVehicle(this);
+                    // go to next road segment
+                    const nextRouteSegment = this.route[
+                        this.curRouteSegmentIndex + 1
+                    ];
+                    const nextRoad = this.map.roads[nextRouteSegment.roadId];
+                    let closestCarAheadDistance = nextRoad.getDistanceToFirstVehicleInDirection(
+                        nextRouteSegment.exitPointId === nextRoad.end.id
+                            ? (constants.VEHICLE_DIRECTION
+                                  .TOWARDS_END as VehicleDirection)
+                            : (constants.VEHICLE_DIRECTION
+                                  .TOWARDS_START as VehicleDirection)
+                    );
+
+                    if (
+                        closestCarAheadDistance > this.map.safeFollowingDistance
+                    ) {
+                        if (newDistanceTravelledOnRoad > curRoad.getLength()) {
+                            this.getCurRoad()?.removeVehicle(this);
+                            newDistanceTravelledOnRoad = 0;
+                            this.curRouteSegmentIndex++;
+                            this.getCurRoad()?.addVehicle(this);
+                        }
+                    } else {
+                        newDistanceTravelledOnRoad = this
+                            .distanceTravelledOnRoad;
+                    }
                 } else {
                     newDistanceTravelledOnRoad = curRoad.getLength();
                     this.getCurRoad()?.removeVehicle(this);

@@ -19,7 +19,7 @@ io.on('connect', (socket: any) => {});
 
 let test;
 
-const map = new models.Map(constants.ROAD_DRIVING_SIDE.RIGHT, 100);
+const map = new models.Map(constants.ROAD_DRIVING_SIDE.RIGHT, 50);
 
 const locations: models.Location[] = [];
 locations.push(new models.Location([-500, 500]));
@@ -158,17 +158,20 @@ vehicles.push(new models.Vehicle(intersections[6], intersections[8], map));
 vehicles.push(new models.Vehicle(intersections[3], intersections[5], map));
 vehicles.push(new models.Vehicle(intersections[0], intersections[1], map));
 vehicles.push(new models.Vehicle(intersections[0], intersections[8], map));
-vehicles.map((vehicle) => {
-    vehicle.calculateRoute();
-    vehicle.startDriving();
-    map.addVehicle(vehicle);
-});
+// vehicles.map((vehicle) => {
+//     vehicle.calculateRoute();
+//     vehicle.startDriving();
+//     map.addVehicle(vehicle);
+// });
 
 const ADD_VEHICLE_TIMEOUT = 1000;
 let lastAddVehicleTime = 0;
 const simulateLoop = () => {
     const nowTime = Date.now();
-    if (nowTime - lastAddVehicleTime > ADD_VEHICLE_TIMEOUT && Object.keys(map.vehicles).length < 100) {
+    if (
+        nowTime - lastAddVehicleTime > ADD_VEHICLE_TIMEOUT &&
+        Object.keys(map.vehicles).length < 200
+    ) {
         const newOrigin = map.getRandomWaypoint();
         const newDest = map.getRandomWaypoint();
         const newVehicle = new models.Vehicle(newOrigin, newDest, map);

@@ -1,7 +1,8 @@
-import { Map, Road } from '../models';
+import { Map, Road, Vehicle } from '../models';
 import { Waypoint, WaypointId, RouteSegment, Route } from '../types';
 import constants from '../constants';
 import PriorityQueue from '../util/PriorityQueue';
+import { basename } from 'path';
 
 interface AdjacencyListEntry {
     roadId: Road['id'];
@@ -36,27 +37,58 @@ export default class Navigator {
                     break;
             }
 
-            const addEntry = (startId: WaypointId, endId: WaypointId) => {
+            const addEntry = (
+                startId: WaypointId,
+                endId: WaypointId,
+                weight: number
+            ) => {
                 if (!adjacencyList[startId]) {
                     adjacencyList[startId] = {};
                 }
                 if (!adjacencyList[startId][endId]) {
                     adjacencyList[startId][endId] = {
                         roadId,
-                        weight: roadWeight,
+                        weight,
                     };
                 } else {
                     if (roadWeight < adjacencyList[startId][endId].weight) {
                         adjacencyList[startId][endId] = {
                             roadId,
-                            weight: roadWeight,
+                            weight,
                         };
                     }
                 }
             };
 
-            addEntry(roadData.start.id, roadData.end.id);
-            addEntry(roadData.end.id, roadData.start.id);
+            const roadLength = roadData.getLength();
+            const getDensityWeightAdder = (
+                roadDirectionvehicleMap: Record<string, Vehicle>
+            ) => {
+                let densityWeight = 0;
+                const numberVehicles = Object.keys(roadDirectionvehicleMap)
+                    .length;
+                if (numberVehicles > 0) {
+                    const spacePerVehicle = roadLength / numberVehicles;
+                    if (spacePerVehicle < map.safeFollowingDistance * 2) {
+                        densityWeight +=
+                            500 * (spacePerVehicle / map.safeFollowingDistance);
+                    }
+                }
+                return densityWeight;
+            };
+
+            let startToEndWeight = roadWeight;
+            startToEndWeight += getDensityWeightAdder(
+                roadData.curVehicles.towards_end
+            );
+
+            addEntry(roadData.start.id, roadData.end.id, startToEndWeight);
+
+            let endToStartWeight = roadWeight;
+            endToStartWeight += getDensityWeightAdder(
+                roadData.curVehicles.towards_start
+            );
+            addEntry(roadData.end.id, roadData.start.id, endToStartWeight);
         });
 
         return adjacencyList;
@@ -64,7 +96,6 @@ export default class Navigator {
 
     static getRoute(origin: Waypoint, destination: Waypoint, map: Map): Route {
         const adjacencyList = this.generateAdjacencyList(map);
-
         const parentList: Record<string, ParentListEntry> = {};
 
         const priorityQueue = new PriorityQueue<WaypointId>();
@@ -95,13 +126,16 @@ export default class Navigator {
                             roadId: adjacentWaypointData.roadId,
                             totalWeight: newWeight,
                         };
-
+                        if (adjacentWaypointId === destination.id) {
+                            break;
+                        }
                         priorityQueue.enqueue(adjacentWaypointId, newWeight);
                     }
                 }
             }
         }
 
+        console.log(`route weight: ${parentList[destination.id].totalWeight}`);
         const route: Route = [];
         let curReverseTraverseWaypointId: string = destination.id;
         while (curReverseTraverseWaypointId !== origin.id) {

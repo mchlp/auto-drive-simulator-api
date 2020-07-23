@@ -12,7 +12,7 @@ const STATE_LIST = {
 
 function App() {
     const [mapData, setMapData] = useState(null);
-    const [curState, setCurState] = useState(STATE_LIST.CREATE_MAP);
+    const [curState, setCurState] = useState(STATE_LIST.VIEW_MAP);
 
     useEffect(() => {
         const updateMapDataListener = (data) => {

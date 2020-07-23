@@ -1,5 +1,6 @@
 import { Waypoint, RoadType, VehicleDirection } from '../types';
 import { Vehicle } from '.';
+import { dir } from 'console';
 
 export default class Road {
     id: string;
@@ -44,11 +45,47 @@ export default class Road {
         });
     }
 
-    getVehiclesInCurrentDirection(vehicle: Vehicle) {
+    getClosestDistanceAhead(vehicle: Vehicle) {
+        const vehiclesInCurDirection = this._getVehiclesInCurrentDirection(
+            vehicle
+        );
+        if (vehiclesInCurDirection?.length === 0) {
+            return Number.POSITIVE_INFINITY;
+        }
+        let closestCarAheadDistance = Number.POSITIVE_INFINITY;
+        vehiclesInCurDirection.forEach((testVehicle) => {
+            const distance =
+                testVehicle.distanceTravelledOnRoad -
+                vehicle.distanceTravelledOnRoad;
+            if (distance > 0 && distance < closestCarAheadDistance) {
+                closestCarAheadDistance = distance;
+            }
+        });
+        return closestCarAheadDistance;
+    }
+
+    getDistanceToFirstVehicleInDirection(direction: VehicleDirection) {
+        const vehiclesInCurDirection = Object.values(
+            this.curVehicles[direction]
+        );
+        if (vehiclesInCurDirection.length === 0) {
+            return Number.POSITIVE_INFINITY;
+        }
+        let closestCarAheadDistance = Number.POSITIVE_INFINITY;
+        vehiclesInCurDirection.forEach((testVehicle) => {
+            if (testVehicle.distanceTravelledOnRoad < closestCarAheadDistance) {
+                closestCarAheadDistance = testVehicle.distanceTravelledOnRoad;
+            }
+        });
+        return closestCarAheadDistance;
+    }
+
+    _getVehiclesInCurrentDirection(vehicle: Vehicle) {
         const curVehicleDirection = vehicle.getCurDirection();
         if (curVehicleDirection) {
             return Object.values(this.curVehicles[curVehicleDirection]);
         }
+        return [];
     }
 
     getLength() {
