@@ -1,0 +1,1456 @@
+{
+    "id": "map_qdvouj84EAsu1ip7ZxviEH",
+    "locations": {
+        "location_h9ZkJN4wuF4QbET6M6dRXX": {
+            "id": "location_h9ZkJN4wuF4QbET6M6dRXX",
+            "coord": [-9848.978053480381, -5748.955853223798]
+        },
+        "location_vhnDc7ZzAo3UWFLFarx7Bu": {
+            "id": "location_vhnDc7ZzAo3UWFLFarx7Bu",
+            "coord": [-9797.037135511631, -5063.579876661297]
+        },
+        "location_7g7vYFGwbNLkWoHv3WqsAM": {
+            "id": "location_7g7vYFGwbNLkWoHv3WqsAM",
+            "coord": [-9789.407740980381, -4483.745892286298]
+        },
+        "location_oT1r5FU13F3rSYhDBpJbxK": {
+            "id": "location_oT1r5FU13F3rSYhDBpJbxK",
+            "coord": [-9850.442897230381, -3858.135540723798]
+        },
+        "location_o71ynWL8mK7LvjoAo9RDGo": {
+            "id": "location_o71ynWL8mK7LvjoAo9RDGo",
+            "coord": [-9802.02675953507, -3236.3398864269243]
+        },
+        "location_mNj2ZuSxSp7Ey2wyEiKcAa": {
+            "id": "location_mNj2ZuSxSp7Ey2wyEiKcAa",
+            "coord": [-9906.930934339758, -2826.2599303722372]
+        },
+        "location_8JvFzfogVqwu67a6grsXi6": {
+            "id": "location_8JvFzfogVqwu67a6grsXi6",
+            "coord": [-9035.95925465226, -3223.9802672862993]
+        },
+        "location_tBCv9TpjXCfCssNsRfq5Dj": {
+            "id": "location_tBCv9TpjXCfCssNsRfq5Dj",
+            "coord": [-8987.13112965226, -3897.808392286299]
+        },
+        "location_wwnR1ZiJQCeKCtyfy1dF2a": {
+            "id": "location_wwnR1ZiJQCeKCtyfy1dF2a",
+            "coord": [-8943.18581715226, -4503.277142286298]
+        },
+        "location_a687staTUiJPqmMCvW3bzz": {
+            "id": "location_a687staTUiJPqmMCvW3bzz",
+            "coord": [-8992.01394215226, -5123.394329786298]
+        },
+        "location_4bCEJZDgTdoyuPqxU2Je71": {
+            "id": "location_4bCEJZDgTdoyuPqxU2Je71",
+            "coord": [-9355.783473402262, -6100.200970411297]
+        },
+        "location_6JJjuefo46ohCYMdQSB9ue": {
+            "id": "location_6JJjuefo46ohCYMdQSB9ue",
+            "coord": [-9447.336207777262, -2267.1931579113]
+        },
+        "location_ddfFHoFHWhenZ9JdRdX19A": {
+            "id": "location_ddfFHoFHWhenZ9JdRdX19A",
+            "coord": [-7903.146754652263, -2810.4060485362997]
+        },
+        "location_a76QKYkVbvtEdvGg8R3AFu": {
+            "id": "location_a76QKYkVbvtEdvGg8R3AFu",
+            "coord": [-6664.133082777264, -3115.5818297862997]
+        },
+        "location_sjpp2DL8wYrm4xmS625cuR": {
+            "id": "location_sjpp2DL8wYrm4xmS625cuR",
+            "coord": [-6847.238551527263, -5642.437298536298]
+        },
+        "location_izLdufkagMjFs3admizQ9y": {
+            "id": "location_izLdufkagMjFs3admizQ9y",
+            "coord": [2398.3390156626697, 4377.714184047652]
+        },
+        "location_c7AkD4g37YU2JFrWxXTnic": {
+            "id": "location_c7AkD4g37YU2JFrWxXTnic",
+            "coord": [3247.1091572642317, 4339.567211391402]
+        },
+        "location_vEgCCHAHLuqhDcJJEikQmg": {
+            "id": "location_vEgCCHAHLuqhDcJJEikQmg",
+            "coord": [4038.6588398814183, 4330.03046822734]
+        },
+        "location_hAiRUATZxWGNG7DjUbJV": {
+            "id": "location_hAiRUATZxWGNG7DjUbJV",
+            "coord": [3494.584260135887, 2259.651562899351]
+        },
+        "location_uEt6FJvRHp9ZYaK5J3ELbq": {
+            "id": "location_uEt6FJvRHp9ZYaK5J3ELbq",
+            "coord": [3465.3779841959463, 1794.1392872035508]
+        },
+        "location_qw7dxadQqycx3hnuVexqqn": {
+            "id": "location_qw7dxadQqycx3hnuVexqqn",
+            "coord": [3435.575661808251, 1227.89516183734]
+        },
+        "location_iZpurGdzwrB7jJ7H9UMvw6": {
+            "id": "location_iZpurGdzwrB7jJ7H9UMvw6",
+            "coord": [3450.4768230020986, 721.25568124652]
+        },
+        "location_mGoZF8DJgYASmkonCuvNVF": {
+            "id": "location_mGoZF8DJgYASmkonCuvNVF",
+            "coord": [2794.825730472802, 780.8603260219105]
+        },
+        "location_pp8yrc5meoRCDoJfxyVpcq": {
+            "id": "location_pp8yrc5meoRCDoJfxyVpcq",
+            "coord": [2332.889733463525, 780.8603260219105]
+        },
+        "location_2M7HSqxX1Jptp2fnNU9uKC": {
+            "id": "location_2M7HSqxX1Jptp2fnNU9uKC",
+            "coord": [2630.912957340478, 3194.8484394252296]
+        },
+        "location_vzoktQHrTddQYLcUC9gcJa": {
+            "id": "location_vzoktQHrTddQYLcUC9gcJa",
+            "coord": [3659.093079715966, 3135.243794649839]
+        },
+        "location_5jFK4QYkB89m7YfGLRfKcf": {
+            "id": "location_5jFK4QYkB89m7YfGLRfKcf",
+            "coord": [6222.092805057761, 780.8603260219105]
+        },
+        "location_o1Rhyx3vmdVaYrpy6KL1Nq": {
+            "id": "location_o1Rhyx3vmdVaYrpy6KL1Nq",
+            "coord": [6356.20325580239, 1347.1044513881213]
+        },
+        "location_qa6s6A1GTQPWApDkyyGjb1": {
+            "id": "location_qa6s6A1GTQPWApDkyyGjb1",
+            "coord": [6460.511384159324, 2032.557866305113]
+        },
+        "location_c2FgxhteLPLwBGQBZqvQCA": {
+            "id": "location_c2FgxhteLPLwBGQBZqvQCA",
+            "coord": [6594.621834903953, 2822.3194095790386]
+        },
+        "location_5T957ea84pCeWUZdPVNJby": {
+            "id": "location_5T957ea84pCeWUZdPVNJby",
+            "coord": [6758.534608036277, 3567.377469271421]
+        },
+        "location_7qDkM7XQSSyBMF9wkg3YbF": {
+            "id": "location_7qDkM7XQSSyBMF9wkg3YbF",
+            "coord": [6803.23809161782, 4297.534367769956]
+        },
+        "location_cY2ENP4W7hHRVH32cLScCm": {
+            "id": "location_cY2ENP4W7hHRVH32cLScCm",
+            "coord": [10483.824906498188, 1004.3777439296252]
+        },
+        "location_vae2J1iLDfdBCNZd1krrjW": {
+            "id": "location_vae2J1iLDfdBCNZd1krrjW",
+            "coord": [10498.726067692036, 2017.6567051112654]
+        },
+        "location_rF8onoSMwP867tb1a5rewm": {
+            "id": "location_rF8onoSMwP867tb1a5rewm",
+            "coord": [10662.63884082436, 2911.7263767421246]
+        },
+        "location_unpxUSTJ5WdR1ESqzA3d1S": {
+            "id": "location_unpxUSTJ5WdR1ESqzA3d1S",
+            "coord": [9589.75523486733, 5981.36558267474]
+        },
+        "location_oj7gcHtNegXh2iqNBjeR78": {
+            "id": "location_oj7gcHtNegXh2iqNBjeR78",
+            "coord": [12242.161927372212, 5921.760937899349]
+        },
+        "location_x63EGjTMK4NiiXGrxL6N4g": {
+            "id": "location_x63EGjTMK4NiiXGrxL6N4g",
+            "coord": [14030.30127063393, 3060.7379886806007]
+        },
+        "location_es4An5epjXHZSRDS9FherE": {
+            "id": "location_es4An5epjXHZSRDS9FherE",
+            "coord": [13687.574563175434, 900.0696155726918]
+        },
+        "location_pKRfgUX4T4EnbFbTxV5rxK": {
+            "id": "location_pKRfgUX4T4EnbFbTxV5rxK",
+            "coord": [2765.023408085107, 6249.586484163998]
+        },
+        "location_8sxbEwpvZrgUyPqAYmczxZ": {
+            "id": "location_8sxbEwpvZrgUyPqAYmczxZ",
+            "coord": [127.51787677407296, 6249.586484163998]
+        },
+        "location_ZfB9ujCVudLKTbhWjEtbM": {
+            "id": "location_ZfB9ujCVudLKTbhWjEtbM",
+            "coord": [947.0817424356936, 3835.598370760679]
+        },
+        "location_7eVnE2uCcUCBCH96hNDQSY": {
+            "id": "location_7eVnE2uCcUCBCH96hNDQSY",
+            "coord": [-4730.260672420261, 5981.36558267474]
+        },
+        "location_j5LBmqobDXTyTuGmmrsmdx": {
+            "id": "location_j5LBmqobDXTyTuGmmrsmdx",
+            "coord": [-4313.028158992526, 5966.464421480892]
+        },
+        "location_2mvrt2CEC6DJpVyJMF8kxa": {
+            "id": "location_2mvrt2CEC6DJpVyJMF8kxa",
+            "coord": [-3493.464293330906, 5951.563260287045]
+        },
+        "location_x4KeUWuCgh48hWPDUii9jS": {
+            "id": "location_x4KeUWuCgh48hWPDUii9jS",
+            "coord": [-2808.010878413914, 5817.452809542416]
+        },
+        "location_cxkvjfKaGxsA9D3Lsbbmsg": {
+            "id": "location_cxkvjfKaGxsA9D3Lsbbmsg",
+            "coord": [-2048.051657527684, 5862.156293123959]
+        }
+    },
+    "intersections": {
+        "intersection_0": { "id": "intersection_0", "coord": [0, 0] },
+        "intersection_1": { "id": "intersection_1", "coord": [0, 1000] },
+        "intersection_ohMaPiphEFFH62SFbnWfKV": {
+            "id": "intersection_ohMaPiphEFFH62SFbnWfKV",
+            "coord": [47.6451110839845, 2353.340545654295]
+        },
+        "intersection_gm97bRhztU7DAR4b2wMiB1": {
+            "id": "intersection_gm97bRhztU7DAR4b2wMiB1",
+            "coord": [47.6451110839845, 3628.8799438476535]
+        },
+        "intersection_qA3y1sHRMv91qrHoG2FTG8": {
+            "id": "intersection_qA3y1sHRMv91qrHoG2FTG8",
+            "coord": [59.56604003906262, 5023.628631591793]
+        },
+        "intersection_wSezH1RFzPTaaJeY5F9RKx": {
+            "id": "intersection_wSezH1RFzPTaaJeY5F9RKx",
+            "coord": [4.990537166596378, -1208.9683022499078]
+        },
+        "intersection_xnHFYvegWZ3x5RxNGWMqHU": {
+            "id": "intersection_xnHFYvegWZ3x5RxNGWMqHU",
+            "coord": [-18.292527198790566, -2885.348936557768]
+        },
+        "intersection_76RYvxorP8dLXpNcxP3RcS": {
+            "id": "intersection_76RYvxorP8dLXpNcxP3RcS",
+            "coord": [-64.85865592956446, -4678.144892692562]
+        },
+        "intersection_5WhHeQs8JCELvZkMZk43ZE": {
+            "id": "intersection_5WhHeQs8JCELvZkMZk43ZE",
+            "coord": [-64.85865592956446, -6703.771492481227]
+        },
+        "intersection_phPmv8Ltvd7nXWav1oooYZ": {
+            "id": "intersection_phPmv8Ltvd7nXWav1oooYZ",
+            "coord": [1285.5590772628784, -44.815083980560516]
+        },
+        "intersection_6Pi8mPtuTmTzKYqgRHbz7L": {
+            "id": "intersection_6Pi8mPtuTmTzKYqgRHbz7L",
+            "coord": [3078.355033397673, -21.53201961517357]
+        },
+        "intersection_nNQQsZbhWgSShDZsJhwL1u": {
+            "id": "intersection_nNQQsZbhWgSShDZsJhwL1u",
+            "coord": [5010.84937572479, -44.815083980560516]
+        },
+        "intersection_8uEbEJV4TcYtY7bsG6N3Yw": {
+            "id": "intersection_8uEbEJV4TcYtY7bsG6N3Yw",
+            "coord": [6943.343718051906, -91.38121271133441]
+        },
+        "intersection_n8gpRKGoQuWxgQm5pz9oaL": {
+            "id": "intersection_n8gpRKGoQuWxgQm5pz9oaL",
+            "coord": [9131.95176839828, -184.5134701728822]
+        },
+        "intersection_w55WBvWySEZhNwh7Di5rVV": {
+            "id": "intersection_w55WBvWySEZhNwh7Di5rVV",
+            "coord": [11390.409011840813, -231.0795989036561]
+        },
+        "intersection_4dUvtdzF74e7DirsbHm5Py": {
+            "id": "intersection_4dUvtdzF74e7DirsbHm5Py",
+            "coord": [-1834.3715476989723, 1.7510447502133755]
+        },
+        "intersection_wkyP7b399m2bXqWpRYAzgL": {
+            "id": "intersection_wkyP7b399m2bXqWpRYAzgL",
+            "coord": [-3976.413469314571, 188.01555967330893]
+        },
+        "intersection_hqwDMvRurHfumpdCxQfZKK": {
+            "id": "intersection_hqwDMvRurHfumpdCxQfZKK",
+            "coord": [-6397.852163314814, 350.99701023101755]
+        },
+        "intersection_8jwJ1oVSg3Zc1h59LKXPrN": {
+            "id": "intersection_8jwJ1oVSg3Zc1h59LKXPrN",
+            "coord": [-8423.478763103478, 281.1478171348567]
+        },
+        "intersection_3obhVppxxSnHPudKYcTHAb": {
+            "id": "intersection_3obhVppxxSnHPudKYcTHAb",
+            "coord": [13928.26302766799, -324.21185636520386]
+        },
+        "intersection_oEPCcyZhnKG7LLiLXqhhaC": {
+            "id": "intersection_oEPCcyZhnKG7LLiLXqhhaC",
+            "coord": [2090.0355172157238, 2312.1178801953756]
+        },
+        "intersection_kNAW6yi4KBFBuTs1ejPmKv": {
+            "id": "intersection_kNAW6yi4KBFBuTs1ejPmKv",
+            "coord": [5234.180529117574, 2222.7109130322897]
+        },
+        "intersection_txxQS3FtfPZpjEttc5kdnt": {
+            "id": "intersection_txxQS3FtfPZpjEttc5kdnt",
+            "coord": [8974.371988773331, 2178.0074294507467]
+        },
+        "intersection_vULqeRTd2pMhTJnvhZW8W5": {
+            "id": "intersection_vULqeRTd2pMhTJnvhZW8W5",
+            "coord": [13832.150537967658, 2043.8969787061183]
+        },
+        "intersection_gTswY5u18ESJ9shvxFVhF9": {
+            "id": "intersection_gTswY5u18ESJ9shvxFVhF9",
+            "coord": [11608.1522297859, 2188.2519777715174]
+        },
+        "intersection_tAZFNVjmFT5VwQwPVzAFWF": {
+            "id": "intersection_tAZFNVjmFT5VwQwPVzAFWF",
+            "coord": [11747.850615978221, 3585.235839694733]
+        },
+        "intersection_f7JxX9nEAocR2rvvhQJEx": {
+            "id": "intersection_f7JxX9nEAocR2rvvhQJEx",
+            "coord": [11887.549002170543, 4842.521315425627]
+        },
+        "intersection_pmNnpbJtb9fRM1xuvVCucg": {
+            "id": "intersection_pmNnpbJtb9fRM1xuvVCucg",
+            "coord": [2411.341805458065, 5121.91808781027]
+        },
+        "intersection_gPtpTgKVXLWHutrQcGvhEa": {
+            "id": "intersection_gPtpTgKVXLWHutrQcGvhEa",
+            "coord": [5694.2538809776215, 5075.351959079496]
+        },
+        "intersection_vhnwppEh5r8ftiPHm2MjK2": {
+            "id": "intersection_vhnwppEh5r8ftiPHm2MjK2",
+            "coord": [9419.544179439528, 4982.219701617948]
+        },
+        "intersection_t23EeA8jvxu9NGwwqmUkA6": {
+            "id": "intersection_t23EeA8jvxu9NGwwqmUkA6",
+            "coord": [-1453.646879196164, 4889.0874441564]
+        },
+        "intersection_ikZfMPBCynw13UYmDasuDc": {
+            "id": "intersection_ikZfMPBCynw13UYmDasuDc",
+            "coord": [-3525.8396077156003, 4982.219701617948]
+        },
+        "intersection_sYjtM8vLwJnr7PBHMr2VVB": {
+            "id": "intersection_sYjtM8vLwJnr7PBHMr2VVB",
+            "coord": [-5807.579915523519, 5028.785830348722]
+        },
+        "intersection_7fYQmCsnVbMhGiVHUkdcez": {
+            "id": "intersection_7fYQmCsnVbMhGiVHUkdcez",
+            "coord": [-8671.396832466111, 4958.936637252561]
+        },
+        "intersection_brCBXAPDmQz9pTNqVCmiMx": {
+            "id": "intersection_brCBXAPDmQz9pTNqVCmiMx",
+            "coord": [-8252.301673889146, 2584.0640719830953]
+        },
+        "intersection_3CoRuRksvbSDN5yB7y9MqE": {
+            "id": "intersection_3CoRuRksvbSDN5yB7y9MqE",
+            "coord": [-4829.6912121772675, 2653.913265079256]
+        },
+        "intersection_qUtvp5VYkDhyKoobpeAfAz": {
+            "id": "intersection_qUtvp5VYkDhyKoobpeAfAz",
+            "coord": [-1896.0251021385156, 2467.6487501561605]
+        },
+        "intersection_rhb5LykHJRXatEsU4hv7ry": {
+            "id": "intersection_rhb5LykHJRXatEsU4hv7ry",
+            "coord": [2062.095839977261, -2794.323796421284]
+        },
+        "intersection_nRtffVZQW637DqjtfxaGQZ": {
+            "id": "intersection_nRtffVZQW637DqjtfxaGQZ",
+            "coord": [5950.367588996877, -2910.739118248219]
+        },
+        "intersection_2otvkwPTMXUTCyT9qkvS7m": {
+            "id": "intersection_2otvkwPTMXUTCyT9qkvS7m",
+            "coord": [10490.565140247327, -3027.154440075153]
+        },
+        "intersection_hnL1bJHhKSTCLLWym1gw4v": {
+            "id": "intersection_hnL1bJHhKSTCLLWym1gw4v",
+            "coord": [13773.477215766883, -3050.43750444054]
+        },
+        "intersection_eQgWuKH1E5ETHtDtbv2NZW": {
+            "id": "intersection_eQgWuKH1E5ETHtDtbv2NZW",
+            "coord": [1992.2466468811006, -4726.818138748398]
+        },
+        "intersection_es4UAo5PYutchWag2mfEFo": {
+            "id": "intersection_es4UAo5PYutchWag2mfEFo",
+            "coord": [6020.216782093038, -4796.667331844559]
+        },
+        "intersection_ugRQyTeWorU2opxqtWsiqy": {
+            "id": "intersection_ugRQyTeWorU2opxqtWsiqy",
+            "coord": [10001.620788574202, -5006.214911133042]
+        },
+        "intersection_h8KQr92vFvcKwA2LBREqqX": {
+            "id": "intersection_h8KQr92vFvcKwA2LBREqqX",
+            "coord": [13680.344958305335, -4866.51652494072]
+        },
+        "intersection_3WdREfECpHpQEbGLKzBSYA": {
+            "id": "intersection_3WdREfECpHpQEbGLKzBSYA",
+            "coord": [2015.5297112464873, -6752.444738537061]
+        },
+        "intersection_vYZTuTsrz5F8k4ZweJGTex": {
+            "id": "intersection_vYZTuTsrz5F8k4ZweJGTex",
+            "coord": [5996.933717727651, -6589.463287979353]
+        },
+        "intersection_bTtpNDCVi4WXvfauAbhLTG": {
+            "id": "intersection_bTtpNDCVi4WXvfauAbhLTG",
+            "coord": [10164.602239131911, -6496.331030517805]
+        },
+        "intersection_naepfmiSnvx4pQGVNV7yzT": {
+            "id": "intersection_naepfmiSnvx4pQGVNV7yzT",
+            "coord": [13633.778829574561, -6542.897159248579]
+        },
+        "intersection_hpseU6r5q74ty4AhFfDmZy": {
+            "id": "intersection_hpseU6r5q74ty4AhFfDmZy",
+            "coord": [-1546.779136657712, -6659.3124810755135]
+        },
+        "intersection_9R1F4jw83U85muB4QLtuuC": {
+            "id": "intersection_9R1F4jw83U85muB4QLtuuC",
+            "coord": [-3828.5194444656304, -6542.897159248579]
+        },
+        "intersection_aDv6q4QFDtijri9fcBbhBu": {
+            "id": "intersection_aDv6q4QFDtijri9fcBbhBu",
+            "coord": [-6156.825881004323, -6659.3124810755135]
+        },
+        "intersection_tj5JjSdd9udNFVtqNmNQkA": {
+            "id": "intersection_tj5JjSdd9udNFVtqNmNQkA",
+            "coord": [-8764.529089927659, -6659.3124810755135]
+        },
+        "intersection_iQLVH9nSct3BnaRdMmUGeG": {
+            "id": "intersection_iQLVH9nSct3BnaRdMmUGeG",
+            "coord": [-3688.8210582733086, -4656.968945652238]
+        },
+        "intersection_jn2JoP5E7DB5gsBnb3zg4i": {
+            "id": "intersection_jn2JoP5E7DB5gsBnb3zg4i",
+            "coord": [-3618.971865177148, -2840.889925152058]
+        },
+        "intersection_7HpHUVt4822qd11xXKjptd": {
+            "id": "intersection_7HpHUVt4822qd11xXKjptd",
+            "coord": [-3665.5379939079216, -1094.6600977480387]
+        },
+        "intersection_fMZXKjJfm8QDFPVfBj4tdY": {
+            "id": "intersection_fMZXKjJfm8QDFPVfBj4tdY",
+            "coord": [-6412.939589023579, -5588.291520267715]
+        },
+        "intersection_toxNWYgJACZ7DFFZLwmtrh": {
+            "id": "intersection_toxNWYgJACZ7DFFZLwmtrh",
+            "coord": [-6017.127494812001, -3143.569761902088]
+        },
+        "intersection_37CGtRyv7jfCUyMYQbeRhL": {
+            "id": "intersection_37CGtRyv7jfCUyMYQbeRhL",
+            "coord": [-6040.410559177388, -1374.0568701326818]
+        },
+        "intersection_pYJN9DGJrwoRiQqFUMpDiQ": {
+            "id": "intersection_pYJN9DGJrwoRiQqFUMpDiQ",
+            "coord": [-8485.132317543015, -5727.989906460037]
+        },
+        "intersection_nRWti4Zj93UbCxsQVYHpfW": {
+            "id": "intersection_nRWti4Zj93UbCxsQVYHpfW",
+            "coord": [-8671.396832466111, -2864.172989517445]
+        },
+        "intersection_8XCBqWwj8j5nsZgJLs1Xjd": {
+            "id": "intersection_8XCBqWwj8j5nsZgJLs1Xjd",
+            "coord": [-8554.981510639176, -954.9617115557171]
+        },
+        "intersection_2hZrE8pDQW7QhZjMM3YUn9": {
+            "id": "intersection_2hZrE8pDQW7QhZjMM3YUn9",
+            "coord": [-9308.646022230383, -5749.688275098797]
+        },
+        "intersection_9rKt5LFpArwdQimaiJ2j7X": {
+            "id": "intersection_9rKt5LFpArwdQimaiJ2j7X",
+            "coord": [-9301.553737074133, -5079.754193067548]
+        },
+        "intersection_8QZrm1KTHk4KP8TZnB3y7u": {
+            "id": "intersection_8QZrm1KTHk4KP8TZnB3y7u",
+            "coord": [-9296.579371839758, -4514.263470411298]
+        },
+        "intersection_d39P2te9PHEQBQen2WcCiv": {
+            "id": "intersection_d39P2te9PHEQBQen2WcCiv",
+            "coord": [-9372.873317152258, -3865.764935255049]
+        },
+        "intersection_h9VTtnkK7YrCrpoAWaHg68": {
+            "id": "intersection_h9VTtnkK7YrCrpoAWaHg68",
+            "coord": [-9411.020289808508, -3255.4133727550493]
+        },
+        "intersection_k2UhvRwt9bA7RgdKCm8a7Z": {
+            "id": "intersection_k2UhvRwt9bA7RgdKCm8a7Z",
+            "coord": [-9477.777491956946, -2797.6497008800497]
+        },
+        "intersection_m52zKiXXGbQLr93hbtnuYB": {
+            "id": "intersection_m52zKiXXGbQLr93hbtnuYB",
+            "coord": [2360.19204300642, 4616.132763149215]
+        },
+        "intersection_cr668TsW8K7AAF6QysdP3c": {
+            "id": "intersection_cr668TsW8K7AAF6QysdP3c",
+            "coord": [3285.2561299204813, 4606.596019985152]
+        },
+        "intersection_4CMz27bcNV1Aaf1zvQdV5A": {
+            "id": "intersection_4CMz27bcNV1Aaf1zvQdV5A",
+            "coord": [4076.8058125376683, 4606.596019985152]
+        },
+        "intersection_hAvPxKYKsWxEVYgzEWSz4m": {
+            "id": "intersection_hAvPxKYKsWxEVYgzEWSz4m",
+            "coord": [2355.9543468058087, 1176.592251986267]
+        },
+        "intersection_9KprHFWczxfDd8qK8BFksC": {
+            "id": "intersection_9KprHFWczxfDd8qK8BFksC",
+            "coord": [2785.1077891886207, 1212.3550388515014]
+        },
+        "intersection_9DNiGYH6QHrURbyiD6ge7X": {
+            "id": "intersection_9DNiGYH6QHrURbyiD6ge7X",
+            "coord": [2808.949647098777, 1713.0340549647824]
+        },
+        "intersection_9Smc7s7pEDnTQjros3C7bs": {
+            "id": "intersection_9Smc7s7pEDnTQjros3C7bs",
+            "coord": [2999.684510380027, 2309.080502718688]
+        },
+        "intersection_eTkZUjYCxnUDZsA1tvMSQc": {
+            "id": "intersection_eTkZUjYCxnUDZsA1tvMSQc",
+            "coord": [3154.6565867960426, 3167.3873874843125]
+        },
+        "intersection_wLdLteViAPRExM9656xZ2f": {
+            "id": "intersection_wLdLteViAPRExM9656xZ2f",
+            "coord": [10974.785981327288, 2225.6340000331415]
+        },
+        "intersection_fhcJUuuMfswBA33tMmvAt8": {
+            "id": "intersection_fhcJUuuMfswBA33tMmvAt8",
+            "coord": [10867.497620731585, 1033.5411045253297]
+        },
+        "intersection_oNYoVNucHhtPkBYYx83Evk": {
+            "id": "intersection_oNYoVNucHhtPkBYYx83Evk",
+            "coord": [11022.4696971476, 2928.9688083827505]
+        },
+        "intersection_w2679nKyHFGs7eCECVMbUu": {
+            "id": "intersection_w2679nKyHFGs7eCECVMbUu",
+            "coord": [-3556.826414912937, 5539.652249544858]
+        },
+        "intersection_nhAb9Br8PmUHBZVd2wenzF": {
+            "id": "intersection_nhAb9Br8PmUHBZVd2wenzF",
+            "coord": [-2841.5706776082498, 5527.73132058978]
+        },
+        "intersection_7nGAC86c2E65hJgHcUSQYR": {
+            "id": "intersection_7nGAC86c2E65hJgHcUSQYR",
+            "coord": [-1983.2637928426252, 5539.652249544858]
+        },
+        "intersection_p5pbWq9FS66z34AnzRWXaU": {
+            "id": "intersection_p5pbWq9FS66z34AnzRWXaU",
+            "coord": [-4260.161223262546, 5670.782468050717]
+        },
+        "intersection_jfUBBpGaKPqsAkVscXYydF": {
+            "id": "intersection_jfUBBpGaKPqsAkVscXYydF",
+            "coord": [-4856.207671016451, 5766.149899691342]
+        },
+        "intersection_29mDVcpzMmFcoFn14SCgrr": {
+            "id": "intersection_29mDVcpzMmFcoFn14SCgrr",
+            "coord": [-5893.328490108248, 5801.912686556577]
+        },
+        "intersection_ocutERnfetbKvU4wU5kA6J": {
+            "id": "intersection_ocutERnfetbKvU4wU5kA6J",
+            "coord": [5692.031960337058, 786.0759481397113]
+        },
+        "intersection_77KTa88hV27qSmCxqwHNEc": {
+            "id": "intersection_77KTa88hV27qSmCxqwHNEc",
+            "coord": [5873.230080454246, 1329.670308491273]
+        },
+        "intersection_xtUeQwTLXx12irWJr4yXCW": {
+            "id": "intersection_xtUeQwTLXx12irWJr4yXCW",
+            "coord": [5939.987282602683, 2168.903706928772]
+        },
+        "intersection_sdaJdrQTDajejL1GjXG6UV": {
+            "id": "intersection_sdaJdrQTDajejL1GjXG6UV",
+            "coord": [6187.942604868307, 2931.8431600537715]
+        },
+        "intersection_28yQbm7sPfFnkJx74JEbUH": {
+            "id": "intersection_28yQbm7sPfFnkJx74JEbUH",
+            "coord": [6292.846779672995, 3704.3193563428326]
+        },
+        "intersection_espKQREHV6CoAvCDYNbahQ": {
+            "id": "intersection_espKQREHV6CoAvCDYNbahQ",
+            "coord": [6426.36118396987, 4400.501607319395]
+        }
+    },
+    "vehicles": {},
+    "roads": {
+        "road_0": {
+            "id": "road_0",
+            "type": "MAJOR",
+            "start": "intersection_0",
+            "end": "intersection_1"
+        },
+        "road_9WoR9V3GMsnQ2t5Ecu1Dfe": {
+            "id": "road_9WoR9V3GMsnQ2t5Ecu1Dfe",
+            "type": "MAJOR",
+            "start": "intersection_0",
+            "end": "intersection_phPmv8Ltvd7nXWav1oooYZ"
+        },
+        "road_PgWr6ZVyNgsoYur4nnG5K": {
+            "id": "road_PgWr6ZVyNgsoYur4nnG5K",
+            "type": "MAJOR",
+            "start": "intersection_phPmv8Ltvd7nXWav1oooYZ",
+            "end": "intersection_6Pi8mPtuTmTzKYqgRHbz7L"
+        },
+        "road_geuWhFgzSCMWfMhHGTqv43": {
+            "id": "road_geuWhFgzSCMWfMhHGTqv43",
+            "type": "MAJOR",
+            "start": "intersection_6Pi8mPtuTmTzKYqgRHbz7L",
+            "end": "intersection_nNQQsZbhWgSShDZsJhwL1u"
+        },
+        "road_iupPKRnSDYKm3u1rd2NJDT": {
+            "id": "road_iupPKRnSDYKm3u1rd2NJDT",
+            "type": "MAJOR",
+            "start": "intersection_nNQQsZbhWgSShDZsJhwL1u",
+            "end": "intersection_8uEbEJV4TcYtY7bsG6N3Yw"
+        },
+        "road_buSN9kxwLcJhyZ3KpTAsmG": {
+            "id": "road_buSN9kxwLcJhyZ3KpTAsmG",
+            "type": "MAJOR",
+            "start": "intersection_8uEbEJV4TcYtY7bsG6N3Yw",
+            "end": "intersection_n8gpRKGoQuWxgQm5pz9oaL"
+        },
+        "road_m119ikzrM9mGLSLYdfhzji": {
+            "id": "road_m119ikzrM9mGLSLYdfhzji",
+            "type": "MAJOR",
+            "start": "intersection_n8gpRKGoQuWxgQm5pz9oaL",
+            "end": "intersection_w55WBvWySEZhNwh7Di5rVV"
+        },
+        "road_b29Y1YpyzJqMdJuRev2UfU": {
+            "id": "road_b29Y1YpyzJqMdJuRev2UfU",
+            "type": "MAJOR",
+            "start": "intersection_w55WBvWySEZhNwh7Di5rVV",
+            "end": "intersection_3obhVppxxSnHPudKYcTHAb"
+        },
+        "road_bvVpEhkEoAbfG4NuA39r2B": {
+            "id": "road_bvVpEhkEoAbfG4NuA39r2B",
+            "type": "MAJOR",
+            "start": "intersection_0",
+            "end": "intersection_4dUvtdzF74e7DirsbHm5Py"
+        },
+        "road_jUoPpfhcU8DHdq3XDjqDAL": {
+            "id": "road_jUoPpfhcU8DHdq3XDjqDAL",
+            "type": "MAJOR",
+            "start": "intersection_4dUvtdzF74e7DirsbHm5Py",
+            "end": "intersection_wkyP7b399m2bXqWpRYAzgL"
+        },
+        "road_vVCQSoSaEcJWfJx4iBQtBV": {
+            "id": "road_vVCQSoSaEcJWfJx4iBQtBV",
+            "type": "MAJOR",
+            "start": "intersection_wkyP7b399m2bXqWpRYAzgL",
+            "end": "intersection_hqwDMvRurHfumpdCxQfZKK"
+        },
+        "road_uh9rbHcpDG8JSnX4fx9w4V": {
+            "id": "road_uh9rbHcpDG8JSnX4fx9w4V",
+            "type": "MAJOR",
+            "start": "intersection_hqwDMvRurHfumpdCxQfZKK",
+            "end": "intersection_8jwJ1oVSg3Zc1h59LKXPrN"
+        },
+        "road_bV7A56ohoThRNJAo8j4jFW": {
+            "id": "road_bV7A56ohoThRNJAo8j4jFW",
+            "type": "MAJOR",
+            "start": "intersection_0",
+            "end": "intersection_wSezH1RFzPTaaJeY5F9RKx"
+        },
+        "road_7KyfxiDWVurBmkqHyUtVeJ": {
+            "id": "road_7KyfxiDWVurBmkqHyUtVeJ",
+            "type": "MAJOR",
+            "start": "intersection_wSezH1RFzPTaaJeY5F9RKx",
+            "end": "intersection_xnHFYvegWZ3x5RxNGWMqHU"
+        },
+        "road_g3nRhYs8D564rVWM3WCeyM": {
+            "id": "road_g3nRhYs8D564rVWM3WCeyM",
+            "type": "MAJOR",
+            "start": "intersection_xnHFYvegWZ3x5RxNGWMqHU",
+            "end": "intersection_76RYvxorP8dLXpNcxP3RcS"
+        },
+        "road_begeAAWLG4GAkdquYpLeUd": {
+            "id": "road_begeAAWLG4GAkdquYpLeUd",
+            "type": "MAJOR",
+            "start": "intersection_76RYvxorP8dLXpNcxP3RcS",
+            "end": "intersection_5WhHeQs8JCELvZkMZk43ZE"
+        },
+        "road_rAJSJTmHL6G7B61EyvXb81": {
+            "id": "road_rAJSJTmHL6G7B61EyvXb81",
+            "type": "MAJOR",
+            "start": "intersection_1",
+            "end": "intersection_ohMaPiphEFFH62SFbnWfKV"
+        },
+        "road_fBnxxTEvJnHAv4mPXgvMSY": {
+            "id": "road_fBnxxTEvJnHAv4mPXgvMSY",
+            "type": "MAJOR",
+            "start": "intersection_ohMaPiphEFFH62SFbnWfKV",
+            "end": "intersection_gm97bRhztU7DAR4b2wMiB1"
+        },
+        "road_gWd7o9ZPhkAFoTW8HjvWjW": {
+            "id": "road_gWd7o9ZPhkAFoTW8HjvWjW",
+            "type": "MAJOR",
+            "start": "intersection_gm97bRhztU7DAR4b2wMiB1",
+            "end": "intersection_qA3y1sHRMv91qrHoG2FTG8"
+        },
+        "road_8cciqehC4UNvRqjeXZt6pm": {
+            "id": "road_8cciqehC4UNvRqjeXZt6pm",
+            "type": "MAJOR",
+            "start": "intersection_n8gpRKGoQuWxgQm5pz9oaL",
+            "end": "intersection_2otvkwPTMXUTCyT9qkvS7m"
+        },
+        "road_5gzhq3gbN7qEzkxMUFyJG8": {
+            "id": "road_5gzhq3gbN7qEzkxMUFyJG8",
+            "type": "MAJOR",
+            "start": "intersection_2otvkwPTMXUTCyT9qkvS7m",
+            "end": "intersection_ugRQyTeWorU2opxqtWsiqy"
+        },
+        "road_hsuGyiSreZZoyJJ8Bep3w5": {
+            "id": "road_hsuGyiSreZZoyJJ8Bep3w5",
+            "type": "MAJOR",
+            "start": "intersection_kNAW6yi4KBFBuTs1ejPmKv",
+            "end": "intersection_nNQQsZbhWgSShDZsJhwL1u"
+        },
+        "road_pbmVt6cPwHHxaBtty3pvB6": {
+            "id": "road_pbmVt6cPwHHxaBtty3pvB6",
+            "type": "MAJOR",
+            "start": "intersection_3CoRuRksvbSDN5yB7y9MqE",
+            "end": "intersection_qUtvp5VYkDhyKoobpeAfAz"
+        },
+        "road_qwYSG62vByyBqgsakpk1X2": {
+            "id": "road_qwYSG62vByyBqgsakpk1X2",
+            "type": "MAJOR",
+            "start": "intersection_qUtvp5VYkDhyKoobpeAfAz",
+            "end": "intersection_ohMaPiphEFFH62SFbnWfKV"
+        },
+        "road_aUihjgPvr6wihahKyqXeLX": {
+            "id": "road_aUihjgPvr6wihahKyqXeLX",
+            "type": "MAJOR",
+            "start": "intersection_3CoRuRksvbSDN5yB7y9MqE",
+            "end": "intersection_brCBXAPDmQz9pTNqVCmiMx"
+        },
+        "road_axZBtspwuUoC3mtCPVjjUS": {
+            "id": "road_axZBtspwuUoC3mtCPVjjUS",
+            "type": "MAJOR",
+            "start": "intersection_brCBXAPDmQz9pTNqVCmiMx",
+            "end": "intersection_8jwJ1oVSg3Zc1h59LKXPrN"
+        },
+        "road_p7Wo1tBu6SjsHsyDGDdpCB": {
+            "id": "road_p7Wo1tBu6SjsHsyDGDdpCB",
+            "type": "MAJOR",
+            "start": "intersection_hqwDMvRurHfumpdCxQfZKK",
+            "end": "intersection_37CGtRyv7jfCUyMYQbeRhL"
+        },
+        "road_d5kEuX22pRKaZ4emK5uWD3": {
+            "id": "road_d5kEuX22pRKaZ4emK5uWD3",
+            "type": "MAJOR",
+            "start": "intersection_xnHFYvegWZ3x5RxNGWMqHU",
+            "end": "intersection_jn2JoP5E7DB5gsBnb3zg4i"
+        },
+        "road_5VBFxpjMLC8AzDPRxjvEmx": {
+            "id": "road_5VBFxpjMLC8AzDPRxjvEmx",
+            "type": "MAJOR",
+            "start": "intersection_jn2JoP5E7DB5gsBnb3zg4i",
+            "end": "intersection_iQLVH9nSct3BnaRdMmUGeG"
+        },
+        "road_8u2WUBwpkm53AhfNEPXpNA": {
+            "id": "road_8u2WUBwpkm53AhfNEPXpNA",
+            "type": "MINOR",
+            "start": "intersection_5WhHeQs8JCELvZkMZk43ZE",
+            "end": "intersection_hpseU6r5q74ty4AhFfDmZy"
+        },
+        "road_gw3gCzSTaa1CnLfkJjiDz6": {
+            "id": "road_gw3gCzSTaa1CnLfkJjiDz6",
+            "type": "MINOR",
+            "start": "intersection_9R1F4jw83U85muB4QLtuuC",
+            "end": "intersection_hpseU6r5q74ty4AhFfDmZy"
+        },
+        "road_kXAPkP2m5LRac8uYFXyr9w": {
+            "id": "road_kXAPkP2m5LRac8uYFXyr9w",
+            "type": "MINOR",
+            "start": "intersection_9R1F4jw83U85muB4QLtuuC",
+            "end": "intersection_aDv6q4QFDtijri9fcBbhBu"
+        },
+        "road_5rVTxLPSY4NJjaQXoyEMaq": {
+            "id": "road_5rVTxLPSY4NJjaQXoyEMaq",
+            "type": "MINOR",
+            "start": "intersection_aDv6q4QFDtijri9fcBbhBu",
+            "end": "intersection_tj5JjSdd9udNFVtqNmNQkA"
+        },
+        "road_mNiV76jo1eE9qhjywrsScN": {
+            "id": "road_mNiV76jo1eE9qhjywrsScN",
+            "type": "MINOR",
+            "start": "intersection_toxNWYgJACZ7DFFZLwmtrh",
+            "end": "intersection_fMZXKjJfm8QDFPVfBj4tdY"
+        },
+        "road_jE4qXee4T1mcW2CHgL2twC": {
+            "id": "road_jE4qXee4T1mcW2CHgL2twC",
+            "type": "MINOR",
+            "start": "intersection_fMZXKjJfm8QDFPVfBj4tdY",
+            "end": "intersection_aDv6q4QFDtijri9fcBbhBu"
+        },
+        "road_wLFECB1oKdgH4J4a18w8oZ": {
+            "id": "road_wLFECB1oKdgH4J4a18w8oZ",
+            "type": "MINOR",
+            "start": "intersection_tj5JjSdd9udNFVtqNmNQkA",
+            "end": "intersection_tj5JjSdd9udNFVtqNmNQkA"
+        },
+        "road_vGavGmFB1BRE7GtLqHCuyb": {
+            "id": "road_vGavGmFB1BRE7GtLqHCuyb",
+            "type": "MINOR",
+            "start": "intersection_pYJN9DGJrwoRiQqFUMpDiQ",
+            "end": "intersection_tj5JjSdd9udNFVtqNmNQkA"
+        },
+        "road_guVUeCjCqHnTUC77ViFUF6": {
+            "id": "road_guVUeCjCqHnTUC77ViFUF6",
+            "type": "MINOR",
+            "start": "intersection_pYJN9DGJrwoRiQqFUMpDiQ",
+            "end": "intersection_nRWti4Zj93UbCxsQVYHpfW"
+        },
+        "road_84JNEruPs5GASyqMzoLD1": {
+            "id": "road_84JNEruPs5GASyqMzoLD1",
+            "type": "MINOR",
+            "start": "intersection_nRWti4Zj93UbCxsQVYHpfW",
+            "end": "intersection_8XCBqWwj8j5nsZgJLs1Xjd"
+        },
+        "road_kyyEW77bWwwdT51ST3fByt": {
+            "id": "road_kyyEW77bWwwdT51ST3fByt",
+            "type": "MINOR",
+            "start": "intersection_toxNWYgJACZ7DFFZLwmtrh",
+            "end": "intersection_37CGtRyv7jfCUyMYQbeRhL"
+        },
+        "road_41hzbpfMNeth9ARhbzu3r9": {
+            "id": "road_41hzbpfMNeth9ARhbzu3r9",
+            "type": "MINOR",
+            "start": "intersection_8XCBqWwj8j5nsZgJLs1Xjd",
+            "end": "intersection_8jwJ1oVSg3Zc1h59LKXPrN"
+        },
+        "road_aJok7CdtGt2vcTvYH3CXy8": {
+            "id": "road_aJok7CdtGt2vcTvYH3CXy8",
+            "type": "MINOR",
+            "start": "intersection_7HpHUVt4822qd11xXKjptd",
+            "end": "intersection_wkyP7b399m2bXqWpRYAzgL"
+        },
+        "road_5YEc3eY34KD8fXbgu3htmH": {
+            "id": "road_5YEc3eY34KD8fXbgu3htmH",
+            "type": "MINOR",
+            "start": "intersection_brCBXAPDmQz9pTNqVCmiMx",
+            "end": "intersection_7fYQmCsnVbMhGiVHUkdcez"
+        },
+        "road_g56jSuCMq4H5Lypu7nGSiz": {
+            "id": "road_g56jSuCMq4H5Lypu7nGSiz",
+            "type": "MINOR",
+            "start": "intersection_sYjtM8vLwJnr7PBHMr2VVB",
+            "end": "intersection_3CoRuRksvbSDN5yB7y9MqE"
+        },
+        "road_2np45Su7tknn3HyJYRBA45": {
+            "id": "road_2np45Su7tknn3HyJYRBA45",
+            "type": "MINOR",
+            "start": "intersection_sYjtM8vLwJnr7PBHMr2VVB",
+            "end": "intersection_ikZfMPBCynw13UYmDasuDc"
+        },
+        "road_cuxWtAzZ6wqLmuoNMPbg3D": {
+            "id": "road_cuxWtAzZ6wqLmuoNMPbg3D",
+            "type": "MINOR",
+            "start": "intersection_qUtvp5VYkDhyKoobpeAfAz",
+            "end": "intersection_t23EeA8jvxu9NGwwqmUkA6"
+        },
+        "road_5XS6ZN8n3zGQhXfubCSMum": {
+            "id": "road_5XS6ZN8n3zGQhXfubCSMum",
+            "type": "MINOR",
+            "start": "intersection_ikZfMPBCynw13UYmDasuDc",
+            "end": "intersection_t23EeA8jvxu9NGwwqmUkA6"
+        },
+        "road_u3cAPTLMFBLvE3pSweC4jx": {
+            "id": "road_u3cAPTLMFBLvE3pSweC4jx",
+            "type": "MINOR",
+            "start": "intersection_qA3y1sHRMv91qrHoG2FTG8",
+            "end": "intersection_pmNnpbJtb9fRM1xuvVCucg"
+        },
+        "road_87zk2nbSSrH5hsS8cwg57J": {
+            "id": "road_87zk2nbSSrH5hsS8cwg57J",
+            "type": "MINOR",
+            "start": "intersection_pmNnpbJtb9fRM1xuvVCucg",
+            "end": "intersection_gPtpTgKVXLWHutrQcGvhEa"
+        },
+        "road_wMiuBDcgaCataxxe7cgbjj": {
+            "id": "road_wMiuBDcgaCataxxe7cgbjj",
+            "type": "MINOR",
+            "start": "intersection_gPtpTgKVXLWHutrQcGvhEa",
+            "end": "intersection_kNAW6yi4KBFBuTs1ejPmKv"
+        },
+        "road_9ArA5aj7TfPJGKGbuvZDVD": {
+            "id": "road_9ArA5aj7TfPJGKGbuvZDVD",
+            "type": "MINOR",
+            "start": "intersection_ohMaPiphEFFH62SFbnWfKV",
+            "end": "intersection_oEPCcyZhnKG7LLiLXqhhaC"
+        },
+        "road_howRrbXvfAPTaVoGTgEhqQ": {
+            "id": "road_howRrbXvfAPTaVoGTgEhqQ",
+            "type": "MINOR",
+            "start": "intersection_txxQS3FtfPZpjEttc5kdnt",
+            "end": "intersection_vhnwppEh5r8ftiPHm2MjK2"
+        },
+        "road_uDBYUyYYMGtnMdvLoKCLW8": {
+            "id": "road_uDBYUyYYMGtnMdvLoKCLW8",
+            "type": "MINOR",
+            "start": "intersection_vhnwppEh5r8ftiPHm2MjK2",
+            "end": "intersection_f7JxX9nEAocR2rvvhQJEx"
+        },
+        "road_n19whvbhvFqnNTrzwxeCda": {
+            "id": "road_n19whvbhvFqnNTrzwxeCda",
+            "type": "MINOR",
+            "start": "intersection_f7JxX9nEAocR2rvvhQJEx",
+            "end": "intersection_tAZFNVjmFT5VwQwPVzAFWF"
+        },
+        "road_kYMDTjsi5DMFRaMtBmLLJG": {
+            "id": "road_kYMDTjsi5DMFRaMtBmLLJG",
+            "type": "MINOR",
+            "start": "intersection_tAZFNVjmFT5VwQwPVzAFWF",
+            "end": "intersection_gTswY5u18ESJ9shvxFVhF9"
+        },
+        "road_4mDmRkQXD1MFEVcCFpGi9q": {
+            "id": "road_4mDmRkQXD1MFEVcCFpGi9q",
+            "type": "MINOR",
+            "start": "intersection_gTswY5u18ESJ9shvxFVhF9",
+            "end": "intersection_vULqeRTd2pMhTJnvhZW8W5"
+        },
+        "road_9AVSefcdz7kd6ehGm8JrPe": {
+            "id": "road_9AVSefcdz7kd6ehGm8JrPe",
+            "type": "MINOR",
+            "start": "intersection_gTswY5u18ESJ9shvxFVhF9",
+            "end": "intersection_w55WBvWySEZhNwh7Di5rVV"
+        },
+        "road_rYzCHRpygcqHSSRnRZsxWG": {
+            "id": "road_rYzCHRpygcqHSSRnRZsxWG",
+            "type": "MINOR",
+            "start": "intersection_n8gpRKGoQuWxgQm5pz9oaL",
+            "end": "intersection_txxQS3FtfPZpjEttc5kdnt"
+        },
+        "road_jUHa7BGjnCbjuVLKXHayWR": {
+            "id": "road_jUHa7BGjnCbjuVLKXHayWR",
+            "type": "MINOR",
+            "start": "intersection_rhb5LykHJRXatEsU4hv7ry",
+            "end": "intersection_xnHFYvegWZ3x5RxNGWMqHU"
+        },
+        "road_5XcYiXFbbLjnZR7ZLnFqJW": {
+            "id": "road_5XcYiXFbbLjnZR7ZLnFqJW",
+            "type": "MINOR",
+            "start": "intersection_rhb5LykHJRXatEsU4hv7ry",
+            "end": "intersection_eQgWuKH1E5ETHtDtbv2NZW"
+        },
+        "road_6iBLoq2CqVktnZT2EWJwB1": {
+            "id": "road_6iBLoq2CqVktnZT2EWJwB1",
+            "type": "MINOR",
+            "start": "intersection_eQgWuKH1E5ETHtDtbv2NZW",
+            "end": "intersection_3WdREfECpHpQEbGLKzBSYA"
+        },
+        "road_5eKB8xymfdecfK2TZifNMP": {
+            "id": "road_5eKB8xymfdecfK2TZifNMP",
+            "type": "MINOR",
+            "start": "intersection_ugRQyTeWorU2opxqtWsiqy",
+            "end": "intersection_es4UAo5PYutchWag2mfEFo"
+        },
+        "road_7bq9gJcFtVv71HmEnT57vn": {
+            "id": "road_7bq9gJcFtVv71HmEnT57vn",
+            "type": "MINOR",
+            "start": "intersection_es4UAo5PYutchWag2mfEFo",
+            "end": "intersection_nRtffVZQW637DqjtfxaGQZ"
+        },
+        "road_dcLSmcRQ2ivp1f1eEt948V": {
+            "id": "road_dcLSmcRQ2ivp1f1eEt948V",
+            "type": "MINOR",
+            "start": "intersection_es4UAo5PYutchWag2mfEFo",
+            "end": "intersection_vYZTuTsrz5F8k4ZweJGTex"
+        },
+        "road_9HKZdbrPQwd8tNkrW5G6WE": {
+            "id": "road_9HKZdbrPQwd8tNkrW5G6WE",
+            "type": "MINOR",
+            "start": "intersection_ugRQyTeWorU2opxqtWsiqy",
+            "end": "intersection_bTtpNDCVi4WXvfauAbhLTG"
+        },
+        "road_ogzB276w7dPribEsAwebbc": {
+            "id": "road_ogzB276w7dPribEsAwebbc",
+            "type": "MINOR",
+            "start": "intersection_2otvkwPTMXUTCyT9qkvS7m",
+            "end": "intersection_hnL1bJHhKSTCLLWym1gw4v"
+        },
+        "road_qNNfKmDfjTVm82FZ8tJnSV": {
+            "id": "road_qNNfKmDfjTVm82FZ8tJnSV",
+            "type": "MINOR",
+            "start": "intersection_h8KQr92vFvcKwA2LBREqqX",
+            "end": "intersection_naepfmiSnvx4pQGVNV7yzT"
+        },
+        "road_vHxv7WSVv1vx6ugRCGp8z5": {
+            "id": "road_vHxv7WSVv1vx6ugRCGp8z5",
+            "type": "MINOR",
+            "start": "intersection_hnL1bJHhKSTCLLWym1gw4v",
+            "end": "intersection_h8KQr92vFvcKwA2LBREqqX"
+        },
+        "road_wscbS4A5L8enLg4GmnY11V": {
+            "id": "road_wscbS4A5L8enLg4GmnY11V",
+            "type": "LOCAL",
+            "start": "location_4bCEJZDgTdoyuPqxU2Je71",
+            "end": "intersection_2hZrE8pDQW7QhZjMM3YUn9"
+        },
+        "road_rborUV2dpSMZyHHackCp8V": {
+            "id": "road_rborUV2dpSMZyHHackCp8V",
+            "type": "LOCAL",
+            "start": "intersection_2hZrE8pDQW7QhZjMM3YUn9",
+            "end": "location_h9ZkJN4wuF4QbET6M6dRXX"
+        },
+        "road_q8K7DSDCPFguNJS1dtdyPU": {
+            "id": "road_q8K7DSDCPFguNJS1dtdyPU",
+            "type": "LOCAL",
+            "start": "intersection_2hZrE8pDQW7QhZjMM3YUn9",
+            "end": "intersection_pYJN9DGJrwoRiQqFUMpDiQ"
+        },
+        "road_d2pJemVJQcnNjdzgjQRzWX": {
+            "id": "road_d2pJemVJQcnNjdzgjQRzWX",
+            "type": "LOCAL",
+            "start": "intersection_2hZrE8pDQW7QhZjMM3YUn9",
+            "end": "intersection_9rKt5LFpArwdQimaiJ2j7X"
+        },
+        "road_hnyeym7Ke61GwGnnSDscXP": {
+            "id": "road_hnyeym7Ke61GwGnnSDscXP",
+            "type": "LOCAL",
+            "start": "intersection_9rKt5LFpArwdQimaiJ2j7X",
+            "end": "location_a687staTUiJPqmMCvW3bzz"
+        },
+        "road_wQWtGjdu4TAxqqzYWHbJ7x": {
+            "id": "road_wQWtGjdu4TAxqqzYWHbJ7x",
+            "type": "LOCAL",
+            "start": "intersection_9rKt5LFpArwdQimaiJ2j7X",
+            "end": "location_vhnDc7ZzAo3UWFLFarx7Bu"
+        },
+        "road_4eTk3UHLer8ySTRVAB59vW": {
+            "id": "road_4eTk3UHLer8ySTRVAB59vW",
+            "type": "LOCAL",
+            "start": "intersection_9rKt5LFpArwdQimaiJ2j7X",
+            "end": "intersection_8QZrm1KTHk4KP8TZnB3y7u"
+        },
+        "road_6SR43oo6tjKwgpRceMLQLF": {
+            "id": "road_6SR43oo6tjKwgpRceMLQLF",
+            "type": "LOCAL",
+            "start": "intersection_8QZrm1KTHk4KP8TZnB3y7u",
+            "end": "intersection_d39P2te9PHEQBQen2WcCiv"
+        },
+        "road_tQrVAUrn6XUgqvi6sSrfP": {
+            "id": "road_tQrVAUrn6XUgqvi6sSrfP",
+            "type": "LOCAL",
+            "start": "intersection_d39P2te9PHEQBQen2WcCiv",
+            "end": "intersection_h9VTtnkK7YrCrpoAWaHg68"
+        },
+        "road_8cwaUhiMvzasguNXSuFY6u": {
+            "id": "road_8cwaUhiMvzasguNXSuFY6u",
+            "type": "LOCAL",
+            "start": "intersection_h9VTtnkK7YrCrpoAWaHg68",
+            "end": "intersection_k2UhvRwt9bA7RgdKCm8a7Z"
+        },
+        "road_gxXRyFLPiqhrZCVq44jiwS": {
+            "id": "road_gxXRyFLPiqhrZCVq44jiwS",
+            "type": "LOCAL",
+            "start": "intersection_k2UhvRwt9bA7RgdKCm8a7Z",
+            "end": "intersection_nRWti4Zj93UbCxsQVYHpfW"
+        },
+        "road_f3Lxf7yG94j3NQmVRpyBuj": {
+            "id": "road_f3Lxf7yG94j3NQmVRpyBuj",
+            "type": "LOCAL",
+            "start": "intersection_h9VTtnkK7YrCrpoAWaHg68",
+            "end": "location_8JvFzfogVqwu67a6grsXi6"
+        },
+        "road_ggTs6wuYdS5c7LHo1TbMhg": {
+            "id": "road_ggTs6wuYdS5c7LHo1TbMhg",
+            "type": "LOCAL",
+            "start": "intersection_h9VTtnkK7YrCrpoAWaHg68",
+            "end": "location_o71ynWL8mK7LvjoAo9RDGo"
+        },
+        "road_o4ydmthkzgyyMM7F65tXSt": {
+            "id": "road_o4ydmthkzgyyMM7F65tXSt",
+            "type": "LOCAL",
+            "start": "intersection_h9VTtnkK7YrCrpoAWaHg68",
+            "end": "intersection_k2UhvRwt9bA7RgdKCm8a7Z"
+        },
+        "road_kHn7UviKrUgyZQfS3BsFA3": {
+            "id": "road_kHn7UviKrUgyZQfS3BsFA3",
+            "type": "LOCAL",
+            "start": "location_mNj2ZuSxSp7Ey2wyEiKcAa",
+            "end": "location_mNj2ZuSxSp7Ey2wyEiKcAa"
+        },
+        "road_kpAMHytyT7KvAZqNRRNMWw": {
+            "id": "road_kpAMHytyT7KvAZqNRRNMWw",
+            "type": "LOCAL",
+            "start": "intersection_k2UhvRwt9bA7RgdKCm8a7Z",
+            "end": "location_mNj2ZuSxSp7Ey2wyEiKcAa"
+        },
+        "road_852A6J6GBt8KVvXBmARKme": {
+            "id": "road_852A6J6GBt8KVvXBmARKme",
+            "type": "LOCAL",
+            "start": "intersection_d39P2te9PHEQBQen2WcCiv",
+            "end": "location_tBCv9TpjXCfCssNsRfq5Dj"
+        },
+        "road_9RAxr7bLTZfXGNMnN4oMRo": {
+            "id": "road_9RAxr7bLTZfXGNMnN4oMRo",
+            "type": "LOCAL",
+            "start": "location_oT1r5FU13F3rSYhDBpJbxK",
+            "end": "intersection_d39P2te9PHEQBQen2WcCiv"
+        },
+        "road_4FZVnbBHVvEVJh57bVBxBp": {
+            "id": "road_4FZVnbBHVvEVJh57bVBxBp",
+            "type": "LOCAL",
+            "start": "intersection_8QZrm1KTHk4KP8TZnB3y7u",
+            "end": "location_7g7vYFGwbNLkWoHv3WqsAM"
+        },
+        "road_bZ7BiyC1Y6B1eqre3ygVAc": {
+            "id": "road_bZ7BiyC1Y6B1eqre3ygVAc",
+            "type": "LOCAL",
+            "start": "intersection_8QZrm1KTHk4KP8TZnB3y7u",
+            "end": "location_wwnR1ZiJQCeKCtyfy1dF2a"
+        },
+        "road_hevEV2xUyzKS5JN8pFV2XU": {
+            "id": "road_hevEV2xUyzKS5JN8pFV2XU",
+            "type": "LOCAL",
+            "start": "intersection_nRWti4Zj93UbCxsQVYHpfW",
+            "end": "location_ddfFHoFHWhenZ9JdRdX19A"
+        },
+        "road_q8fc8NH8GNc1EgCnC32mhK": {
+            "id": "road_q8fc8NH8GNc1EgCnC32mhK",
+            "type": "LOCAL",
+            "start": "intersection_k2UhvRwt9bA7RgdKCm8a7Z",
+            "end": "location_6JJjuefo46ohCYMdQSB9ue"
+        },
+        "road_uVSTMo5mnqBmDFJcjcpMPK": {
+            "id": "road_uVSTMo5mnqBmDFJcjcpMPK",
+            "type": "LOCAL",
+            "start": "intersection_toxNWYgJACZ7DFFZLwmtrh",
+            "end": "location_a76QKYkVbvtEdvGg8R3AFu"
+        },
+        "road_RnAFBoVC6s2zq1aHuMud1": {
+            "id": "road_RnAFBoVC6s2zq1aHuMud1",
+            "type": "LOCAL",
+            "start": "intersection_fMZXKjJfm8QDFPVfBj4tdY",
+            "end": "location_sjpp2DL8wYrm4xmS625cuR"
+        },
+        "road_hPrEiCAVtVZhJTynN3PKSR": {
+            "id": "road_hPrEiCAVtVZhJTynN3PKSR",
+            "type": "LOCAL",
+            "start": "location_vEgCCHAHLuqhDcJJEikQmg",
+            "end": "intersection_4CMz27bcNV1Aaf1zvQdV5A"
+        },
+        "road_v8LA9XP145pBUyxAhMXogr": {
+            "id": "road_v8LA9XP145pBUyxAhMXogr",
+            "type": "LOCAL",
+            "start": "location_c7AkD4g37YU2JFrWxXTnic",
+            "end": "intersection_cr668TsW8K7AAF6QysdP3c"
+        },
+        "road_oPa5SJVwBhW6Qmfed62H9i": {
+            "id": "road_oPa5SJVwBhW6Qmfed62H9i",
+            "type": "LOCAL",
+            "start": "location_izLdufkagMjFs3admizQ9y",
+            "end": "intersection_m52zKiXXGbQLr93hbtnuYB"
+        },
+        "road_nTaj31pL3tvHLEdPkKz7tW": {
+            "id": "road_nTaj31pL3tvHLEdPkKz7tW",
+            "type": "LOCAL",
+            "start": "intersection_m52zKiXXGbQLr93hbtnuYB",
+            "end": "intersection_cr668TsW8K7AAF6QysdP3c"
+        },
+        "road_rqC17rThtsTTRBf4ZpYruX": {
+            "id": "road_rqC17rThtsTTRBf4ZpYruX",
+            "type": "LOCAL",
+            "start": "intersection_cr668TsW8K7AAF6QysdP3c",
+            "end": "intersection_4CMz27bcNV1Aaf1zvQdV5A"
+        },
+        "road_9hyF4oPdUZTgM8RVBXwXYu": {
+            "id": "road_9hyF4oPdUZTgM8RVBXwXYu",
+            "type": "LOCAL",
+            "start": "intersection_m52zKiXXGbQLr93hbtnuYB",
+            "end": "intersection_pmNnpbJtb9fRM1xuvVCucg"
+        },
+        "road_u6HBB5SGjmeShHHf4Xsvjs": {
+            "id": "road_u6HBB5SGjmeShHHf4Xsvjs",
+            "type": "LOCAL",
+            "start": "intersection_sYjtM8vLwJnr7PBHMr2VVB",
+            "end": "intersection_29mDVcpzMmFcoFn14SCgrr"
+        },
+        "road_awPUMijaJh8Z9W2kWE9xNN": {
+            "id": "road_awPUMijaJh8Z9W2kWE9xNN",
+            "type": "LOCAL",
+            "start": "intersection_29mDVcpzMmFcoFn14SCgrr",
+            "end": "intersection_jfUBBpGaKPqsAkVscXYydF"
+        },
+        "road_tppbDha4LEyS5BTh743DHF": {
+            "id": "road_tppbDha4LEyS5BTh743DHF",
+            "type": "LOCAL",
+            "start": "intersection_jfUBBpGaKPqsAkVscXYydF",
+            "end": "location_7eVnE2uCcUCBCH96hNDQSY"
+        },
+        "road_2EDU2nVVjYX7wHm1LKBbqb": {
+            "id": "road_2EDU2nVVjYX7wHm1LKBbqb",
+            "type": "LOCAL",
+            "start": "intersection_p5pbWq9FS66z34AnzRWXaU",
+            "end": "intersection_p5pbWq9FS66z34AnzRWXaU"
+        },
+        "road_akwarxrthmnhr2sSeLVeCH": {
+            "id": "road_akwarxrthmnhr2sSeLVeCH",
+            "type": "LOCAL",
+            "start": "intersection_jfUBBpGaKPqsAkVscXYydF",
+            "end": "intersection_p5pbWq9FS66z34AnzRWXaU"
+        },
+        "road_kHxN45TuaP1f9rtFYZPD5N": {
+            "id": "road_kHxN45TuaP1f9rtFYZPD5N",
+            "type": "LOCAL",
+            "start": "intersection_p5pbWq9FS66z34AnzRWXaU",
+            "end": "location_j5LBmqobDXTyTuGmmrsmdx"
+        },
+        "road_cEcUAAQU5ftcanfLVoPrUK": {
+            "id": "road_cEcUAAQU5ftcanfLVoPrUK",
+            "type": "LOCAL",
+            "start": "intersection_p5pbWq9FS66z34AnzRWXaU",
+            "end": "intersection_w2679nKyHFGs7eCECVMbUu"
+        },
+        "road_xmv5JjYeTfsPyb59a2TVwU": {
+            "id": "road_xmv5JjYeTfsPyb59a2TVwU",
+            "type": "LOCAL",
+            "start": "intersection_w2679nKyHFGs7eCECVMbUu",
+            "end": "location_2mvrt2CEC6DJpVyJMF8kxa"
+        },
+        "road_qqoBgWbBD3PESsQgbc9RfU": {
+            "id": "road_qqoBgWbBD3PESsQgbc9RfU",
+            "type": "LOCAL",
+            "start": "intersection_w2679nKyHFGs7eCECVMbUu",
+            "end": "intersection_ikZfMPBCynw13UYmDasuDc"
+        },
+        "road_js97RGrLi7Zqh9Aun8aC75": {
+            "id": "road_js97RGrLi7Zqh9Aun8aC75",
+            "type": "LOCAL",
+            "start": "intersection_w2679nKyHFGs7eCECVMbUu",
+            "end": "intersection_nhAb9Br8PmUHBZVd2wenzF"
+        },
+        "road_jTkcuAnPPtWBgWzYQqvwJc": {
+            "id": "road_jTkcuAnPPtWBgWzYQqvwJc",
+            "type": "LOCAL",
+            "start": "intersection_nhAb9Br8PmUHBZVd2wenzF",
+            "end": "location_x4KeUWuCgh48hWPDUii9jS"
+        },
+        "road_qG81kmMzBJnE8BJFFy2Xxc": {
+            "id": "road_qG81kmMzBJnE8BJFFy2Xxc",
+            "type": "LOCAL",
+            "start": "intersection_nhAb9Br8PmUHBZVd2wenzF",
+            "end": "intersection_7nGAC86c2E65hJgHcUSQYR"
+        },
+        "road_dyTUs8JewRYC3v4nJ5cdPd": {
+            "id": "road_dyTUs8JewRYC3v4nJ5cdPd",
+            "type": "LOCAL",
+            "start": "intersection_7nGAC86c2E65hJgHcUSQYR",
+            "end": "location_cxkvjfKaGxsA9D3Lsbbmsg"
+        },
+        "road_u15pmKRVgRwNdvkyJV2DQ9": {
+            "id": "road_u15pmKRVgRwNdvkyJV2DQ9",
+            "type": "LOCAL",
+            "start": "location_8sxbEwpvZrgUyPqAYmczxZ",
+            "end": "intersection_qA3y1sHRMv91qrHoG2FTG8"
+        },
+        "road_jR1EGE1k9FXz61ugFfWY85": {
+            "id": "road_jR1EGE1k9FXz61ugFfWY85",
+            "type": "LOCAL",
+            "start": "location_pKRfgUX4T4EnbFbTxV5rxK",
+            "end": "intersection_pmNnpbJtb9fRM1xuvVCucg"
+        },
+        "road_3GQwMd2yomPpR3Udu7PXNd": {
+            "id": "road_3GQwMd2yomPpR3Udu7PXNd",
+            "type": "LOCAL",
+            "start": "location_ZfB9ujCVudLKTbhWjEtbM",
+            "end": "intersection_gm97bRhztU7DAR4b2wMiB1"
+        },
+        "road_6FKeyoeRFMqM4RTNNwqqr4": {
+            "id": "road_6FKeyoeRFMqM4RTNNwqqr4",
+            "type": "LOCAL",
+            "start": "location_2M7HSqxX1Jptp2fnNU9uKC",
+            "end": "intersection_eTkZUjYCxnUDZsA1tvMSQc"
+        },
+        "road_wMsoCNVtZ623uUXbKKpbDo": {
+            "id": "road_wMsoCNVtZ623uUXbKKpbDo",
+            "type": "LOCAL",
+            "start": "location_vzoktQHrTddQYLcUC9gcJa",
+            "end": "intersection_eTkZUjYCxnUDZsA1tvMSQc"
+        },
+        "road_pt5pRV3ZWBgfnYJrhkKbqa": {
+            "id": "road_pt5pRV3ZWBgfnYJrhkKbqa",
+            "type": "LOCAL",
+            "start": "location_hAiRUATZxWGNG7DjUbJV",
+            "end": "intersection_9Smc7s7pEDnTQjros3C7bs"
+        },
+        "road_8zQqXJdA7qjSFDvu4dWZzN": {
+            "id": "road_8zQqXJdA7qjSFDvu4dWZzN",
+            "type": "LOCAL",
+            "start": "intersection_eTkZUjYCxnUDZsA1tvMSQc",
+            "end": "intersection_9Smc7s7pEDnTQjros3C7bs"
+        },
+        "road_tchvrZUgVWQjcfD37BcY1o": {
+            "id": "road_tchvrZUgVWQjcfD37BcY1o",
+            "type": "LOCAL",
+            "start": "intersection_9Smc7s7pEDnTQjros3C7bs",
+            "end": "intersection_oEPCcyZhnKG7LLiLXqhhaC"
+        },
+        "road_kKAfXQHUjfhWGSyCQ7xcpv": {
+            "id": "road_kKAfXQHUjfhWGSyCQ7xcpv",
+            "type": "LOCAL",
+            "start": "intersection_9Smc7s7pEDnTQjros3C7bs",
+            "end": "intersection_9DNiGYH6QHrURbyiD6ge7X"
+        },
+        "road_pAvkpFDqiZ4U33Agabq3Mg": {
+            "id": "road_pAvkpFDqiZ4U33Agabq3Mg",
+            "type": "LOCAL",
+            "start": "intersection_9DNiGYH6QHrURbyiD6ge7X",
+            "end": "location_uEt6FJvRHp9ZYaK5J3ELbq"
+        },
+        "road_xtnPgtxkwdr4EZQDoqGJbW": {
+            "id": "road_xtnPgtxkwdr4EZQDoqGJbW",
+            "type": "LOCAL",
+            "start": "intersection_9DNiGYH6QHrURbyiD6ge7X",
+            "end": "intersection_9KprHFWczxfDd8qK8BFksC"
+        },
+        "road_hPHnFKvR73aXnrAjJZmJ3T": {
+            "id": "road_hPHnFKvR73aXnrAjJZmJ3T",
+            "type": "LOCAL",
+            "start": "intersection_9KprHFWczxfDd8qK8BFksC",
+            "end": "location_qw7dxadQqycx3hnuVexqqn"
+        },
+        "road_8W4fqFoqQtuc9TaJfyMA5k": {
+            "id": "road_8W4fqFoqQtuc9TaJfyMA5k",
+            "type": "LOCAL",
+            "start": "intersection_9KprHFWczxfDd8qK8BFksC",
+            "end": "location_mGoZF8DJgYASmkonCuvNVF"
+        },
+        "road_6M51XzDwDQERZRLkVsBhZy": {
+            "id": "road_6M51XzDwDQERZRLkVsBhZy",
+            "type": "LOCAL",
+            "start": "intersection_9KprHFWczxfDd8qK8BFksC",
+            "end": "intersection_hAvPxKYKsWxEVYgzEWSz4m"
+        },
+        "road_i1UJWpPYmsXeuE1AGxcKka": {
+            "id": "road_i1UJWpPYmsXeuE1AGxcKka",
+            "type": "LOCAL",
+            "start": "intersection_hAvPxKYKsWxEVYgzEWSz4m",
+            "end": "location_pp8yrc5meoRCDoJfxyVpcq"
+        },
+        "road_k6vAkuqp58smJx76rPFt48": {
+            "id": "road_k6vAkuqp58smJx76rPFt48",
+            "type": "LOCAL",
+            "start": "location_iZpurGdzwrB7jJ7H9UMvw6",
+            "end": "intersection_6Pi8mPtuTmTzKYqgRHbz7L"
+        },
+        "road_4BiBEPUxhziBQ5aKbmRdaK": {
+            "id": "road_4BiBEPUxhziBQ5aKbmRdaK",
+            "type": "LOCAL",
+            "start": "location_5jFK4QYkB89m7YfGLRfKcf",
+            "end": "intersection_ocutERnfetbKvU4wU5kA6J"
+        },
+        "road_6MmNdtQAWjcsUNxzN3E6U1": {
+            "id": "road_6MmNdtQAWjcsUNxzN3E6U1",
+            "type": "LOCAL",
+            "start": "intersection_77KTa88hV27qSmCxqwHNEc",
+            "end": "intersection_77KTa88hV27qSmCxqwHNEc"
+        },
+        "road_dX1TK332uBpo9PRVzu1LCE": {
+            "id": "road_dX1TK332uBpo9PRVzu1LCE",
+            "type": "LOCAL",
+            "start": "intersection_77KTa88hV27qSmCxqwHNEc",
+            "end": "intersection_ocutERnfetbKvU4wU5kA6J"
+        },
+        "road_3Wy7Yxt5bX299QzW8esnq2": {
+            "id": "road_3Wy7Yxt5bX299QzW8esnq2",
+            "type": "LOCAL",
+            "start": "intersection_77KTa88hV27qSmCxqwHNEc",
+            "end": "location_o1Rhyx3vmdVaYrpy6KL1Nq"
+        },
+        "road_iqWG5cYP1pFuqWZBWMbwB9": {
+            "id": "road_iqWG5cYP1pFuqWZBWMbwB9",
+            "type": "LOCAL",
+            "start": "intersection_77KTa88hV27qSmCxqwHNEc",
+            "end": "intersection_xtUeQwTLXx12irWJr4yXCW"
+        },
+        "road_hBNnsUgBgFHGq8ognSV4EF": {
+            "id": "road_hBNnsUgBgFHGq8ognSV4EF",
+            "type": "LOCAL",
+            "start": "intersection_xtUeQwTLXx12irWJr4yXCW",
+            "end": "intersection_kNAW6yi4KBFBuTs1ejPmKv"
+        },
+        "road_uxacUZn5wcSGQacDxjDAPD": {
+            "id": "road_uxacUZn5wcSGQacDxjDAPD",
+            "type": "LOCAL",
+            "start": "intersection_xtUeQwTLXx12irWJr4yXCW",
+            "end": "location_qa6s6A1GTQPWApDkyyGjb1"
+        },
+        "road_8ojXiHs97ivMWJqr5Gy5Nq": {
+            "id": "road_8ojXiHs97ivMWJqr5Gy5Nq",
+            "type": "LOCAL",
+            "start": "intersection_xtUeQwTLXx12irWJr4yXCW",
+            "end": "intersection_sdaJdrQTDajejL1GjXG6UV"
+        },
+        "road_bkWqDN4Jfe876yJ6Amt74U": {
+            "id": "road_bkWqDN4Jfe876yJ6Amt74U",
+            "type": "LOCAL",
+            "start": "intersection_sdaJdrQTDajejL1GjXG6UV",
+            "end": "location_c2FgxhteLPLwBGQBZqvQCA"
+        },
+        "road_gvVewMv5PJHHoF7B7w1atN": {
+            "id": "road_gvVewMv5PJHHoF7B7w1atN",
+            "type": "LOCAL",
+            "start": "intersection_sdaJdrQTDajejL1GjXG6UV",
+            "end": "intersection_28yQbm7sPfFnkJx74JEbUH"
+        },
+        "road_v2nMMEnkFUYbHCnHtcWrv2": {
+            "id": "road_v2nMMEnkFUYbHCnHtcWrv2",
+            "type": "LOCAL",
+            "start": "intersection_28yQbm7sPfFnkJx74JEbUH",
+            "end": "intersection_espKQREHV6CoAvCDYNbahQ"
+        },
+        "road_5XDaEERdWtYQ6kZKco6Qsb": {
+            "id": "road_5XDaEERdWtYQ6kZKco6Qsb",
+            "type": "LOCAL",
+            "start": "intersection_espKQREHV6CoAvCDYNbahQ",
+            "end": "location_7qDkM7XQSSyBMF9wkg3YbF"
+        },
+        "road_s147VgKFJ9AXbNpkDWYx2b": {
+            "id": "road_s147VgKFJ9AXbNpkDWYx2b",
+            "type": "LOCAL",
+            "start": "intersection_28yQbm7sPfFnkJx74JEbUH",
+            "end": "location_5T957ea84pCeWUZdPVNJby"
+        },
+        "road_hgDCef1pHBTFBzoKcH6kjV": {
+            "id": "road_hgDCef1pHBTFBzoKcH6kjV",
+            "type": "LOCAL",
+            "start": "location_unpxUSTJ5WdR1ESqzA3d1S",
+            "end": "intersection_vhnwppEh5r8ftiPHm2MjK2"
+        },
+        "road_a5fDQcjG14Az7VPfsfHiFD": {
+            "id": "road_a5fDQcjG14Az7VPfsfHiFD",
+            "type": "LOCAL",
+            "start": "location_oj7gcHtNegXh2iqNBjeR78",
+            "end": "intersection_f7JxX9nEAocR2rvvhQJEx"
+        },
+        "road_Rc1mYv4fPCwLWgg1rv6Ut": {
+            "id": "road_Rc1mYv4fPCwLWgg1rv6Ut",
+            "type": "LOCAL",
+            "start": "intersection_oNYoVNucHhtPkBYYx83Evk",
+            "end": "intersection_wLdLteViAPRExM9656xZ2f"
+        },
+        "road_ndmB6FR3sQrW5t8Q5w7sA2": {
+            "id": "road_ndmB6FR3sQrW5t8Q5w7sA2",
+            "type": "LOCAL",
+            "start": "location_vae2J1iLDfdBCNZd1krrjW",
+            "end": "intersection_wLdLteViAPRExM9656xZ2f"
+        },
+        "road_b8TFdCMuvC6xLVFnLmKF3w": {
+            "id": "road_b8TFdCMuvC6xLVFnLmKF3w",
+            "type": "LOCAL",
+            "start": "intersection_oNYoVNucHhtPkBYYx83Evk",
+            "end": "location_rF8onoSMwP867tb1a5rewm"
+        },
+        "road_aZwkT2d7AuinRSQw2qiWRr": {
+            "id": "road_aZwkT2d7AuinRSQw2qiWRr",
+            "type": "LOCAL",
+            "start": "intersection_wLdLteViAPRExM9656xZ2f",
+            "end": "intersection_gTswY5u18ESJ9shvxFVhF9"
+        },
+        "road_hgvbi1fdCEf1S2MKXBje1A": {
+            "id": "road_hgvbi1fdCEf1S2MKXBje1A",
+            "type": "LOCAL",
+            "start": "intersection_vULqeRTd2pMhTJnvhZW8W5",
+            "end": "location_x63EGjTMK4NiiXGrxL6N4g"
+        },
+        "road_6qXB1GeNLeg7dHUTX7ug9v": {
+            "id": "road_6qXB1GeNLeg7dHUTX7ug9v",
+            "type": "LOCAL",
+            "start": "location_cY2ENP4W7hHRVH32cLScCm",
+            "end": "intersection_fhcJUuuMfswBA33tMmvAt8"
+        },
+        "road_iE2niuoRweWNhoqbLnje8F": {
+            "id": "road_iE2niuoRweWNhoqbLnje8F",
+            "type": "LOCAL",
+            "start": "intersection_fhcJUuuMfswBA33tMmvAt8",
+            "end": "intersection_wLdLteViAPRExM9656xZ2f"
+        },
+        "road_qg8zzZF69UetJKqiPk7c5M": {
+            "id": "road_qg8zzZF69UetJKqiPk7c5M",
+            "type": "LOCAL",
+            "start": "location_es4An5epjXHZSRDS9FherE",
+            "end": "intersection_vULqeRTd2pMhTJnvhZW8W5"
+        }
+    }
+}

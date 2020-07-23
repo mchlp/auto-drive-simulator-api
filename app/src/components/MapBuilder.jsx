@@ -3,6 +3,7 @@ import { Button, Container, Input, Card, CardBody, Alert } from 'reactstrap';
 import MapViewer from './MapViewer';
 import constants from '../constants';
 import Utils from '../Utils';
+import rawMapData from './test.json';
 
 const POINTER_TYPE = {
     INTERSECTION: 'intersection',
@@ -13,23 +14,6 @@ const POINTER_TYPE = {
 };
 
 export default function MapBuilder() {
-    const rawMapData = {
-        locations: {},
-        intersections: {
-            intersection_0: { id: 'intersection_0', coord: [0, 0] },
-            intersection_1: { id: 'intersection_1', coord: [0, 1000] },
-        },
-        vehicles: {},
-        roads: {
-            road_0: {
-                id: 'road_0',
-                type: 'MAJOR',
-                start: 'intersection_0',
-                end: 'intersection_1',
-            },
-        },
-    };
-
     const prevSavedMapData = useRef(rawMapData);
     const curPointerComponentId = useRef(null);
     const [roadStartWaypointId, setRoadStartWaypointId] = useState(null);
@@ -43,6 +27,7 @@ export default function MapBuilder() {
     const keyDownHandler = (event) => {
         if (event.key === 'Escape') {
             setCurPointerType(POINTER_TYPE.NONE);
+            curPointerComponentId.current = null;
         }
     };
 
@@ -57,7 +42,10 @@ export default function MapBuilder() {
         if (curPointerType === POINTER_TYPE.INTERSECTION) {
             setMapData((prevMapData) => {
                 let nextIntersectionId = curPointerComponentId.current;
-                if (!nextIntersectionId) {
+                if (
+                    !nextIntersectionId ||
+                    !nextIntersectionId.includes('intersection')
+                ) {
                     nextIntersectionId = `intersection_${Utils.generateShortUuid()}`;
                 }
                 curPointerComponentId.current = nextIntersectionId;
@@ -75,7 +63,7 @@ export default function MapBuilder() {
         } else if (curPointerType === POINTER_TYPE.LOCATION) {
             setMapData((prevMapData) => {
                 let nextLocationId = curPointerComponentId.current;
-                if (!nextLocationId) {
+                if (!nextLocationId || !nextLocationId.includes('location')) {
                     nextLocationId = `location_${Utils.generateShortUuid()}`;
                 }
                 curPointerComponentId.current = nextLocationId;
@@ -115,6 +103,8 @@ export default function MapBuilder() {
                     // road end point
                     const nextRoadId = `road_${Utils.generateShortUuid()}`;
 
+                    console.log(`start ${roadStartWaypointId}`);
+                    console.log(`end ${curHoverComponent.id}`);
                     const newMapData = {
                         ...prevSavedMapData.current,
                         roads: {
@@ -181,6 +171,8 @@ export default function MapBuilder() {
             }
 
             prevSavedMapData.current = newMapData;
+            setCurPointerType(POINTER_TYPE.NONE);
+            curPointerComponentId.current = null;
             setMapData(newMapData);
         }
     };
@@ -206,6 +198,7 @@ export default function MapBuilder() {
                     onClick={() => {
                         setMapData(prevSavedMapData.current);
                         setCurPointerType(POINTER_TYPE.LOCATION);
+                        curPointerComponentId.current = null;
                     }}
                 >
                     Add Location
@@ -215,6 +208,7 @@ export default function MapBuilder() {
                     onClick={() => {
                         setMapData(prevSavedMapData.current);
                         setCurPointerType(POINTER_TYPE.INTERSECTION);
+                        curPointerComponentId.current = null;
                     }}
                     className="m-1"
                 >
@@ -258,6 +252,7 @@ export default function MapBuilder() {
                     onClick={() => {
                         setMapData(prevSavedMapData.current);
                         setCurPointerType(POINTER_TYPE.NONE);
+                        curPointerComponentId.current = null;
                         deleteSelectedComponent();
                     }}
                     className="m-1"
@@ -270,6 +265,7 @@ export default function MapBuilder() {
                         setRoadStartWaypointId(null);
                         setMapData(prevSavedMapData.current);
                         setCurPointerType(POINTER_TYPE.NONE);
+                        curPointerComponentId.current = null;
                     }}
                     className="m-1"
                 >
