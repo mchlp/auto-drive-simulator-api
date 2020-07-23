@@ -1,3 +1,4 @@
+import shortUuid from 'short-uuid';
 export default class Utils {
     static canvasProps;
     static canvasWidth;
@@ -5,6 +6,11 @@ export default class Utils {
     static canvasOffsetLeft;
     static canvasOffsetTop;
     static ready = false;
+    static shortUuidGenerator = shortUuid(shortUuid.constants.flickrBase58);
+
+    static generateShortUuid() {
+        return this.shortUuidGenerator.generate();
+    }
 
     static getCoordFromWaypoint(waypointName, mapData) {
         if (waypointName.startsWith('intersection')) {

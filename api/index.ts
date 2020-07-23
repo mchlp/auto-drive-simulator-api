@@ -164,13 +164,13 @@ vehicles.push(new models.Vehicle(intersections[0], intersections[8], map));
 //     map.addVehicle(vehicle);
 // });
 
-const ADD_VEHICLE_TIMEOUT = 1000;
+const ADD_VEHICLE_TIMEOUT = 5000;
 let lastAddVehicleTime = 0;
 const simulateLoop = () => {
     const nowTime = Date.now();
     if (
         nowTime - lastAddVehicleTime > ADD_VEHICLE_TIMEOUT &&
-        Object.keys(map.vehicles).length < 200
+        Object.keys(map.vehicles).length < 1
     ) {
         const newOrigin = map.getRandomWaypoint();
         const newDest = map.getRandomWaypoint();

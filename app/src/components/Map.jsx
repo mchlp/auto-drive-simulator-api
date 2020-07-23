@@ -5,11 +5,13 @@ import { useState } from 'react';
 import MapRenderer from '../renderers/MapRenderer';
 import Utils from '../Utils';
 
-export default function Map({ mapData, canvasHeightPercentage=0.9 }) {
+export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
     const canvasRef = useRef(null);
 
     const [canvasWidth, setCanvasWidth] = useState(window.innerWidth * 0.9);
-    const [canvasHeight, setCanvasHeight] = useState(window.innerHeight * canvasHeightPercentage);
+    const [canvasHeight, setCanvasHeight] = useState(
+        window.innerHeight * canvasHeightPercentage
+    );
     const [canvasProps, setCanvasProps] = useState({
         centerX: 0,
         centerY: 0,
@@ -18,6 +20,17 @@ export default function Map({ mapData, canvasHeightPercentage=0.9 }) {
 
     const [draging, setDraging] = useState(false);
     const lastDragCoord = useRef(null);
+
+    useEffect(() => {
+        if (canvasRef.current) {
+            canvasRef.current.addEventListener('wheel', onZoom, {
+                passive: false,
+            });
+            return () => {
+                canvasRef.current.removeEventListener('wheel', onZoom);
+            };
+        }
+    }, [canvasRef]);
 
     useEffect(() => {
         if (canvasRef && canvasRef.current) {
@@ -40,6 +53,7 @@ export default function Map({ mapData, canvasHeightPercentage=0.9 }) {
     }, [canvasRef, canvasProps, mapData, canvasWidth, canvasHeight]);
 
     const onDragStart = (event) => {
+        event.preventDefault();
         if (mapData) {
             setDraging(true);
             lastDragCoord.current = {
@@ -75,6 +89,8 @@ export default function Map({ mapData, canvasHeightPercentage=0.9 }) {
     };
 
     const onZoom = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         if (mapData) {
             const { pageX, pageY, deltaY } = event;
 
@@ -115,6 +131,7 @@ export default function Map({ mapData, canvasHeightPercentage=0.9 }) {
                 };
             });
         }
+        return false;
     };
 
     return (
@@ -135,7 +152,6 @@ export default function Map({ mapData, canvasHeightPercentage=0.9 }) {
                 onMouseUp={onDragEnd}
                 onMouseLeave={onDragEnd}
                 onMouseMove={onDragMove}
-                onWheel={onZoom}
             />
         </div>
     );

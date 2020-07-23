@@ -1,27 +1,23 @@
-import React from 'react';
-import Map from './Map';
+import React, { useState, useRef, useEffect } from 'react';
+import { Button, Container, Input, Card, CardBody, Alert } from 'reactstrap';
 import MapViewer from './MapViewer';
-import { useRef, useState } from 'react';
-import Utils from '../Utils';
-import SelectedDisplay from './SelectedDisplay';
 import constants from '../constants';
-import ComponentFinder from '../builder/ComponentFinder';
+import Utils from '../Utils';
+
+const POINTER_TYPE = {
+    INTERSECTION: 'intersection',
+    LOCATION: 'location',
+    NONE: 'none',
+    ROAD: 'road',
+    SAVE_MAP: 'save_map',
+};
 
 export default function MapBuilder() {
-    const mapData = {
-        id: 'map_0',
-        locations: { location_0: { id: 'location_0', coord: [-500, 500] } },
+    const rawMapData = {
+        locations: {},
         intersections: {
             intersection_0: { id: 'intersection_0', coord: [0, 0] },
-            intersection_1: { id: 'intersection_1', coord: [1000, 1000] },
-            intersection_2: { id: 'intersection_2', coord: [2500, 1000] },
-            intersection_3: { id: 'intersection_3', coord: [-1500, 1000] },
-            intersection_4: { id: 'intersection_4', coord: [-1500, -1500] },
-            intersection_5: { id: 'intersection_5', coord: [-2500, 1500] },
-            intersection_6: { id: 'intersection_6', coord: [2500, -2000] },
-            intersection_7: { id: 'intersection_7', coord: [-2500, -2250] },
-            intersection_8: { id: 'intersection_8', coord: [-2500, 2250] },
-            intersection_9: { id: 'intersection_9', coord: [1000, 2250] },
+            intersection_1: { id: 'intersection_1', coord: [0, 1000] },
         },
         vehicles: {},
         roads: {
@@ -31,96 +27,278 @@ export default function MapBuilder() {
                 start: 'intersection_0',
                 end: 'intersection_1',
             },
-            road_1: {
-                id: 'road_1',
-                type: 'MAJOR',
-                start: 'location_0',
-                end: 'intersection_0',
-            },
-            road_2: {
-                id: 'road_2',
-                type: 'MINOR',
-                start: 'intersection_1',
-                end: 'intersection_2',
-            },
-            road_3: {
-                id: 'road_3',
-                type: 'MINOR',
-                start: 'intersection_1',
-                end: 'intersection_3',
-            },
-            road_4: {
-                id: 'road_4',
-                type: 'MINOR',
-                start: 'intersection_3',
-                end: 'intersection_4',
-            },
-            road_5: {
-                id: 'road_5',
-                type: 'LOCAL',
-                start: 'intersection_0',
-                end: 'intersection_4',
-            },
-            road_6: {
-                id: 'road_6',
-                type: 'LOCAL',
-                start: 'intersection_3',
-                end: 'intersection_5',
-            },
-            road_7: {
-                id: 'road_7',
-                type: 'LOCAL',
-                start: 'intersection_2',
-                end: 'intersection_6',
-            },
-            road_8: {
-                id: 'road_8',
-                type: 'MAJOR',
-                start: 'intersection_5',
-                end: 'intersection_7',
-            },
-            road_9: {
-                id: 'road_9',
-                type: 'LOCAL',
-                start: 'intersection_4',
-                end: 'intersection_7',
-            },
-            road_10: {
-                id: 'road_10',
-                type: 'MINOR',
-                start: 'intersection_8',
-                end: 'intersection_5',
-            },
-            road_11: {
-                id: 'road_11',
-                type: 'MAJOR',
-                start: 'intersection_8',
-                end: 'intersection_9',
-            },
-            road_12: {
-                id: 'road_12',
-                type: 'MAJOR',
-                start: 'intersection_0',
-                end: 'intersection_6',
-            },
-            road_13: {
-                id: 'road_13',
-                type: 'LOCAL',
-                start: 'intersection_1',
-                end: 'intersection_9',
-            },
-            road_14: {
-                id: 'road_14',
-                type: 'LOCAL',
-                start: 'intersection_7',
-                end: 'intersection_6',
-            },
         },
     };
 
+    const prevSavedMapData = useRef(rawMapData);
+    const curPointerComponentId = useRef(null);
+    const [roadStartWaypointId, setRoadStartWaypointId] = useState(null);
+    const [roadType, setRoadType] = useState(null);
+    const [curHoverComponent, setCurHoverComponent] = useState(null);
+    const [curSelectComponent, setCurSelectComponent] = useState(null);
+    const [mapData, setMapData] = useState(rawMapData);
+    const [curPointerType, setCurPointerType] = useState(POINTER_TYPE.NONE);
+    const [saveMapData, setSaveMapData] = useState('');
+
+    const keyDownHandler = (event) => {
+        if (event.key === 'Escape') {
+            setCurPointerType(POINTER_TYPE.NONE);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('keydown', keyDownHandler);
+        return () => {
+            window.removeEventListener('keydown', keyDownHandler);
+        };
+    }, []);
+
+    const mouseMoveHandler = (mapCoordinates) => {
+        if (curPointerType === POINTER_TYPE.INTERSECTION) {
+            setMapData((prevMapData) => {
+                let nextIntersectionId = curPointerComponentId.current;
+                if (!nextIntersectionId) {
+                    nextIntersectionId = `intersection_${Utils.generateShortUuid()}`;
+                }
+                curPointerComponentId.current = nextIntersectionId;
+                return {
+                    ...prevMapData,
+                    intersections: {
+                        ...prevMapData.intersections,
+                        [nextIntersectionId]: {
+                            id: nextIntersectionId,
+                            coord: mapCoordinates,
+                        },
+                    },
+                };
+            });
+        } else if (curPointerType === POINTER_TYPE.LOCATION) {
+            setMapData((prevMapData) => {
+                let nextLocationId = curPointerComponentId.current;
+                if (!nextLocationId) {
+                    nextLocationId = `location_${Utils.generateShortUuid()}`;
+                }
+                curPointerComponentId.current = nextLocationId;
+
+                return {
+                    ...prevMapData,
+                    locations: {
+                        ...prevMapData.locations,
+                        [nextLocationId]: {
+                            id: nextLocationId,
+                            coord: mapCoordinates,
+                        },
+                    },
+                };
+            });
+        } else {
+            setMapData(prevSavedMapData.current);
+            curPointerComponentId.current = null;
+        }
+    };
+
+    const mouseDownHandler = (mapCoordinates) => {
+        if (
+            curPointerType === POINTER_TYPE.INTERSECTION ||
+            curPointerType === POINTER_TYPE.LOCATION
+        ) {
+            if (!curHoverComponent) {
+                prevSavedMapData.current = mapData;
+                curPointerComponentId.current = null;
+            }
+        } else if (curPointerType === POINTER_TYPE.ROAD) {
+            if (curHoverComponent) {
+                if (!roadStartWaypointId) {
+                    // road start point
+                    setRoadStartWaypointId(curHoverComponent.id);
+                } else {
+                    // road end point
+                    const nextRoadId = `road_${Utils.generateShortUuid()}`;
+
+                    const newMapData = {
+                        ...prevSavedMapData.current,
+                        roads: {
+                            ...prevSavedMapData.current.roads,
+                            [nextRoadId]: {
+                                id: nextRoadId,
+                                type: roadType,
+                                start: roadStartWaypointId,
+                                end: curHoverComponent.id,
+                            },
+                        },
+                    };
+                    prevSavedMapData.current = newMapData;
+                    setMapData(newMapData);
+                    setRoadStartWaypointId(null);
+                }
+            }
+        }
+    };
+
+    const serializeMap = () => {
+        const serializedMap = {
+            id: `map_${Utils.generateShortUuid()}`,
+            locations: mapData.locations,
+            intersections: mapData.intersections,
+            vehicles: {},
+            roads: mapData.roads,
+        };
+        setCurPointerType(POINTER_TYPE.SAVE_MAP);
+        setSaveMapData(JSON.stringify(serializedMap));
+    };
+
+    const hoverComponentChangeHandler = (newHoverComponent) => {
+        setCurHoverComponent(newHoverComponent);
+    };
+
+    const selectComponentChangeHandler = (newSelectComponent) => {
+        setCurSelectComponent(newSelectComponent);
+    };
+
+    const deleteSelectedComponent = () => {
+        if (curSelectComponent && curSelectComponent.id) {
+            const newMapData = JSON.parse(
+                JSON.stringify(prevSavedMapData.current)
+            );
+
+            if (newMapData.intersections[curSelectComponent.id]) {
+                delete newMapData.intersections[curSelectComponent.id];
+            }
+
+            if (newMapData.locations[curSelectComponent.id]) {
+                delete newMapData.locations[curSelectComponent.id];
+            }
+
+            for (const roadId of Object.keys(prevSavedMapData.current.roads)) {
+                if (
+                    prevSavedMapData.current.roads[roadId].start ===
+                        curSelectComponent.id ||
+                    prevSavedMapData.current.roads[roadId].end ===
+                        curSelectComponent.id
+                ) {
+                    delete newMapData.roads[roadId];
+                }
+            }
+
+            prevSavedMapData.current = newMapData;
+            setMapData(newMapData);
+        }
+    };
+
+    let curPointerRadius = 0;
+    if (curPointerType === POINTER_TYPE.LOCATION) {
+        curPointerRadius = constants.DISPLAY.LOCATION_RADIUS;
+    } else if (curPointerType === POINTER_TYPE.INTERSECTION) {
+        curPointerRadius = constants.DISPLAY.INTERSECTION_RADIUS;
+    }
+
+    let cursorStyle = null;
+    if (curPointerType === POINTER_TYPE.ROAD && roadStartWaypointId) {
+        cursorStyle = 'crosshair';
+    }
+
     return (
-        <div>
-            <MapViewer mapData={mapData} />
+        <div className="mt-1 mr-3 ml-3 mb-5">
+            <div>
+                <Button
+                    color="primary"
+                    className="m-1"
+                    onClick={() => {
+                        setMapData(prevSavedMapData.current);
+                        setCurPointerType(POINTER_TYPE.LOCATION);
+                    }}
+                >
+                    Add Location
+                </Button>
+                <Button
+                    color="primary"
+                    onClick={() => {
+                        setMapData(prevSavedMapData.current);
+                        setCurPointerType(POINTER_TYPE.INTERSECTION);
+                    }}
+                    className="m-1"
+                >
+                    Add Intersection
+                </Button>
+                <Button
+                    color="primary"
+                    onClick={() => {
+                        setMapData(prevSavedMapData.current);
+                        setCurPointerType(POINTER_TYPE.ROAD);
+                        setRoadType(constants.ROAD_TYPES.TYPES.MAJOR);
+                    }}
+                    className="m-1"
+                >
+                    Build Major Road
+                </Button>
+                <Button
+                    color="primary"
+                    onClick={() => {
+                        setMapData(prevSavedMapData.current);
+                        setCurPointerType(POINTER_TYPE.ROAD);
+                        setRoadType(constants.ROAD_TYPES.TYPES.MINOR);
+                    }}
+                    className="m-1"
+                >
+                    Build Minor Road
+                </Button>
+                <Button
+                    color="primary"
+                    onClick={() => {
+                        setMapData(prevSavedMapData.current);
+                        setCurPointerType(POINTER_TYPE.ROAD);
+                        setRoadType(constants.ROAD_TYPES.TYPES.LOCAL);
+                    }}
+                    className="m-1"
+                >
+                    Build Local Road
+                </Button>
+                <Button
+                    color="primary"
+                    onClick={() => {
+                        setMapData(prevSavedMapData.current);
+                        setCurPointerType(POINTER_TYPE.NONE);
+                        deleteSelectedComponent();
+                    }}
+                    className="m-1"
+                >
+                    Delete Selected Component
+                </Button>
+                <Button
+                    color="primary"
+                    onClick={() => {
+                        setRoadStartWaypointId(null);
+                        setMapData(prevSavedMapData.current);
+                        setCurPointerType(POINTER_TYPE.NONE);
+                    }}
+                    className="m-1"
+                >
+                    Reset Pointer
+                </Button>
+                <Button color="success" onClick={serializeMap} className="m-1">
+                    Save Map
+                </Button>
+            </div>
+            {curPointerType === POINTER_TYPE.SAVE_MAP && (
+                <Alert className="mt-2">
+                    <div className="mb-2">
+                        Copy the map data below to your clipboard.
+                    </div>
+                    <Input type="text" value={saveMapData} readOnly={true} />
+                </Alert>
+            )}
+            <div>
+                <MapViewer
+                    mapData={mapData}
+                    onMouseMove={mouseMoveHandler}
+                    onMouseDown={mouseDownHandler}
+                    onHoverComponentChanged={hoverComponentChangeHandler}
+                    onSelectComponentChange={selectComponentChangeHandler}
+                    curPointerRadius={curPointerRadius}
+                    curPointerComponentId={curPointerComponentId.current}
+                    cursorStyle={cursorStyle}
+                />
+            </div>
         </div>
     );
 }

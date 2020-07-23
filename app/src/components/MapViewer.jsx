@@ -9,39 +9,87 @@ import ComponentFinder from '../builder/ComponentFinder';
 export default function MapViewer({
     mapData,
     onSelectComponentChange,
+    onHoverComponentChanged,
     onMouseMove,
+    onMouseDown,
+    curPointerRadius,
+    curPointerComponentId,
+    cursorStyle,
 }) {
     const containerRef = useRef(null);
     const [selectedComponent, setSelectedComponent] = useState(null);
+    const [hoveredComponent, setHoveredComponent] = useState(null);
+
+    const getMapCoordinatesFromMouseEvent = (event) => {
+        const { pageX, pageY } = event;
+        const canvasCoordinates = [
+            pageX - Utils.canvasOffsetLeft,
+            pageY - Utils.canvasOffsetTop,
+        ];
+        return Utils.unmapArrayCoord(canvasCoordinates);
+    };
 
     const mouseMoveHandler = (event) => {
         if (containerRef && containerRef.current && Utils.ready) {
-            const { pageX, pageY } = event;
-            const canvasCoordinates = [
-                pageX - Utils.canvasOffsetLeft,
-                pageY - Utils.canvasOffsetTop,
-            ];
-            const mapCoordinates = Utils.unmapArrayCoord(canvasCoordinates);
+            const mapCoordinates = getMapCoordinatesFromMouseEvent(event);
             if (onMouseMove) {
                 onMouseMove(mapCoordinates);
             }
-            const curSeletedComponent = ComponentFinder.findComponent(
+            const curHoveredComponent = ComponentFinder.findComponent(
                 mapCoordinates,
-                mapData
+                mapData,
+                curPointerRadius,
+                [curPointerComponentId]
             );
-            if (selectedComponent !== curSeletedComponent) {
-                setSelectedComponent(curSeletedComponent);
+            if (
+                (hoveredComponent ? hoveredComponent.id : hoveredComponent) !==
+                (curHoveredComponent
+                    ? curHoveredComponent.id
+                    : curHoveredComponent)
+            ) {
+                setHoveredComponent(curHoveredComponent);
+                if (onHoverComponentChanged) {
+                    onHoverComponentChanged(curHoveredComponent);
+                }
+            }
+        }
+    };
+
+    const mouseDownHandler = (event) => {
+        if (containerRef && containerRef.current && Utils.ready) {
+            const mapCoordinates = getMapCoordinatesFromMouseEvent(event);
+
+            if (onMouseDown) {
+                onMouseDown(mapCoordinates);
+            }
+
+            if (hoveredComponent && selectedComponent !== hoveredComponent) {
+                setSelectedComponent(hoveredComponent);
                 if (onSelectComponentChange) {
-                    onSelectComponentChange(curSeletedComponent);
+                    onSelectComponentChange(hoveredComponent);
                 }
             }
         }
     };
 
     return (
-        <div>
-            <SelectedDisplay componentData={selectedComponent} />
-            <div onMouseMove={mouseMoveHandler} ref={containerRef}>
+        <div
+            style={{
+                cursor: cursorStyle
+                    ? cursorStyle
+                    : hoveredComponent
+                    ? 'pointer'
+                    : 'move',
+            }}
+        >
+            <SelectedDisplay
+                componentData={hoveredComponent || selectedComponent}
+            />
+            <div
+                onMouseMove={mouseMoveHandler}
+                onMouseDown={mouseDownHandler}
+                ref={containerRef}
+            >
                 <Map mapData={mapData} canvasHeightPercentage={0.8} />
             </div>
         </div>
