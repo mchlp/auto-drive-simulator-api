@@ -2,7 +2,7 @@ import Utils from '../Utils';
 import constants from '../constants';
 
 export default class VehicleRenderer {
-    static render(ctx, mapData) {
+    static render(ctx, mapData, showLabels) {
         Object.entries(mapData.vehicles).forEach((vehicleEntry) => {
             const vehicleId = vehicleEntry[0];
             const vehicleData = vehicleEntry[1];
@@ -25,15 +25,17 @@ export default class VehicleRenderer {
             ctx.stroke();
             ctx.fill();
 
-            ctx.lineJoin = 'round';
-            ctx.miterLimit = 2;
-            const text = `${vehicleId} | Src: ${vehicleData.originId} | Dest: ${vehicleData.destinationId}`;
-            ctx.font = Utils.scaleSingleCoord(15) + 'px Arial';
-            ctx.strokeStyle = 'black';
-            ctx.strokeWidth = Utils.scaleSingleCoord(1);
-            ctx.strokeText(text, coord[0], coord[1]);
-            ctx.fillStyle = 'yellow';
-            ctx.fillText(text, coord[0], coord[1]);
+            if (showLabels) {
+                ctx.lineJoin = 'round';
+                ctx.miterLimit = 2;
+                const text = `${vehicleId} | Src: ${vehicleData.originId} | Dest: ${vehicleData.destinationId}`;
+                ctx.font = Utils.scaleSingleCoord(15) + 'px Arial';
+                ctx.strokeStyle = 'black';
+                ctx.strokeWidth = Utils.scaleSingleCoord(1);
+                ctx.strokeText(text, coord[0], coord[1]);
+                ctx.fillStyle = 'yellow';
+                ctx.fillText(text, coord[0], coord[1]);
+            }
         });
     }
 }

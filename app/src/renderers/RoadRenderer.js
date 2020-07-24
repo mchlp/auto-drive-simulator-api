@@ -2,7 +2,7 @@ import Utils from '../Utils';
 import constants from '../constants';
 
 export default class RoadRenderer {
-    static render(ctx, mapData) {
+    static render(ctx, mapData, showLabels) {
         const drawRoadLines = (mode) => {
             Object.entries(mapData.roads).forEach((roadEntry) => {
                 const roadId = roadEntry[0];

@@ -54,13 +54,13 @@ for (const roadRaw of Object.values(rawMap.roads)) {
     );
 }
 
-const ADD_VEHICLE_TIMEOUT = 100000;
+const ADD_VEHICLE_TIMEOUT = 1000;
 let lastAddVehicleTime = 0;
 const simulateLoop = () => {
     const nowTime = Date.now();
     if (
         nowTime - lastAddVehicleTime > ADD_VEHICLE_TIMEOUT &&
-        Object.keys(map.vehicles).length < 500
+        Object.keys(map.vehicles).length < 100
     ) {
         for (let i = 0; i < 10; ++i) {
             const newOrigin = map.getRandomWaypoint();

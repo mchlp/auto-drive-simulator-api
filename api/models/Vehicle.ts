@@ -12,6 +12,8 @@ import {
 } from '../types';
 import Map from './Map';
 import Navigator from '../engine/Navigator';
+import { exit } from 'process';
+import { Intersection } from '.';
 
 export default class Vehicle {
     id: string;
@@ -141,7 +143,11 @@ export default class Vehicle {
             let newDistanceTravelledOnRoad =
                 this.distanceTravelledOnRoad + curSpeed * deltaTimeSec;
 
-            if (curRoad.getLength() - newDistanceTravelledOnRoad < 200) {
+            if (
+                curRoad.getLength() - newDistanceTravelledOnRoad <
+                constants.DISPLAY.INTERSECTION_RADIUS * 1.1
+            ) {
+                // close to entering intersection
                 if (this.curRouteSegmentIndex < this.route.length - 1) {
                     // go to next road segment
                     const nextRouteSegment = this.route[
@@ -156,9 +162,32 @@ export default class Vehicle {
                                   .TOWARDS_START as VehicleDirection)
                     );
 
+                    let intersectionAheadOccupied = false;
+                    const exitPointId = this.getCurRouteSegment()?.exitPointId;
                     if (
-                        closestCarAheadDistance > this.map.safeFollowingDistance
+                        exitPointId &&
+                        Intersection.isIntersectionId(exitPointId)
                     ) {
+                        const exitPointOccupiedVehicleId = this.map.intersections[
+                            exitPointId
+                        ].getCurOccupiedVehicleId();
+                        if (
+                            exitPointOccupiedVehicleId &&
+                            exitPointOccupiedVehicleId !== this.id
+                        ) {
+                            intersectionAheadOccupied = true;
+                        }
+                    }
+
+                    if (
+                        exitPointId &&
+                        closestCarAheadDistance >
+                            this.map.safeFollowingDistance &&
+                        !intersectionAheadOccupied
+                    ) {
+                        this.map.intersections[exitPointId].enterIntersection(
+                            this
+                        );
                         if (newDistanceTravelledOnRoad > curRoad.getLength()) {
                             this.getCurRoad()?.removeVehicle(this);
                             newDistanceTravelledOnRoad = 0;
@@ -174,7 +203,18 @@ export default class Vehicle {
                     this.getCurRoad()?.removeVehicle(this);
                     this.state = constants.VEHICLE_STATE.ARRIVED;
                 }
+            } else {
+                const enterPointId = this.getCurRouteSegment()?.entryPointId;
+                if (
+                    enterPointId &&
+                    Intersection.isIntersectionId(enterPointId) &&
+                    this.distanceTravelledOnRoad >
+                        constants.DISPLAY.INTERSECTION_RADIUS
+                ) {
+                    this.map.intersections[enterPointId].exitIntersection(this);
+                }
             }
+
             this.distanceTravelledOnRoad = newDistanceTravelledOnRoad;
         } else if (
             this.state !== constants.VEHICLE_STATE.DEPARTURE_READY &&

@@ -5,20 +5,23 @@ export default function SelectedDisplay({ componentData }) {
     if (componentData) {
         Content = (
             <div>
-                <div>Current Component</div>
+                <div className="font-weight-bold">Current Component</div>
                 <div>Type: {componentData.type}</div>
                 <div>ID: {componentData.id}</div>
-                <div>Data: {JSON.stringify(componentData, null, 4)}</div>
+                <div>
+                    Coord: {JSON.stringify(componentData.data.coord, null, 4)}
+                </div>
             </div>
         );
     } else {
-        Content = <div>No component selected</div>;
+        Content = <div className="font-weight-bold">No component selected</div>;
     }
 
     return (
         <div
             style={{
                 height: 80,
+                fontSize: 12,
             }}
         >
             {Content}

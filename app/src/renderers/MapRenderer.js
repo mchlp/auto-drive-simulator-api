@@ -4,7 +4,7 @@ import IntersectionRenderer from './IntersectionRenderer';
 import VehicleRenderer from './VehicleRenderer';
 
 export default class MapRenderer {
-    static renderStatic(staticCtx, mapData, canvasWidth, canvasHeight) {
+    static renderStatic(staticCtx, mapData, canvasWidth, canvasHeight, showLabels) {
         staticCtx.clearRect(0, 0, canvasWidth, canvasHeight);
         staticCtx.fillStyle = '#dddddd';
         staticCtx.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -15,23 +15,24 @@ export default class MapRenderer {
             staticCtx.drawImage(logoImage, 0, 0, 50, 50);
         };
 
-        RoadRenderer.render(staticCtx, mapData);
-        LocationRenderer.render(staticCtx, mapData);
-        IntersectionRenderer.render(staticCtx, mapData);
+        RoadRenderer.render(staticCtx, mapData, showLabels);
+        LocationRenderer.render(staticCtx, mapData, showLabels);
+        IntersectionRenderer.render(staticCtx, mapData, showLabels);
     }
 
-    static renderDynamic(dynamicCtx, mapData, canvasWidth, canvasHeight) {
+    static renderDynamic(dynamicCtx, mapData, canvasWidth, canvasHeight, showLabels) {
         dynamicCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-        VehicleRenderer.render(dynamicCtx, mapData);
+        VehicleRenderer.render(dynamicCtx, mapData, showLabels);
     }
     static renderAll(
         staticCtx,
         dynamicCtx,
         mapData,
         canvasWidth,
-        canvasHeight
+        canvasHeight,
+        showLabels
     ) {
-        this.renderStatic(staticCtx, mapData, canvasWidth, canvasHeight);
-        this.renderDynamic(dynamicCtx, mapData, canvasWidth, canvasHeight);
+        this.renderStatic(staticCtx, mapData, canvasWidth, canvasHeight, showLabels);
+        this.renderDynamic(dynamicCtx, mapData, canvasWidth, canvasHeight, showLabels);
     }
 }

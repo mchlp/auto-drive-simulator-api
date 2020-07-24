@@ -5,12 +5,16 @@ import { useState } from 'react';
 import MapRenderer from '../renderers/MapRenderer';
 import Utils from '../Utils';
 
-export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
+export default function Map({
+    mapData,
+    canvasHeightPercentage = 1,
+    showLabels,
+}) {
     const staticCanvasRef = useRef(null);
     const dynamicCanvasRef = useRef(null);
     const canvasContainerRef = useRef(null);
 
-    const [canvasWidth, setCanvasWidth] = useState(window.innerWidth * 0.9);
+    const [canvasWidth, setCanvasWidth] = useState(window.innerWidth);
     const [canvasHeight, setCanvasHeight] = useState(
         window.innerHeight * canvasHeightPercentage
     );
@@ -75,8 +79,8 @@ export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
                 canvasProps,
                 canvasWidth,
                 canvasHeight,
-                staticCanvasRef.current.offsetLeft,
-                staticCanvasRef.current.offsetTop
+                canvasContainerRef.current.offsetLeft,
+                canvasContainerRef.current.offsetTop
             );
         }
     }, [canvasWidth, canvasHeight, canvasProps, staticCanvasRef]);
@@ -98,7 +102,8 @@ export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
                 dynamicCtx,
                 mapData,
                 canvasWidth,
-                canvasHeight
+                canvasHeight,
+                showLabels
             );
         }
     }, [
@@ -107,6 +112,7 @@ export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
         canvasProps,
         canvasWidth,
         canvasHeight,
+        showLabels,
     ]);
 
     useEffect(() => {
@@ -117,7 +123,8 @@ export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
                 dynamicCtx,
                 mapData,
                 canvasWidth,
-                canvasHeight
+                canvasHeight,
+                showLabels
             );
         }
     }, [dynamicCanvasRef, mapData]);

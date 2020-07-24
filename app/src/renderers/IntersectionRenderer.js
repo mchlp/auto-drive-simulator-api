@@ -2,7 +2,7 @@ import Utils from '../Utils';
 import constants from '../constants';
 
 export default class IntersectionRenderer {
-    static render(ctx, mapData) {
+    static render(ctx, mapData, showLabels) {
         Object.entries(mapData.intersections).forEach((intersectionEntry) => {
             const intersectionId = intersectionEntry[0];
             const intersectionData = intersectionEntry[1];
@@ -25,12 +25,14 @@ export default class IntersectionRenderer {
             ctx.stroke();
             ctx.fill();
 
-            ctx.font = Utils.scaleSingleCoord(50) + 'px Arial';
-            ctx.strokeStyle = 'white';
-            ctx.strokeWidth = Utils.scaleSingleCoord(2);
-            ctx.strokeText(intersectionId, coord[0], coord[1]);
-            ctx.fillStyle = 'black';
-            ctx.fillText(intersectionId, coord[0], coord[1]);
+            if (showLabels) {
+                ctx.font = Utils.scaleSingleCoord(50) + 'px Arial';
+                ctx.strokeStyle = 'white';
+                ctx.strokeWidth = Utils.scaleSingleCoord(2);
+                ctx.strokeText(intersectionId, coord[0], coord[1]);
+                ctx.fillStyle = 'black';
+                ctx.fillText(intersectionId, coord[0], coord[1]);
+            }
         });
     }
 }
