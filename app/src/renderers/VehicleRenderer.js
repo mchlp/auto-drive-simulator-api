@@ -25,6 +25,8 @@ export default class VehicleRenderer {
             ctx.stroke();
             ctx.fill();
 
+            ctx.lineJoin = 'round';
+            ctx.miterLimit = 2;
             const text = `${vehicleId} | Src: ${vehicleData.originId} | Dest: ${vehicleData.destinationId}`;
             ctx.font = Utils.scaleSingleCoord(15) + 'px Arial';
             ctx.strokeStyle = 'black';

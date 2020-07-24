@@ -29,7 +29,9 @@ for (const locationRaw of Object.values(rawMap.locations)) {
 
 for (const intersectionRaw of Object.values(rawMap.intersections)) {
     const intersection = intersectionRaw as Record<string, any>;
-    map.addIntersection(new models.Intersection(intersection.id, intersection.coord));
+    map.addIntersection(
+        new models.Intersection(intersection.id, intersection.coord)
+    );
 }
 
 for (const roadRaw of Object.values(rawMap.roads)) {
@@ -47,26 +49,30 @@ for (const roadRaw of Object.values(rawMap.roads)) {
     } else {
         endWaypoint = map.locations[road.end];
     }
-    map.addRoad(new models.Road(road.id, road.type, startWaypoint, endWaypoint));
+    map.addRoad(
+        new models.Road(road.id, road.type, startWaypoint, endWaypoint)
+    );
 }
 
-const ADD_VEHICLE_TIMEOUT = 1000;
+const ADD_VEHICLE_TIMEOUT = 100000;
 let lastAddVehicleTime = 0;
 const simulateLoop = () => {
     const nowTime = Date.now();
     if (
         nowTime - lastAddVehicleTime > ADD_VEHICLE_TIMEOUT &&
-        Object.keys(map.vehicles).length < 100
+        Object.keys(map.vehicles).length < 500
     ) {
-        const newOrigin = map.getRandomWaypoint();
-        const newDest = map.getRandomWaypoint();
-        const newVehicle = new models.Vehicle(newOrigin, newDest, map);
-        map.addVehicle(newVehicle);
-        newVehicle.calculateRoute();
-        newVehicle.startDriving();
-        lastAddVehicleTime = nowTime;
+        for (let i = 0; i < 10; ++i) {
+            const newOrigin = map.getRandomWaypoint();
+            const newDest = map.getRandomWaypoint();
+            const newVehicle = new models.Vehicle(newOrigin, newDest, map);
+            map.addVehicle(newVehicle);
+            newVehicle.calculateRoute();
+            newVehicle.startDriving();
+            lastAddVehicleTime = nowTime;
 
-        console.log(`origin: ${newOrigin.id} | dest: ${newDest.id}`);
+            console.log(`origin: ${newOrigin.id} | dest: ${newDest.id}`);
+        }
     }
     map.update();
     io.emit('update-map-data', map.serialize());

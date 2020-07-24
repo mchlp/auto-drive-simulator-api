@@ -4,20 +4,34 @@ import IntersectionRenderer from './IntersectionRenderer';
 import VehicleRenderer from './VehicleRenderer';
 
 export default class MapRenderer {
-    static render(ctx, mapData, canvasWidth, canvasHeight) {
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-        ctx.fillStyle = '#dddddd';
-        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+    static renderStatic(staticCtx, mapData, canvasWidth, canvasHeight) {
+        staticCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+        staticCtx.fillStyle = '#dddddd';
+        staticCtx.fillRect(0, 0, canvasWidth, canvasHeight);
 
         const logoImage = new Image();
         logoImage.src = '/logo192.png';
         logoImage.onload = () => {
-            ctx.drawImage(logoImage, 0, 0, 50, 50);
+            staticCtx.drawImage(logoImage, 0, 0, 50, 50);
         };
 
-        RoadRenderer.render(ctx, mapData);
-        LocationRenderer.render(ctx, mapData);
-        IntersectionRenderer.render(ctx, mapData);
-        VehicleRenderer.render(ctx, mapData);
+        RoadRenderer.render(staticCtx, mapData);
+        LocationRenderer.render(staticCtx, mapData);
+        IntersectionRenderer.render(staticCtx, mapData);
+    }
+
+    static renderDynamic(dynamicCtx, mapData, canvasWidth, canvasHeight) {
+        dynamicCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+        VehicleRenderer.render(dynamicCtx, mapData);
+    }
+    static renderAll(
+        staticCtx,
+        dynamicCtx,
+        mapData,
+        canvasWidth,
+        canvasHeight
+    ) {
+        this.renderStatic(staticCtx, mapData, canvasWidth, canvasHeight);
+        this.renderDynamic(dynamicCtx, mapData, canvasWidth, canvasHeight);
     }
 }

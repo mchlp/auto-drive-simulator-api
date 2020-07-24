@@ -52,7 +52,6 @@ export default class Map {
 
     getRandomWaypoint() {
         const waypointList = [
-            ...Object.values(this.intersections),
             ...Object.values(this.locations),
         ];
         return waypointList[Math.floor(Math.random() * waypointList.length)];

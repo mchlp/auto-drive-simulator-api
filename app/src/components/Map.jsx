@@ -6,7 +6,9 @@ import MapRenderer from '../renderers/MapRenderer';
 import Utils from '../Utils';
 
 export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
-    const canvasRef = useRef(null);
+    const staticCanvasRef = useRef(null);
+    const dynamicCanvasRef = useRef(null);
+    const canvasContainerRef = useRef(null);
 
     const [canvasWidth, setCanvasWidth] = useState(window.innerWidth * 0.9);
     const [canvasHeight, setCanvasHeight] = useState(
@@ -18,44 +20,112 @@ export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
         zoom: 0.5,
     });
 
-    const [draging, setDraging] = useState(false);
+    const dragging = useRef(false);
     const lastDragCoord = useRef(null);
 
+    const keyDownHandler = (event) => {
+        const eventKey = event.key;
+        let deltaX = 0;
+        let deltaY = 0;
+        switch (eventKey) {
+            case 'ArrowUp':
+                deltaY = -50;
+                break;
+            case 'ArrowDown':
+                deltaY = 50;
+                break;
+            case 'ArrowLeft':
+                deltaX = -50;
+                break;
+            case 'ArrowRight':
+                deltaX = 50;
+                break;
+        }
+        setCanvasProps((prevCanvasProps) => {
+            return {
+                centerX: prevCanvasProps.centerX + deltaX,
+                centerY: prevCanvasProps.centerY + deltaY,
+                zoom: prevCanvasProps.zoom,
+            };
+        });
+        console.log(event.key);
+    };
+
     useEffect(() => {
-        if (canvasRef.current) {
-            canvasRef.current.addEventListener('wheel', onZoom, {
+        window.addEventListener('keydown', keyDownHandler);
+        return () => {
+            window.removeEventListener('keydown', keyDownHandler);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (canvasContainerRef.current) {
+            canvasContainerRef.current.addEventListener('wheel', onZoom, {
                 passive: false,
             });
             return () => {
-                canvasRef.current.removeEventListener('wheel', onZoom);
+                canvasContainerRef.current.removeEventListener('wheel', onZoom);
             };
         }
-    }, [canvasRef]);
+    }, [canvasContainerRef]);
 
     useEffect(() => {
-        if (canvasRef && canvasRef.current) {
+        if (staticCanvasRef && staticCanvasRef.current) {
             Utils.initUtils(
                 canvasProps,
                 canvasWidth,
                 canvasHeight,
-                canvasRef.current.offsetLeft,
-                canvasRef.current.offsetTop
+                staticCanvasRef.current.offsetLeft,
+                staticCanvasRef.current.offsetTop
             );
         }
-    }, [canvasWidth, canvasHeight, canvasProps, canvasRef]);
+    }, [canvasWidth, canvasHeight, canvasProps, staticCanvasRef]);
 
     useEffect(() => {
-        if (mapData && canvasRef && canvasRef.current) {
-            const canvasObj = canvasRef.current;
-            const ctx = canvasObj.getContext('2d');
-            MapRenderer.render(ctx, mapData, canvasWidth, canvasHeight);
+        if (
+            mapData &&
+            staticCanvasRef &&
+            staticCanvasRef.current &&
+            dynamicCanvasRef &&
+            dynamicCanvasRef.current
+        ) {
+            const staticCanvasObj = staticCanvasRef.current;
+            const dynamicCanvasObj = dynamicCanvasRef.current;
+            const staticCtx = staticCanvasObj.getContext('2d');
+            const dynamicCtx = dynamicCanvasObj.getContext('2d');
+            MapRenderer.renderAll(
+                staticCtx,
+                dynamicCtx,
+                mapData,
+                canvasWidth,
+                canvasHeight
+            );
         }
-    }, [canvasRef, canvasProps, mapData, canvasWidth, canvasHeight]);
+    }, [
+        staticCanvasRef,
+        dynamicCanvasRef,
+        canvasProps,
+        canvasWidth,
+        canvasHeight,
+    ]);
+
+    useEffect(() => {
+        if (mapData && dynamicCanvasRef && dynamicCanvasRef.current) {
+            const dynamicCanvasObj = dynamicCanvasRef.current;
+            const dynamicCtx = dynamicCanvasObj.getContext('2d');
+            MapRenderer.renderDynamic(
+                dynamicCtx,
+                mapData,
+                canvasWidth,
+                canvasHeight
+            );
+        }
+    }, [dynamicCanvasRef, mapData]);
 
     const onDragStart = (event) => {
         event.preventDefault();
         if (mapData) {
-            setDraging(true);
+            dragging.current = true;
             lastDragCoord.current = {
                 x: event.screenX,
                 y: event.screenY,
@@ -64,12 +134,20 @@ export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
     };
 
     const onDragEnd = (event) => {
-        setDraging(false);
+        dragging.current = false;
         lastDragCoord.current = null;
     };
 
+    const lastDragEvent = useRef(null);
     const onDragMove = (event) => {
-        if (draging) {
+        const DRAG_UPDATE_LIMIT_MS = 1000 / 30;
+        const now = Date.now();
+        if (
+            dragging.current &&
+            (!lastDragEvent.current ||
+                now - lastDragEvent.current > DRAG_UPDATE_LIMIT_MS)
+        ) {
+            lastDragEvent.current = now;
             const lastCoord = {
                 x: lastDragCoord.current.x,
                 y: lastDragCoord.current.y,
@@ -106,8 +184,8 @@ export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
 
             setCanvasProps((prevCanvasProps) => {
                 const zoomCenterInCanvasView = {
-                    x: pageX - canvasRef.current.offsetLeft,
-                    y: pageY - canvasRef.current.offsetTop,
+                    x: pageX - staticCanvasRef.current.offsetLeft,
+                    y: pageY - staticCanvasRef.current.offsetTop,
                 };
 
                 const zoomOffsetFromViewCentre = {
@@ -144,15 +222,37 @@ export default function Map({ mapData, canvasHeightPercentage = 0.9 }) {
                 marginTop: 20,
             }}
         >
-            <canvas
-                ref={canvasRef}
-                width={canvasWidth}
-                height={canvasHeight}
+            <div
                 onMouseDown={onDragStart}
                 onMouseUp={onDragEnd}
                 onMouseLeave={onDragEnd}
                 onMouseMove={onDragMove}
-            />
+                ref={canvasContainerRef}
+                style={{
+                    height: canvasHeight,
+                    width: canvasWidth,
+                    position: 'relative',
+                }}
+            >
+                <canvas
+                    style={{
+                        position: 'absolute',
+                        zIndex: 2,
+                    }}
+                    ref={dynamicCanvasRef}
+                    width={canvasWidth}
+                    height={canvasHeight}
+                />
+                <canvas
+                    style={{
+                        position: 'absolute',
+                        zIndex: 1,
+                    }}
+                    ref={staticCanvasRef}
+                    width={canvasWidth}
+                    height={canvasHeight}
+                />
+            </div>
         </div>
     );
 }
