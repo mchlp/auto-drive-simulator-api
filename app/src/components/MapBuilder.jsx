@@ -11,12 +11,11 @@ const POINTER_TYPE = {
     NONE: 'none',
     ROAD: 'road',
     SAVE_MAP: 'save_map',
+    DELETE: 'delete',
 };
 
-const savedMap = JSON.parse(localStorage.getItem('saved-map-data'));
-
 export default function MapBuilder({ curState, setCurState }) {
-    const prevSavedMapData = useRef(savedMap || rawMapData);
+    const prevSavedMapData = useRef(JSON.parse(localStorage.getItem('saved-map-data')) || rawMapData);
     const curPointerComponentId = useRef(null);
     const [roadStartWaypointId, setRoadStartWaypointId] = useState(null);
     const [roadType, setRoadType] = useState(null);
@@ -105,8 +104,6 @@ export default function MapBuilder({ curState, setCurState }) {
                     // road end point
                     const nextRoadId = `road_${Utils.generateShortUuid()}`;
 
-                    console.log(`start ${roadStartWaypointId}`);
-                    console.log(`end ${curHoverComponent.id}`);
                     const newMapData = {
                         ...prevSavedMapData.current,
                         roads: {
@@ -121,8 +118,12 @@ export default function MapBuilder({ curState, setCurState }) {
                     };
                     prevSavedMapData.current = newMapData;
                     setMapData(newMapData);
-                    setRoadStartWaypointId(null);
+                    setRoadStartWaypointId(curHoverComponent.id);
                 }
+            }
+        } else if (curPointerType === POINTER_TYPE.DELETE) {
+            if (curHoverComponent) {
+                deleteComponent(curHoverComponent);
             }
         }
     };
@@ -160,33 +161,32 @@ export default function MapBuilder({ curState, setCurState }) {
         setCurSelectComponent(newSelectComponent);
     };
 
-    const deleteSelectedComponent = () => {
-        if (curSelectComponent && curSelectComponent.id) {
+    const deleteComponent = (deleteComponent) => {
+        if (deleteComponent && deleteComponent.id) {
             const newMapData = JSON.parse(
                 JSON.stringify(prevSavedMapData.current)
             );
 
-            if (newMapData.intersections[curSelectComponent.id]) {
-                delete newMapData.intersections[curSelectComponent.id];
+            if (newMapData.intersections[deleteComponent.id]) {
+                delete newMapData.intersections[deleteComponent.id];
             }
 
-            if (newMapData.locations[curSelectComponent.id]) {
-                delete newMapData.locations[curSelectComponent.id];
+            if (newMapData.locations[deleteComponent.id]) {
+                delete newMapData.locations[deleteComponent.id];
             }
 
             for (const roadId of Object.keys(prevSavedMapData.current.roads)) {
                 if (
                     prevSavedMapData.current.roads[roadId].start ===
-                        curSelectComponent.id ||
+                        deleteComponent.id ||
                     prevSavedMapData.current.roads[roadId].end ===
-                        curSelectComponent.id
+                        deleteComponent.id
                 ) {
                     delete newMapData.roads[roadId];
                 }
             }
 
             prevSavedMapData.current = newMapData;
-            setCurPointerType(POINTER_TYPE.NONE);
             curPointerComponentId.current = null;
             setMapData(newMapData);
         }
@@ -202,6 +202,8 @@ export default function MapBuilder({ curState, setCurState }) {
     let cursorStyle = null;
     if (curPointerType === POINTER_TYPE.ROAD && roadStartWaypointId) {
         cursorStyle = 'crosshair';
+    } else if (curPointerType === POINTER_TYPE.DELETE) {
+        cursorStyle = 'no-drop'
     }
 
     return (
@@ -266,13 +268,12 @@ export default function MapBuilder({ curState, setCurState }) {
                     color="primary"
                     onClick={() => {
                         setMapData(prevSavedMapData.current);
-                        setCurPointerType(POINTER_TYPE.NONE);
+                        setCurPointerType(POINTER_TYPE.DELETE);
                         curPointerComponentId.current = null;
-                        deleteSelectedComponent();
                     }}
                     className="m-1"
                 >
-                    Delete Selected Component
+                    Delete Components
                 </Button>
                 <Button
                     color="primary"
@@ -309,7 +310,6 @@ export default function MapBuilder({ curState, setCurState }) {
                     curPointerComponentId={curPointerComponentId.current}
                     cursorStyle={cursorStyle}
                     averageDataUpdatesPerSecond={0}
-                    canvasHeightPercentage={0.7}
                     buildingMap={true}
                     curState={curState}
                     setCurState={setCurState}

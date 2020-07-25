@@ -20,7 +20,6 @@ export default function SelectedDisplay({ componentData }) {
     return (
         <div
             style={{
-                height: 80,
                 fontSize: 12,
             }}
         >

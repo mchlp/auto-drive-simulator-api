@@ -37,7 +37,10 @@ function App() {
     const averageUpdateTimeElapsed =
         lastUpdateTimeElapsedList.current.reduce((a, b) => a + b, 0) /
         lastUpdateTimeElapsedList.current.length;
-    const averageUpdatesPerSecond = 1000 / averageUpdateTimeElapsed;
+    let averageUpdatesPerSecond = 1000 / averageUpdateTimeElapsed;
+    if (lastUpdateTimeElapsedList.current.length < 100) {
+        averageUpdatesPerSecond = Number.POSITIVE_INFINITY;
+    }
 
     let Content;
     if (curState === constants.APP_STATE_LIST.VIEW_MAP) {

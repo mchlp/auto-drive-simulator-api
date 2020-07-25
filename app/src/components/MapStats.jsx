@@ -32,7 +32,7 @@ export default function MapStats({ mapData, averageDataUpdatesPerSecond }) {
                     display: 'flex',
                     flexDirection: 'column',
                     flexWrap: 'wrap',
-                    height: 80,
+                    height: '40pt',
                 }}
             >
                 <div className="font-weight-bold mx-1">Map Data</div>
@@ -66,7 +66,6 @@ export default function MapStats({ mapData, averageDataUpdatesPerSecond }) {
     return (
         <div
             style={{
-                height: 80,
                 fontSize: 12,
             }}
         >

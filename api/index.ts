@@ -110,7 +110,7 @@ const simulateLoop = () => {
         }
     }
     map.update();
-    io.emit('update-map-data', map.serialize());
+    io.volatile.emit('update-map-data', map.serialize());
 };
 
 setInterval(simulateLoop, 1000 / 30);

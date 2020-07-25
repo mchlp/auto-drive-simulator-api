@@ -5,25 +5,23 @@ import { useState } from 'react';
 import MapRenderer from '../renderers/MapRenderer';
 import Utils from '../Utils';
 
-export default function Map({
-    mapData,
-    canvasHeightPercentage = 1,
-    showLabels,
-    buildingMap,
-}) {
+export default function Map({ mapData, showLabels, buildingMap }) {
     const staticCanvasRef = useRef(null);
     const dynamicCanvasRef = useRef(null);
     const canvasContainerRef = useRef(null);
 
     const [canvasWidth, setCanvasWidth] = useState(window.innerWidth);
-    const [canvasHeight, setCanvasHeight] = useState(
-        window.innerHeight * canvasHeightPercentage
-    );
+    const [canvasHeight, setCanvasHeight] = useState(window.innerHeight);
     const [canvasProps, setCanvasProps] = useState({
         centerX: 0,
         centerY: 0,
         zoom: 0.5,
     });
+
+    useEffect(() => {
+        setCanvasHeight(window.innerHeight);
+        setCanvasWidth(window.innerWidth);
+    }, []);
 
     const dragging = useRef(false);
     const lastDragCoord = useRef(null);
@@ -236,45 +234,38 @@ export default function Map({
 
     return (
         <div
+            onMouseDown={onDragStart}
+            onMouseUp={onDragEnd}
+            onMouseLeave={onDragEnd}
+            onMouseMove={onDragMove}
+            ref={canvasContainerRef}
             style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignContent: 'center',
-                alignItems: 'center',
-                marginTop: 20,
+                height: canvasHeight,
+                width: canvasWidth,
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: -1,
             }}
         >
-            <div
-                onMouseDown={onDragStart}
-                onMouseUp={onDragEnd}
-                onMouseLeave={onDragEnd}
-                onMouseMove={onDragMove}
-                ref={canvasContainerRef}
+            <canvas
                 style={{
-                    height: canvasHeight,
-                    width: canvasWidth,
-                    position: 'relative',
+                    position: 'absolute',
+                    zIndex: 2,
                 }}
-            >
-                <canvas
-                    style={{
-                        position: 'absolute',
-                        zIndex: 2,
-                    }}
-                    ref={dynamicCanvasRef}
-                    width={canvasWidth}
-                    height={canvasHeight}
-                />
-                <canvas
-                    style={{
-                        position: 'absolute',
-                        zIndex: 1,
-                    }}
-                    ref={staticCanvasRef}
-                    width={canvasWidth}
-                    height={canvasHeight}
-                />
-            </div>
+                ref={dynamicCanvasRef}
+                width={canvasWidth}
+                height={canvasHeight}
+            />
+            <canvas
+                style={{
+                    position: 'absolute',
+                    zIndex: 1,
+                }}
+                ref={staticCanvasRef}
+                width={canvasWidth}
+                height={canvasHeight}
+            />
         </div>
     );
 }

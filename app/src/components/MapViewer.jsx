@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Map from './Map';
 import { useRef, useState } from 'react';
 import Utils from '../Utils';
@@ -6,7 +6,8 @@ import SelectedDisplay from './SelectedDisplay';
 import constants from '../constants';
 import ComponentFinder from '../builder/ComponentFinder';
 import MapStats from './MapStats';
-import { FormGroup, Label, Input, Form, Button } from 'reactstrap';
+import { FormGroup, Label, Input, Form, Button, Modal } from 'reactstrap';
+import LowFpsModal from './LowFpsModal';
 
 export default function MapViewer({
     mapData,
@@ -18,7 +19,6 @@ export default function MapViewer({
     curPointerComponentId,
     cursorStyle,
     averageDataUpdatesPerSecond,
-    canvasHeightPercentage,
     buildingMap = false,
     curState,
     setCurState,
@@ -27,6 +27,8 @@ export default function MapViewer({
     const [selectedComponent, setSelectedComponent] = useState(null);
     const [hoveredComponent, setHoveredComponent] = useState(null);
     const [showLabels, setShowLabels] = useState(true);
+    const [showLowFpsWarning, setShowLowFpsWarning] = useState(false);
+    const [shownLowFpsWarning, setShownLowFpsWarning] = useState(false);
 
     const getMapCoordinatesFromMouseEvent = (event) => {
         const { pageX, pageY } = event;
@@ -36,6 +38,17 @@ export default function MapViewer({
         ];
         return Utils.unmapArrayCoord(canvasCoordinates);
     };
+
+    useEffect(() => {
+        if (
+            averageDataUpdatesPerSecond < 20 &&
+            showLabels &&
+            !shownLowFpsWarning
+        ) {
+            setShowLowFpsWarning(true);
+            setShownLowFpsWarning(true);
+        }
+    }, [averageDataUpdatesPerSecond, showLabels]);
 
     const mouseMoveHandler = (event) => {
         if (containerRef && containerRef.current && Utils.ready) {
@@ -82,77 +95,110 @@ export default function MapViewer({
 
     return (
         <div>
+            <LowFpsModal
+                isOpen={showLowFpsWarning}
+                setIsOpen={setShowLowFpsWarning}
+            />
             <div
                 style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
+                    background: '#ffffffcc',
+                    margin: 10,
                 }}
             >
-                <div className="mx-2 my-1">
-                    <SelectedDisplay
-                        componentData={hoveredComponent || selectedComponent}
-                    />
-                </div>
-                <div className="mx-2 my-1">
-                    <MapStats
-                        mapData={mapData}
-                        averageDataUpdatesPerSecond={
-                            averageDataUpdatesPerSecond
-                        }
-                    />
-                </div>
-            </div>
-            <div
-                className="mx-2"
-                style={{
-                    fontSize: 10,
-                    display: 'flex',
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    alignItems: 'center',
-                    alignContent: 'center',
-                }}
-            >
-                <input
-                    type="checkbox"
-                    id="show-lables-chkbox"
-                    className="mr-1"
-                    checked={showLabels}
-                    onChange={(event) => {
-                        setShowLabels(event.target.checked);
-                    }}
-                />
-                <label
-                    htmlFor="show-labels-chkbox"
-                    className="m-0"
-                    onClick={(e) => {
-                        setShowLabels((prevShowLabels) => !prevShowLabels);
-                    }}
+                <div
                     style={{
-                        userSelect: 'none',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        justifyContent: 'space-between',
                     }}
                 >
-                    Toggle Labels
-                </label>
-                <Button
-                    color="link"
-                    className="ml-2"
-                    style={{
-                        fontSize: 10,
-                    }}
-                    onClick={() => {
-                        if (curState === constants.APP_STATE_LIST.CREATE_MAP) {
-                            setCurState(constants.APP_STATE_LIST.VIEW_MAP);
-                        } else {
-                            setCurState(constants.APP_STATE_LIST.CREATE_MAP);
-                        }
-                    }}
-                >
-                    {curState === constants.APP_STATE_LIST.CREATE_MAP
-                        ? 'Switch to View Mode'
-                        : 'Switch to Create Mode'}
-                </Button>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            flexWrap: 'wrap',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        <div className="mx-2 my-1">
+                            <SelectedDisplay
+                                componentData={
+                                    hoveredComponent || selectedComponent
+                                }
+                            />
+                        </div>
+                        <div className="mx-2 my-1">
+                            <MapStats
+                                mapData={mapData}
+                                averageDataUpdatesPerSecond={
+                                    averageDataUpdatesPerSecond
+                                }
+                            />
+                        </div>
+                    </div>
+                    <div
+                        className="mx-2 my-1"
+                        style={{
+                            fontSize: 10,
+                            display: 'flex',
+                            flexDirection: 'row',
+                            flexWrap: 'wrap',
+                            justifyContent: 'end',
+                            alignItems: 'center',
+                            alignContent: 'center',
+                        }}
+                    >
+                        <input
+                            type="checkbox"
+                            id="show-lables-chkbox"
+                            className="mr-1"
+                            checked={showLabels}
+                            onChange={(event) => {
+                                setShowLabels(event.target.checked);
+                            }}
+                        />
+                        <label
+                            htmlFor="show-labels-chkbox"
+                            className="m-0"
+                            onClick={(e) => {
+                                setShowLabels(
+                                    (prevShowLabels) => !prevShowLabels
+                                );
+                            }}
+                            style={{
+                                userSelect: 'none',
+                            }}
+                        >
+                            Toggle Labels
+                        </label>
+                        <Button
+                            color="link"
+                            className="ml-2"
+                            style={{
+                                fontSize: 10,
+                            }}
+                            onClick={() => {
+                                if (
+                                    curState ===
+                                    constants.APP_STATE_LIST.CREATE_MAP
+                                ) {
+                                    setCurState(
+                                        constants.APP_STATE_LIST.VIEW_MAP
+                                    );
+                                } else {
+                                    setCurState(
+                                        constants.APP_STATE_LIST.CREATE_MAP
+                                    );
+                                }
+                            }}
+                        >
+                            {curState === constants.APP_STATE_LIST.CREATE_MAP
+                                ? 'Switch to View Mode'
+                                : 'Switch to Create Mode'}
+                        </Button>
+                    </div>
+                </div>
             </div>
             <div
                 onMouseMove={mouseMoveHandler}
@@ -168,7 +214,6 @@ export default function MapViewer({
             >
                 <Map
                     mapData={mapData}
-                    canvasHeightPercentage={canvasHeightPercentage || 0.85}
                     showLabels={showLabels}
                     buildingMap={buildingMap}
                 />
