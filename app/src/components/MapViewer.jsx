@@ -6,7 +6,7 @@ import SelectedDisplay from './SelectedDisplay';
 import constants from '../constants';
 import ComponentFinder from '../builder/ComponentFinder';
 import MapStats from './MapStats';
-import { FormGroup, Label, Input, Form } from 'reactstrap';
+import { FormGroup, Label, Input, Form, Button } from 'reactstrap';
 
 export default function MapViewer({
     mapData,
@@ -20,6 +20,8 @@ export default function MapViewer({
     averageDataUpdatesPerSecond,
     canvasHeightPercentage,
     buildingMap = false,
+    curState,
+    setCurState,
 }) {
     const containerRef = useRef(null);
     const [selectedComponent, setSelectedComponent] = useState(null);
@@ -133,6 +135,24 @@ export default function MapViewer({
                 >
                     Toggle Labels
                 </label>
+                <Button
+                    color="link"
+                    className="ml-2"
+                    style={{
+                        fontSize: 10,
+                    }}
+                    onClick={() => {
+                        if (curState === constants.APP_STATE_LIST.CREATE_MAP) {
+                            setCurState(constants.APP_STATE_LIST.VIEW_MAP);
+                        } else {
+                            setCurState(constants.APP_STATE_LIST.CREATE_MAP);
+                        }
+                    }}
+                >
+                    {curState === constants.APP_STATE_LIST.CREATE_MAP
+                        ? 'Switch to View Mode'
+                        : 'Switch to Create Mode'}
+                </Button>
             </div>
             <div
                 onMouseMove={mouseMoveHandler}

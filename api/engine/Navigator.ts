@@ -135,7 +135,7 @@ export default class Navigator {
             }
         }
 
-        console.log(`route weight: ${parentList[destination.id].totalWeight}`);
+        // console.log(`route weight: ${parentList[destination.id].totalWeight}`);
         const route: Route = [];
         let curReverseTraverseWaypointId: string = destination.id;
         while (curReverseTraverseWaypointId !== origin.id) {

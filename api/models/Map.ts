@@ -34,7 +34,7 @@ export default class Map {
     }
 
     removeVehicle(vehicle: Vehicle) {
-        console.log(`remove vehicle ${vehicle.id}`);
+        // console.log(`remove vehicle ${vehicle.id}`);
         delete this.vehicles[vehicle.id];
     }
 

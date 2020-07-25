@@ -3,17 +3,13 @@ import Map from './components/Map';
 import MapBuilder from './components/MapBuilder';
 import io from 'socket.io-client';
 import MapViewer from './components/MapViewer';
+import constants from './constants';
 
 const socket = io('http://localhost:3001');
 
-const STATE_LIST = {
-    VIEW_MAP: 'view_map',
-    CREATE_MAP: 'create_map',
-};
-
 function App() {
     const [mapData, setMapData] = useState(null);
-    const [curState, setCurState] = useState(STATE_LIST.VIEW_MAP);
+    const [curState, setCurState] = useState(constants.APP_STATE_LIST.VIEW_MAP);
 
     const lastUpdateTimeElapsedList = useRef([]);
     const lastUpdateTime = useRef(null);
@@ -44,19 +40,21 @@ function App() {
     const averageUpdatesPerSecond = 1000 / averageUpdateTimeElapsed;
 
     let Content;
-    if (curState === STATE_LIST.VIEW_MAP) {
+    if (curState === constants.APP_STATE_LIST.VIEW_MAP) {
         if (mapData) {
             Content = (
                 <MapViewer
                     mapData={mapData}
                     averageDataUpdatesPerSecond={averageUpdatesPerSecond}
+                    curState={curState}
+                    setCurState={setCurState}
                 />
             );
         } else {
             Content = <div>Loading map data...</div>;
         }
-    } else if (curState === STATE_LIST.CREATE_MAP) {
-        Content = <MapBuilder />;
+    } else if (curState === constants.APP_STATE_LIST.CREATE_MAP) {
+        Content = <MapBuilder curState={curState} setCurState={setCurState} />;
     }
 
     return <div className="App">{Content}</div>;

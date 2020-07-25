@@ -54,10 +54,45 @@ for (const roadRaw of Object.values(rawMap.roads)) {
     );
 }
 
-const ADD_VEHICLE_TIMEOUT = 5000;
+const ADD_VEHICLE_TIMEOUT = 10000;
 let lastAddVehicleTime = 0;
+
+const lastUpdateTimeElapsedList: number[] = [];
+let lastUpdateTime: number | null = null;
+
+const PRINT_UPDATES_PER_SEC_TIMEOUT = 500;
+let lastPrintUpdatesPerSecTime = 0;
+
 const simulateLoop = () => {
     const nowTime = Date.now();
+
+    // track updates per second
+    let lastUpdateTimeElapsed = 0;
+    if (lastUpdateTime) {
+        lastUpdateTimeElapsed = nowTime - lastUpdateTime;
+    }
+    lastUpdateTime = nowTime;
+    lastUpdateTimeElapsedList.push(lastUpdateTimeElapsed);
+    if (lastUpdateTimeElapsedList.length > 100) {
+        lastUpdateTimeElapsedList.shift();
+    }
+
+    // print updates per second
+    if (nowTime - lastPrintUpdatesPerSecTime > PRINT_UPDATES_PER_SEC_TIMEOUT) {
+        const averageUpdateTimeElapsed =
+            lastUpdateTimeElapsedList.reduce((a, b) => a + b, 0) /
+            lastUpdateTimeElapsedList.length;
+        const averageUpdatesPerSecond = 1000 / averageUpdateTimeElapsed;
+        process.stdout.clearLine(0);
+        process.stdout.cursorTo(0);
+        process.stdout.write(
+            `Avg Updates/Sec: ${averageUpdatesPerSecond.toFixed(3)}`
+        );
+        // console.log();
+        lastPrintUpdatesPerSecTime = nowTime;
+    }
+
+    // add vehicles
     if (
         nowTime - lastAddVehicleTime > ADD_VEHICLE_TIMEOUT &&
         Object.keys(map.vehicles).length < 400
@@ -71,7 +106,7 @@ const simulateLoop = () => {
             newVehicle.startDriving();
             lastAddVehicleTime = nowTime;
 
-            console.log(`origin: ${newOrigin.id} | dest: ${newDest.id}`);
+            // console.log(`origin: ${newOrigin.id} | dest: ${newDest.id}`);
         }
     }
     map.update();

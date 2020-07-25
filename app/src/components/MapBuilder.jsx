@@ -15,7 +15,7 @@ const POINTER_TYPE = {
 
 const savedMap = JSON.parse(localStorage.getItem('saved-map-data'));
 
-export default function MapBuilder() {
+export default function MapBuilder({ curState, setCurState }) {
     const prevSavedMapData = useRef(savedMap || rawMapData);
     const curPointerComponentId = useRef(null);
     const [roadStartWaypointId, setRoadStartWaypointId] = useState(null);
@@ -311,6 +311,8 @@ export default function MapBuilder() {
                     averageDataUpdatesPerSecond={0}
                     canvasHeightPercentage={0.7}
                     buildingMap={true}
+                    curState={curState}
+                    setCurState={setCurState}
                 />
             </div>
         </div>
