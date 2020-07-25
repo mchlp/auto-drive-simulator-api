@@ -142,36 +142,46 @@ export default function MapViewer({
                         style={{
                             fontSize: 10,
                             display: 'flex',
-                            flexDirection: 'row',
+                            flexDirection: 'column',
                             flexWrap: 'wrap',
-                            justifyContent: 'end',
+                            justifyContent: 'center',
                             alignItems: 'center',
                             alignContent: 'center',
                         }}
                     >
-                        <input
-                            type="checkbox"
-                            id="show-lables-chkbox"
-                            className="mr-1"
-                            checked={showLabels}
-                            onChange={(event) => {
-                                setShowLabels(event.target.checked);
-                            }}
-                        />
-                        <label
-                            htmlFor="show-labels-chkbox"
-                            className="m-0"
-                            onClick={(e) => {
-                                setShowLabels(
-                                    (prevShowLabels) => !prevShowLabels
-                                );
-                            }}
+                        <div
                             style={{
-                                userSelect: 'none',
+                                fontSize: 10,
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                alignContent: 'center',
                             }}
                         >
-                            Toggle Labels
-                        </label>
+                            <input
+                                type="checkbox"
+                                id="show-lables-chkbox"
+                                className="mr-1"
+                                checked={showLabels}
+                                onChange={(event) => {
+                                    setShowLabels(event.target.checked);
+                                }}
+                            />
+                            <label
+                                htmlFor="show-labels-chkbox"
+                                className="m-0"
+                                onClick={(e) => {
+                                    setShowLabels(
+                                        (prevShowLabels) => !prevShowLabels
+                                    );
+                                }}
+                                style={{
+                                    userSelect: 'none',
+                                }}
+                            >
+                                Toggle Labels
+                            </label>
+                        </div>
                         <Button
                             color="link"
                             className="ml-2"
