@@ -18,6 +18,8 @@ export default function MapViewer({
     curPointerComponentId,
     cursorStyle,
     averageDataUpdatesPerSecond,
+    canvasHeightPercentage,
+    buildingMap = false,
 }) {
     const containerRef = useRef(null);
     const [selectedComponent, setSelectedComponent] = useState(null);
@@ -34,7 +36,6 @@ export default function MapViewer({
     };
 
     const mouseMoveHandler = (event) => {
-        console.log('move mouse');
         if (containerRef && containerRef.current && Utils.ready) {
             const mapCoordinates = getMapCoordinatesFromMouseEvent(event);
             if (onMouseMove) {
@@ -121,7 +122,7 @@ export default function MapViewer({
                     }}
                 />
                 <label
-                    for="show-labels-chkbox"
+                    htmlFor="show-labels-chkbox"
                     className="m-0"
                     onClick={(e) => {
                         setShowLabels((prevShowLabels) => !prevShowLabels);
@@ -147,8 +148,9 @@ export default function MapViewer({
             >
                 <Map
                     mapData={mapData}
-                    canvasHeightPercentage={0.85}
+                    canvasHeightPercentage={canvasHeightPercentage || 0.85}
                     showLabels={showLabels}
+                    buildingMap={buildingMap}
                 />
             </div>
         </div>

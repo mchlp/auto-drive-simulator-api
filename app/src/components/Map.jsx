@@ -9,6 +9,7 @@ export default function Map({
     mapData,
     canvasHeightPercentage = 1,
     showLabels,
+    buildingMap,
 }) {
     const staticCanvasRef = useRef(null);
     const dynamicCanvasRef = useRef(null);
@@ -52,7 +53,6 @@ export default function Map({
                 zoom: prevCanvasProps.zoom,
             };
         });
-        console.log(event.key);
     };
 
     useEffect(() => {
@@ -117,15 +117,30 @@ export default function Map({
 
     useEffect(() => {
         if (mapData && dynamicCanvasRef && dynamicCanvasRef.current) {
-            const dynamicCanvasObj = dynamicCanvasRef.current;
-            const dynamicCtx = dynamicCanvasObj.getContext('2d');
-            MapRenderer.renderDynamic(
-                dynamicCtx,
-                mapData,
-                canvasWidth,
-                canvasHeight,
-                showLabels
-            );
+            if (buildingMap) {
+                const staticCanvasObj = staticCanvasRef.current;
+                const dynamicCanvasObj = dynamicCanvasRef.current;
+                const staticCtx = staticCanvasObj.getContext('2d');
+                const dynamicCtx = dynamicCanvasObj.getContext('2d');
+                MapRenderer.renderAll(
+                    staticCtx,
+                    dynamicCtx,
+                    mapData,
+                    canvasWidth,
+                    canvasHeight,
+                    showLabels
+                );
+            } else {
+                const dynamicCanvasObj = dynamicCanvasRef.current;
+                const dynamicCtx = dynamicCanvasObj.getContext('2d');
+                MapRenderer.renderDynamic(
+                    dynamicCtx,
+                    mapData,
+                    canvasWidth,
+                    canvasHeight,
+                    showLabels
+                );
+            }
         }
     }, [dynamicCanvasRef, mapData]);
 

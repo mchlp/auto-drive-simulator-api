@@ -13,8 +13,10 @@ const POINTER_TYPE = {
     SAVE_MAP: 'save_map',
 };
 
+const savedMap = JSON.parse(localStorage.getItem('saved-map-data'));
+
 export default function MapBuilder() {
-    const prevSavedMapData = useRef(rawMapData);
+    const prevSavedMapData = useRef(savedMap || rawMapData);
     const curPointerComponentId = useRef(null);
     const [roadStartWaypointId, setRoadStartWaypointId] = useState(null);
     const [roadType, setRoadType] = useState(null);
@@ -125,16 +127,29 @@ export default function MapBuilder() {
         }
     };
 
-    const serializeMap = () => {
+    const lastSavedTime = useRef(Date.now());
+    useEffect(() => {
+        const now = Date.now();
+        if (now - lastSavedTime.current > 5000) {
+            localStorage.setItem('saved-map-data', getSerializedMap());
+            lastSavedTime.current = now;
+        }
+    }, [mapData]);
+
+    const getSerializedMap = () => {
         const serializedMap = {
             id: `map_${Utils.generateShortUuid()}`,
-            locations: mapData.locations,
-            intersections: mapData.intersections,
+            locations: prevSavedMapData.current.locations,
+            intersections: prevSavedMapData.current.intersections,
             vehicles: {},
-            roads: mapData.roads,
+            roads: prevSavedMapData.current.roads,
         };
+        return JSON.stringify(serializedMap);
+    };
+
+    const saveMap = () => {
         setCurPointerType(POINTER_TYPE.SAVE_MAP);
-        setSaveMapData(JSON.stringify(serializedMap));
+        setSaveMapData(getSerializedMap());
     };
 
     const hoverComponentChangeHandler = (newHoverComponent) => {
@@ -190,7 +205,7 @@ export default function MapBuilder() {
     }
 
     return (
-        <div className="mt-1 mr-3 ml-3 mb-5">
+        <div className="mt-1">
             <div>
                 <Button
                     color="primary"
@@ -271,7 +286,7 @@ export default function MapBuilder() {
                 >
                     Reset Pointer
                 </Button>
-                <Button color="success" onClick={serializeMap} className="m-1">
+                <Button color="success" onClick={saveMap} className="m-1">
                     Save Map
                 </Button>
             </div>
@@ -293,6 +308,9 @@ export default function MapBuilder() {
                     curPointerRadius={curPointerRadius}
                     curPointerComponentId={curPointerComponentId.current}
                     cursorStyle={cursorStyle}
+                    averageDataUpdatesPerSecond={0}
+                    canvasHeightPercentage={0.7}
+                    buildingMap={true}
                 />
             </div>
         </div>
