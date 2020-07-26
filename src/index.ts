@@ -78,18 +78,23 @@ const simulateLoop = () => {
     }
 
     // print updates per second
-    if (nowTime - lastPrintUpdatesPerSecTime > PRINT_UPDATES_PER_SEC_TIMEOUT) {
-        const averageUpdateTimeElapsed =
-            lastUpdateTimeElapsedList.reduce((a, b) => a + b, 0) /
-            lastUpdateTimeElapsedList.length;
-        const averageUpdatesPerSecond = 1000 / averageUpdateTimeElapsed;
-        process.stdout.clearLine(0);
-        process.stdout.cursorTo(0);
-        process.stdout.write(
-            `Avg Updates/Sec: ${averageUpdatesPerSecond.toFixed(3)}`
-        );
-        // console.log();
-        lastPrintUpdatesPerSecTime = nowTime;
+    if (process.env.NODE_ENV === 'development') {
+        if (
+            nowTime - lastPrintUpdatesPerSecTime >
+            PRINT_UPDATES_PER_SEC_TIMEOUT
+        ) {
+            const averageUpdateTimeElapsed =
+                lastUpdateTimeElapsedList.reduce((a, b) => a + b, 0) /
+                lastUpdateTimeElapsedList.length;
+            const averageUpdatesPerSecond = 1000 / averageUpdateTimeElapsed;
+            process.stdout.clearLine(0);
+            process.stdout.cursorTo(0);
+            process.stdout.write(
+                `Avg Updates/Sec: ${averageUpdatesPerSecond.toFixed(3)}`
+            );
+            // console.log();
+            lastPrintUpdatesPerSecTime = nowTime;
+        }
     }
 
     // add vehicles
