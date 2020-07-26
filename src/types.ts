@@ -1,4 +1,4 @@
-import { Road, Location, Intersection } from './models';
+import { Road, Location, Intersection } from './src/models';
 
 export type Coordinate = [number, number];
 export interface CoordinateXY {

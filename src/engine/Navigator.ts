@@ -2,7 +2,6 @@ import { Map, Road, Vehicle } from '../models';
 import { Waypoint, WaypointId, RouteSegment, Route } from '../types';
 import constants from '../constants';
 import PriorityQueue from '../util/PriorityQueue';
-import { basename } from 'path';
 
 interface AdjacencyListEntry {
     roadId: Road['id'];
