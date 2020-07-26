@@ -5,7 +5,15 @@ import { useState } from 'react';
 import MapRenderer from '../renderers/MapRenderer';
 import Utils from '../Utils';
 
-export default function Map({ mapData, showLabels, buildingMap }) {
+const SHOW_LABEL_MIN_ZOOM_LEVEL = 0.4;
+
+export default function Map({
+    mapData,
+    showDynamicLabels,
+    buildingMap,
+    showToggleDynamicLabelOption,
+    setShowToggleDynamicLabelOption,
+}) {
     const staticCanvasRef = useRef(null);
     const dynamicCanvasRef = useRef(null);
     const canvasContainerRef = useRef(null);
@@ -101,7 +109,8 @@ export default function Map({ mapData, showLabels, buildingMap }) {
                 mapData,
                 canvasWidth,
                 canvasHeight,
-                showLabels
+                showDynamicLabels,
+                true
             );
         }
     }, [
@@ -110,7 +119,7 @@ export default function Map({ mapData, showLabels, buildingMap }) {
         canvasProps,
         canvasWidth,
         canvasHeight,
-        showLabels,
+        showDynamicLabels,
     ]);
 
     useEffect(() => {
@@ -126,7 +135,8 @@ export default function Map({ mapData, showLabels, buildingMap }) {
                     mapData,
                     canvasWidth,
                     canvasHeight,
-                    showLabels
+                    showDynamicLabels,
+                    true
                 );
             } else {
                 const dynamicCanvasObj = dynamicCanvasRef.current;
@@ -136,7 +146,7 @@ export default function Map({ mapData, showLabels, buildingMap }) {
                     mapData,
                     canvasWidth,
                     canvasHeight,
-                    showLabels
+                    showDynamicLabels
                 );
             }
         }
@@ -218,6 +228,8 @@ export default function Map({ mapData, showLabels, buildingMap }) {
                     y: zoomOffsetFromViewCentre.y + prevCanvasProps.centerY,
                 };
 
+                const newZoom = prevCanvasProps.zoom * curZoomFactor;
+
                 return {
                     centerX:
                         prevCanvasProps.centerX -
@@ -225,12 +237,24 @@ export default function Map({ mapData, showLabels, buildingMap }) {
                     centerY:
                         prevCanvasProps.centerY -
                         zoomCenterInCanvas.y * (1 - curZoomFactor),
-                    zoom: prevCanvasProps.zoom * curZoomFactor,
+                    zoom: newZoom,
                 };
             });
         }
         return false;
     };
+
+    useEffect(() => {
+        if (canvasProps.zoom < SHOW_LABEL_MIN_ZOOM_LEVEL) {
+            if (showToggleDynamicLabelOption) {
+                setShowToggleDynamicLabelOption(false);
+            }
+        } else {
+            if (!showToggleDynamicLabelOption) {
+                setShowToggleDynamicLabelOption(true);
+            }
+        }
+    }, [canvasProps.zoom]);
 
     return (
         <div

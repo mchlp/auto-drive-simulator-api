@@ -6,7 +6,7 @@ import SelectedDisplay from './SelectedDisplay';
 import constants from '../constants';
 import ComponentFinder from '../builder/ComponentFinder';
 import MapStats from './MapStats';
-import { FormGroup, Label, Input, Form, Button, Modal } from 'reactstrap';
+import { Button } from 'reactstrap';
 import LowFpsModal from './LowFpsModal';
 
 export default function MapViewer({
@@ -26,7 +26,11 @@ export default function MapViewer({
     const containerRef = useRef(null);
     const [selectedComponent, setSelectedComponent] = useState(null);
     const [hoveredComponent, setHoveredComponent] = useState(null);
-    const [showLabels, setShowLabels] = useState(true);
+    const [showDynamicLabels, setShowDynamicLabels] = useState(true);
+    const [
+        showToggleDynamicLabelOption,
+        setShowToggleDynamicLabelOption,
+    ] = useState(true);
     const [showLowFpsWarning, setShowLowFpsWarning] = useState(false);
     const [shownLowFpsWarning, setShownLowFpsWarning] = useState(false);
 
@@ -42,13 +46,13 @@ export default function MapViewer({
     useEffect(() => {
         if (
             averageDataUpdatesPerSecond < 20 &&
-            showLabels &&
+            showDynamicLabels &&
             !shownLowFpsWarning
         ) {
             setShowLowFpsWarning(true);
             setShownLowFpsWarning(true);
         }
-    }, [averageDataUpdatesPerSecond, showLabels]);
+    }, [averageDataUpdatesPerSecond, showDynamicLabels]);
 
     const mouseMoveHandler = (event) => {
         if (containerRef && containerRef.current && Utils.ready) {
@@ -149,39 +153,43 @@ export default function MapViewer({
                             alignContent: 'center',
                         }}
                     >
-                        <div
-                            style={{
-                                fontSize: 10,
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                alignContent: 'center',
-                            }}
-                        >
-                            <input
-                                type="checkbox"
-                                id="show-lables-chkbox"
-                                className="mr-1"
-                                checked={showLabels}
-                                onChange={(event) => {
-                                    setShowLabels(event.target.checked);
-                                }}
-                            />
-                            <label
-                                htmlFor="show-labels-chkbox"
-                                className="m-0"
-                                onClick={(e) => {
-                                    setShowLabels(
-                                        (prevShowLabels) => !prevShowLabels
-                                    );
-                                }}
+                        {showToggleDynamicLabelOption && (
+                            <div
                                 style={{
-                                    userSelect: 'none',
+                                    fontSize: 10,
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    alignContent: 'center',
                                 }}
                             >
-                                Toggle Labels
-                            </label>
-                        </div>
+                                <input
+                                    type="checkbox"
+                                    id="show-lables-chkbox"
+                                    className="mr-1"
+                                    checked={showDynamicLabels}
+                                    onChange={(event) => {
+                                        setShowDynamicLabels(
+                                            event.target.checked
+                                        );
+                                    }}
+                                />
+                                <label
+                                    htmlFor="show-labels-chkbox"
+                                    className="m-0"
+                                    onClick={(e) => {
+                                        setShowDynamicLabels(
+                                            (prevShowLabels) => !prevShowLabels
+                                        );
+                                    }}
+                                    style={{
+                                        userSelect: 'none',
+                                    }}
+                                >
+                                    Toggle Vehicle Labels
+                                </label>
+                            </div>
+                        )}
                         <Button
                             color="link"
                             className="ml-2"
@@ -224,7 +232,11 @@ export default function MapViewer({
             >
                 <Map
                     mapData={mapData}
-                    showLabels={showLabels}
+                    showDynamicLabels={
+                        showDynamicLabels && showToggleDynamicLabelOption
+                    }
+                    showToggleDynamicLabelOption={showToggleDynamicLabelOption}
+                    setShowToggleDynamicLabelOption={setShowToggleDynamicLabelOption}
                     buildingMap={buildingMap}
                 />
             </div>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Map from './components/Map';
 import MapBuilder from './components/MapBuilder';
 import io from 'socket.io-client';
 import MapViewer from './components/MapViewer';
