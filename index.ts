@@ -11,7 +11,7 @@ const rawMap = JSON.parse(fs.readFileSync('./maps/Map2.json').toString());
 
 const app = express();
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 const server = app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
