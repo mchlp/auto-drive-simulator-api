@@ -35,9 +35,4 @@ constants.DISPLAY = {
     LOCATION_RADIUS: 30
 }
 
-constants.APP_STATE_LIST = {
-    VIEW_MAP: 'view_map',
-    CREATE_MAP: 'create_map',
-};
-
 export default constants;

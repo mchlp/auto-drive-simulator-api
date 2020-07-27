@@ -29,6 +29,53 @@ export default class Map {
         return nextId;
     }
 
+    startTrip(tripData: any) {
+        const newOrigin = this.locations[tripData.originId];
+        const newDest = this.locations[tripData.destinationId];
+        if (newOrigin && newDest) {
+            const newVehicle = new Vehicle(newOrigin, newDest, this);
+            this.addVehicle(newVehicle);
+            newVehicle.calculateRoute();
+            newVehicle.startDriving();
+            return newVehicle;
+        }
+        return null;
+    }
+
+    importFromObject(mapObj: any) {
+        for (const locationRaw of Object.values(mapObj.locations)) {
+            const location = locationRaw as Record<string, any>;
+            this.addLocation(new Location(location.id, location.coord));
+        }
+
+        for (const intersectionRaw of Object.values(mapObj.intersections)) {
+            const intersection = intersectionRaw as Record<string, any>;
+            this.addIntersection(
+                new Intersection(intersection.id, intersection.coord)
+            );
+        }
+
+        for (const roadRaw of Object.values(mapObj.roads)) {
+            const road = roadRaw as Record<string, any>;
+            let startWaypoint;
+            if (road.start.includes('intersection')) {
+                startWaypoint = this.intersections[road.start];
+            } else {
+                startWaypoint = this.locations[road.start];
+            }
+
+            let endWaypoint;
+            if (road.end.includes('intersection')) {
+                endWaypoint = this.intersections[road.end];
+            } else {
+                endWaypoint = this.locations[road.end];
+            }
+            this.addRoad(
+                new Road(road.id, road.type, startWaypoint, endWaypoint)
+            );
+        }
+    }
+
     addVehicle(newVehicle: Vehicle) {
         this.vehicles[newVehicle.id] = newVehicle;
     }
@@ -51,9 +98,7 @@ export default class Map {
     }
 
     getRandomWaypoint() {
-        const waypointList = [
-            ...Object.values(this.locations),
-        ];
+        const waypointList = [...Object.values(this.locations)];
         return waypointList[Math.floor(Math.random() * waypointList.length)];
     }
 
