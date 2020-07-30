@@ -14,6 +14,7 @@ import Map from './Map';
 import Navigator from '../engine/Navigator';
 import { exit } from 'process';
 import { Intersection } from '.';
+import { performance } from 'perf_hooks';
 
 export default class Vehicle {
     id: string;
@@ -33,7 +34,7 @@ export default class Vehicle {
         this.distanceTravelledOnRoad = 0;
         this.curRouteSegmentIndex = 0;
         this.map = map;
-        this.lastUpdated = Date.now();
+        this.lastUpdated = performance.now();
         this.origin = origin;
         this.destination = destination;
     }
@@ -118,7 +119,7 @@ export default class Vehicle {
             this.route &&
             this.route.length > 0
         ) {
-            const nowTime = Date.now();
+            const nowTime = performance.now();
             const deltaTimeSec = (nowTime - this.lastUpdated) / 1000;
             this.lastUpdated = nowTime;
 

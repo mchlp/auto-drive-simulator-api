@@ -3,6 +3,7 @@ import socketIO from 'socket.io';
 import constants from './constants';
 import * as models from './models';
 import fs from 'fs';
+import { performance } from 'perf_hooks';
 
 const rawMap = JSON.parse(fs.readFileSync('./maps/Map2.json').toString());
 
@@ -26,7 +27,7 @@ io.on('connect', (socket: any) => {
     });
 });
 
-const ADD_VEHICLE_TIMEOUT = 10000;
+const ADD_VEHICLE_TIMEOUT = 5000;
 let lastAddVehicleTime = 0;
 
 const lastUpdateTimeElapsedList: number[] = [];
@@ -36,7 +37,7 @@ const PRINT_UPDATES_PER_SEC_TIMEOUT = 500;
 let lastPrintUpdatesPerSecTime = 0;
 
 const simulateLoop = () => {
-    const nowTime = Date.now();
+    const nowTime = performance.now();
 
     // track updates per second
     let lastUpdateTimeElapsed = 0;
