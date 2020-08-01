@@ -15,8 +15,8 @@
     "dependencies": {
         "express": "^4.17.1",
         "socket.io": "^2.3.0",
-        "typescript": "^3.9.7"
-
+        "typescript": "^3.9.7",
+        "unique-names-generator": "^4.3.0"
     },
     "devDependencies": {
         "@types/express": "^4.17.7",

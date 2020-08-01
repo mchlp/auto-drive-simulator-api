@@ -2,6 +2,39 @@ import Intersection from './Intersection';
 import Vehicle from './Vehicle';
 import Road from './Road';
 import Location from './Location';
+import {
+    uniqueNamesGenerator,
+    Config,
+    adjectives,
+    names,
+    colors,
+} from 'unique-names-generator';
+
+const locationTypesForName = [
+    'House',
+    'Cottage',
+    'Barn',
+    'Townhouse',
+    'Apartment',
+    'Condo',
+    'Bungalow',
+    'Shop',
+    'Mall',
+    'Hotel',
+    'Cinema',
+    'Warehouse',
+    'Office',
+    'Laboratory',
+    'Museum',
+    'Library',
+    'Gym',
+];
+
+const locationNameConfig: Config = {
+    dictionaries: [names, colors, locationTypesForName],
+    separator: '_',
+    style: 'capital',
+};
 
 export default class Map {
     id: string;
@@ -29,6 +62,13 @@ export default class Map {
         return nextId;
     }
 
+    static getUniqueLocationName() {
+        const rawLocationName = uniqueNamesGenerator(locationNameConfig);
+        const locationNameArr = rawLocationName.split('_');
+        locationNameArr[0] += "'s";
+        return locationNameArr.join(' ');
+    }
+
     startTrip(tripData: any) {
         const newOrigin = this.locations[tripData.originId];
         const newDest = this.locations[tripData.destinationId];
@@ -45,7 +85,12 @@ export default class Map {
     importFromObject(mapObj: any) {
         for (const locationRaw of Object.values(mapObj.locations)) {
             const location = locationRaw as Record<string, any>;
-            this.addLocation(new Location(location.id, location.coord));
+            if (!location.name) {
+                location.name = Map.getUniqueLocationName();
+            }
+            this.addLocation(
+                new Location(location.id, location.coord, location.name)
+            );
         }
 
         for (const intersectionRaw of Object.values(mapObj.intersections)) {

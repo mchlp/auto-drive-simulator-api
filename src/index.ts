@@ -91,4 +91,4 @@ const simulateLoop = () => {
     io.volatile.emit('update-map-data', map.serialize());
 };
 
-setInterval(simulateLoop, 1000 / 60);
+setInterval(simulateLoop, 1000 / 30);

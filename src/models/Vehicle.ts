@@ -316,8 +316,8 @@ export default class Vehicle {
             state: this.state,
             id: this.id,
             coord: this.getCoord(),
-            originId: this.origin.id,
-            destinationId: this.destination.id,
+            origin: this.origin.serialize(),
+            destination: this.destination.serialize(),
         };
     }
 }
