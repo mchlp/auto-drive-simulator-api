@@ -32,7 +32,8 @@ constants.VEHICLE_DIRECTION = {
 
 constants.DISPLAY = {
     INTERSECTION_RADIUS: 45,
-    LOCATION_RADIUS: 30
+    LOCATION_RADIUS: 30,
+    VEHICLE_RADIUS: 10
 }
 
 export default constants;

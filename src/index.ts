@@ -73,7 +73,7 @@ const simulateLoop = () => {
     // add vehicles
     if (
         nowTime - lastAddVehicleTime > ADD_VEHICLE_TIMEOUT &&
-        Object.keys(map.vehicles).length < 400
+        Object.keys(map.vehicles).length < 300
     ) {
         for (let i = 0; i < 10; ++i) {
             const newOrigin = map.getRandomWaypoint();
