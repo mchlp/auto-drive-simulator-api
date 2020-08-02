@@ -189,9 +189,19 @@ export default class Vehicle {
                         this.map.intersections[exitPointId].enterIntersection(
                             this
                         );
-                        if (newDistanceTravelledOnRoad > curRoad.getLength()) {
+                        if (
+                            newDistanceTravelledOnRoad >
+                            curRoad.getLength() -
+                                constants.ROAD_TYPES.WIDTH[nextRoad.type] / 4
+                        ) {
                             this.getCurRoad()?.removeVehicle(this);
-                            newDistanceTravelledOnRoad = 0;
+                            const curRoadType = this.getCurRoad()?.type;
+                            if (curRoadType) {
+                                newDistanceTravelledOnRoad =
+                                    constants.ROAD_TYPES.WIDTH[curRoadType] / 4;
+                            } else {
+                                newDistanceTravelledOnRoad = 0;
+                            }
                             this.curRouteSegmentIndex++;
                             this.getCurRoad()?.addVehicle(this);
                         }
