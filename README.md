@@ -6,4 +6,4 @@
 
 Built using Node.js, Express, Socket.io, and Typescript.
 
-[Link to Frontend Repo](https://mchlp.github.io/auto-drive-simulator-app/)
+[Link to Frontend Repo](https://github.com/mchlp/auto-drive-simulator-app)
